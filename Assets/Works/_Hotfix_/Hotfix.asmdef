@@ -1,0 +1,19 @@
+{
+    "name": "Hotfix",
+    "references": [
+        "MotionEngine",
+        "MotionGame",
+        "Script",
+        "Script.ThirdParty"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

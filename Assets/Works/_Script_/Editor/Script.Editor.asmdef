@@ -1,0 +1,19 @@
+{
+    "name": "Script.Editor",
+    "references": [
+        "Script",
+        "Script.ThirdParty",
+        "MotionEngine",
+        "MotionEngine.Editor"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

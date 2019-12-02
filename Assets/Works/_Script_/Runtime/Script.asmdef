@@ -1,0 +1,16 @@
+{
+    "name": "Script",
+    "references": [
+        "MotionEngine",
+        "MotionGame",
+        "Script.ThirdParty"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

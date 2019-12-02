@@ -1,0 +1,15 @@
+bin/
+obj/
+.vs/
+Library/
+Temp/
+BuildBundles/
+
+Assets/MotionFramework
+Assets/MotionFramework.meta
+Assets/StreamingAssets
+Assets/StreamingAssets.meta
+
+*.sln
+*.suo
+*.csproj
