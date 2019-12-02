@@ -100,7 +100,7 @@ namespace Hotfix
 
 			// 连接到ET5.0服务器
 			if (NetManager.Instance.State == MotionEngine.Net.ENetworkState.Disconnect)
-				NetManager.Instance.ConnectServer("49.233.151.34", 10002, typeof(NetProtoPackageParser));
+				NetManager.Instance.ConnectServer("127.0.0.1", 10002, typeof(NetProtoPackageParser));
 
 			// 向Mono层发送测试事件
 			TestEventMsg eventMsg = new TestEventMsg()
