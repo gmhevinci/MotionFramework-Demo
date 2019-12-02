@@ -1,2 +1,2 @@
 # Demo1
- This is a demo made with Game Framework
+ This is a demo made with MotionFramework
