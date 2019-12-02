@@ -57,7 +57,7 @@ namespace Hotfix
 
 			Debug.Log($"Handle net message : {msgID}");
 
-			// TODO 可以在这里分发消息到逻辑层
+			// 注意：可以在这里分发消息到逻辑层
 			R2C_Login loginMsg = message as R2C_Login;
 			if(loginMsg != null)
 			{
