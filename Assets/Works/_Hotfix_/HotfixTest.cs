@@ -28,7 +28,7 @@ namespace Hotfix
 		public void Update()
 		{
 			// 当网络连接成功之后发送测试消息
-			if (_isSendLoginMsg == false && NetManager.Instance.State == MotionEngine.Net.ENetworkState.Connected)
+			if (_isSendLoginMsg == false && NetManager.Instance.State == MotionGame.ENetworkState.Connected)
 			{
 				_isSendLoginMsg = true;
 				SendTestMsg();
@@ -43,30 +43,32 @@ namespace Hotfix
 				Debug.Log($"这里是Hotfix层 {temp.Value}");
 			}
 		}
-		private void OnUIRootLoad(Asset asset, EAssetResult result)
+		private void OnUIRootLoad(Asset asset)
 		{
-			if (result != EAssetResult.OK)
+			if (asset.Result != EAssetResult.OK)
 				return;
 
-			GameObject.DontDestroyOnLoad(_uiRoot.GameObj);
+			GameObject root = _uiRoot.GetMainAsset<GameObject>();
+			GameObject.DontDestroyOnLoad(root);
 
 			// 获取桌面对象
 			// 说明：该对象主要用于调整齐刘海
-			_uiDesktop = _uiRoot.GameObj.transform.FindChildByName("UIDesktop");
+			_uiDesktop = root.transform.FindChildByName("UIDesktop");
 
 			// 加载登录界面
 			_uiLogin = new AssetObject();
 			_uiLogin.Load("UIPanel/UILogin", OnUILoginLoad);
 		}
-		private void OnUILoginLoad(Asset asset, EAssetResult result)
+		private void OnUILoginLoad(Asset asset)
 		{
-			if (result != EAssetResult.OK)
+			if (asset.Result != EAssetResult.OK)
 				return;
 
-			_uiLogin.GameObj.transform.SetParent(_uiDesktop, false);
+			GameObject go = _uiLogin.GetMainAsset<GameObject>();
+			go.transform.SetParent(_uiDesktop, false);
 
 			// 获取UIManifest组件
-			UIManifest manifest = _uiLogin.GameObj.GetComponent<UIManifest>();
+			UIManifest manifest = go.GetComponent<UIManifest>();
 
 			// 获取UISprite组件
 			_loginSprite = manifest.GetComponent("UILogin/BtnLogin", "UISprite") as UISprite;
@@ -99,7 +101,7 @@ namespace Hotfix
 				_loginSprite.SpriteName = "button_1";
 
 			// 连接到ET5.0服务器
-			if (NetManager.Instance.State == MotionEngine.Net.ENetworkState.Disconnect)
+			if (NetManager.Instance.State == MotionGame.ENetworkState.Disconnect)
 				NetManager.Instance.ConnectServer("127.0.0.1", 10002, typeof(NetProtoPackageParser));
 
 			// 向Mono层发送测试事件

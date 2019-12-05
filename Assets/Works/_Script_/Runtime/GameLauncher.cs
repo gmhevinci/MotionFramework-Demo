@@ -29,7 +29,7 @@ public class GameLauncher : MonoBehaviour
 		LogSystem.RegisterCallback(HandleMotionEngineLog);
 
 		// 设置协程脚本
-		Engine.Instance.InitCoroutineBehaviour(this);
+		AppEngine.Instance.InitCoroutineBehaviour(this);
 
 		// 初始化调试控制台
 		if (Application.isEditor || Debug.isDebugBuild)
@@ -44,11 +44,11 @@ public class GameLauncher : MonoBehaviour
 	}
 	void Update()
 	{
-		Engine.Instance.Update();
+		AppEngine.Instance.Update();
 	}
 	void LateUpdate()
 	{
-		Engine.Instance.LateUpdate();
+		AppEngine.Instance.LateUpdate();
 	}
 	void OnApplicationQuit()
 	{
@@ -128,12 +128,12 @@ public class GameLauncher : MonoBehaviour
 		ILRManager.Instance.EnableILRuntime = EnableILRuntime;
 
 		// 注册所有游戏模块
-		Engine.Instance.RegisterModule(EventManager.Instance);
-		Engine.Instance.RegisterModule(ResManager.Instance);
-		Engine.Instance.RegisterModule(CfgManager.Instance);
-		Engine.Instance.RegisterModule(AudioManager.Instance);
-		Engine.Instance.RegisterModule(NetManager.Instance);
-		Engine.Instance.RegisterModule(ILRManager.Instance);
-		Engine.Instance.RegisterModule(GameTest.Instance);
+		AppEngine.Instance.RegisterModule(EventManager.Instance);
+		AppEngine.Instance.RegisterModule(ResManager.Instance);
+		AppEngine.Instance.RegisterModule(CfgManager.Instance);
+		AppEngine.Instance.RegisterModule(AudioManager.Instance);
+		AppEngine.Instance.RegisterModule(NetManager.Instance);
+		AppEngine.Instance.RegisterModule(ILRManager.Instance);
+		AppEngine.Instance.RegisterModule(GameTest.Instance);
 	}
 }

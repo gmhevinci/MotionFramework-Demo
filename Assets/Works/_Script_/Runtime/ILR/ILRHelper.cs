@@ -16,7 +16,7 @@ namespace MotionGame
 			appDomain.DelegateManager.RegisterMethodDelegate<ILTypeInstance>();
 			appDomain.DelegateManager.RegisterMethodDelegate<MotionGame.INetPackage>();
 			appDomain.DelegateManager.RegisterMethodDelegate<MotionEngine.Event.IEventMessage>();
-			appDomain.DelegateManager.RegisterMethodDelegate<MotionEngine.Res.Asset, MotionEngine.Res.EAssetResult>();
+			appDomain.DelegateManager.RegisterMethodDelegate<MotionEngine.Res.Asset>();
 			appDomain.DelegateManager.RegisterMethodDelegate<Google.Protobuf.Adapter_IMessage.Adaptor>();
 			appDomain.DelegateManager.RegisterFunctionDelegate<Google.Protobuf.Adapter_IMessage.Adaptor>();
 

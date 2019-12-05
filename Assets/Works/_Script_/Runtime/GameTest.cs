@@ -49,9 +49,9 @@ public class GameTest : IModule
 			EventManager.Instance.Send(EventMessageTag.HotfixTag.ToString(), newMsg);
 		}
 	}
-	private void OnLanguageConfigPrepare(Asset asset, EAssetResult result)
+	private void OnLanguageConfigPrepare(Asset asset)
 	{
-		if (result != EAssetResult.OK)
+		if (asset.Result != EAssetResult.OK)
 			return;
 
 		// 加载所有配表
@@ -63,9 +63,9 @@ public class GameTest : IModule
 			CfgManager.Instance.Load(cfgName, OnConfigPrepare);
 		}
 	}
-	private void OnConfigPrepare(Asset asset, EAssetResult result)
+	private void OnConfigPrepare(Asset asset)
 	{
-		if (result != EAssetResult.OK)
+		if (asset.Result != EAssetResult.OK)
 			return;
 
 		// 测试打印表格数据
