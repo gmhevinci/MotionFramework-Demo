@@ -17,7 +17,6 @@ public class GameLauncher : MonoBehaviour
 	[Tooltip("资源系统的加载模式")]
 	public EAssetLoadMode AssetLoadMode = EAssetLoadMode.ResourceMode;
 
-
 	void Awake()
 	{
 		Instance = this;
@@ -114,7 +113,7 @@ public class GameLauncher : MonoBehaviour
 		AssetSystem.AssetLoadMode = AssetLoadMode;
 
 		// 设置资源系统根路径
-		AssetSystem.AssetRootPath = PatchDefine.StrMyPackRootPath;
+		AssetSystem.AssetRootPath = GameDefine.StrAssetRootPath;
 
 		// 设置Bundle接口
 		if(AssetLoadMode == EAssetLoadMode.BundleMode)

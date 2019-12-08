@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 using MotionEngine;
-using MotionEngine.Patch;
+using MotionGame;
 
 namespace UnityEngine.UI
 {
@@ -225,14 +225,14 @@ namespace UnityEngine.UI
 					continue;
 
 				// 如果是图集资源
-				if (assetPath.Contains(PatchDefine.StrMyUISpriteFolderPath))
+				if (assetPath.Contains(UIDefine.StrMyUISpriteFolderPath))
 				{
 					if (uiSprite == null)
 						uiSprite = img.gameObject.AddComponent<UISprite>();
 
 					string[] splits = assetPath.Split('/');
 					string atlasName = splits[4]; //注意：根据路径判断索引
-					string atlasAssetPath = $"{PatchDefine.StrMyUIAtlasFolderPath}/{atlasName}.spriteatlas";
+					string atlasAssetPath = $"{UIDefine.StrMyUIAtlasFolderPath}/{atlasName}.spriteatlas";
 					SpriteAtlas spriteAtlas = UnityEditor.AssetDatabase.LoadAssetAtPath<SpriteAtlas>(atlasAssetPath);
 					if (spriteAtlas == null)
 					{
