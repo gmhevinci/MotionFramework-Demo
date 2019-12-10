@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using MotionEngine.Res;
-using MotionEngine.Event;
-using MotionGame;
+using MotionFramework.Resource;
+using MotionFramework.Event;
+using MotionFramework.Network;
+using MotionFramework.Audio;
 
 namespace Hotfix
 {
@@ -28,7 +29,7 @@ namespace Hotfix
 		public void Update()
 		{
 			// 当网络连接成功之后发送测试消息
-			if (_isSendLoginMsg == false && NetManager.Instance.State == MotionGame.ENetworkState.Connected)
+			if (_isSendLoginMsg == false && NetworkManager.Instance.State == ENetworkState.Connected)
 			{
 				_isSendLoginMsg = true;
 				SendTestMsg();
@@ -101,8 +102,8 @@ namespace Hotfix
 				_loginSprite.SpriteName = "button_1";
 
 			// 连接到ET5.0服务器
-			if (NetManager.Instance.State == MotionGame.ENetworkState.Disconnect)
-				NetManager.Instance.ConnectServer("127.0.0.1", 10002, typeof(NetProtoPackageParser));
+			if (NetworkManager.Instance.State == ENetworkState.Disconnect)
+				NetworkManager.Instance.ConnectServer("127.0.0.1", 10002, typeof(NetProtoPackageParser));
 
 			// 向Mono层发送测试事件
 			TestEventMsg eventMsg = new TestEventMsg()

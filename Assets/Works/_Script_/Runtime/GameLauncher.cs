@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using MotionEngine;
-using MotionEngine.Res;
-using MotionEngine.Debug;
-using MotionEngine.Patch;
-using MotionGame;
+using MotionFramework;
+using MotionFramework.Debug;
+using MotionFramework.Resource;
+using MotionFramework.Event;
+using MotionFramework.Config;
+using MotionFramework.Audio;
+using MotionFramework.Network;
 
 public class GameLauncher : MonoBehaviour
 {
@@ -24,7 +26,7 @@ public class GameLauncher : MonoBehaviour
 		// 不销毁游戏对象
 		DontDestroyOnLoad(gameObject);
 
-		// 注册MotionEngine日志系统
+		// 注册日志系统
 		LogSystem.RegisterCallback(HandleMotionEngineLog);
 
 		// 设置协程脚本
@@ -128,10 +130,10 @@ public class GameLauncher : MonoBehaviour
 
 		// 注册所有游戏模块
 		AppEngine.Instance.RegisterModule(EventManager.Instance);
-		AppEngine.Instance.RegisterModule(ResManager.Instance);
-		AppEngine.Instance.RegisterModule(CfgManager.Instance);
+		AppEngine.Instance.RegisterModule(ResourceManager.Instance);
+		AppEngine.Instance.RegisterModule(ConfigManager.Instance);
 		AppEngine.Instance.RegisterModule(AudioManager.Instance);
-		AppEngine.Instance.RegisterModule(NetManager.Instance);
+		AppEngine.Instance.RegisterModule(NetworkManager.Instance);
 		AppEngine.Instance.RegisterModule(ILRManager.Instance);
 		AppEngine.Instance.RegisterModule(GameTest.Instance);
 	}

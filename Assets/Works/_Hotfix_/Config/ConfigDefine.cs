@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using MotionFramework.IO;
 
 namespace Hotfix
 {
@@ -12,7 +12,7 @@ namespace Hotfix
 		{
 			// 注意：这里是自定义格式解析的地方
 			SkillWrapper wrapper = new SkillWrapper();
-			wrapper.Params = MotionEngine.IO.StringConvert.StringToParams(str);
+			wrapper.Params = StringConvert.StringToParams(str);
 			return wrapper;
 		}
 	}

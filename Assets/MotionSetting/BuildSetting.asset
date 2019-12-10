@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ece15ab6d4cb94b8eab87a78eb7428, type: 3}
-  m_Name: ImportSetting
+  m_Script: {fileID: 11500000, guid: 4cc54f0173b27fb40aee29e7eb3364da, type: 3}
+  m_Name: BuildSetting
   m_EditorClassIdentifier: 
-  Toggle: 1
   Elements:
+  - FolderPath: Assets/Works/MyResources
+    PackRule: 0
+    NameRule: 1
   - FolderPath: Assets/WorksArt/Panel/UISprite
-    ProcessorName: DefaultProcessor
+    PackRule: 0
+    NameRule: 2
+  - FolderPath: Assets/Works/MyResources/Scene
+    PackRule: 1
+    NameRule: 0

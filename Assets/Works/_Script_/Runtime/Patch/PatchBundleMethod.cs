@@ -1,5 +1,6 @@
-﻿using MotionEngine.Res;
-using UnityEngine;
+﻿using UnityEngine;
+using MotionFramework.Resource;
+using MotionFramework.Patch;
 
 public class PatchBundleMethod : IBundleMethod
 {
@@ -11,7 +12,7 @@ public class PatchBundleMethod : IBundleMethod
 	public void LoadManifestFile()
 	{
 		// 注意：可能从沙盒内加载或者从流文件夹内加载
-		string loadPath = AssetPathHelper.MakeStreamingLoadPath(MotionEngine.Patch.PatchDefine.StrBuildManifestFileName);
+		string loadPath = AssetPathHelper.MakeStreamingLoadPath(PatchDefine.StrBuildManifestFileName);
 		AssetBundle bundle = AssetBundle.LoadFromFile(loadPath);
 		if (bundle == null)
 			throw new System.Exception($"AssetBundleManifest file load failed : {loadPath}");

@@ -1,5 +1,4 @@
-﻿using System;
-using MotionGame;
+﻿using MotionFramework.Network;
 
 namespace Hotfix
 {

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using MotionEngine;
-using MotionEngine.Res;
 using UnityEngine;
-using MotionGame;
-using MotionEngine.Event;
+using MotionFramework;
+using MotionFramework.Resource;
+using MotionFramework.Event;
+using MotionFramework.Config;
 
 public class GameTest : IModule
 {
@@ -22,7 +22,7 @@ public class GameTest : IModule
 		EventManager.Instance.AddListener(EventMessageTag.TestTag.ToString(), OnHandleEventMsg);
 
 		// 优先加载多语言表
-		CfgManager.Instance.Load(EConfigType.AutoGenerateLanguage.ToString(), OnLanguageConfigPrepare);
+		ConfigManager.Instance.Load(EConfigType.AutoGenerateLanguage.ToString(), OnLanguageConfigPrepare);
 	}
 	public void Update()
 	{
@@ -60,7 +60,7 @@ public class GameTest : IModule
 			if (value == (int)EConfigType.AutoGenerateLanguage)
 				continue;
 			string cfgName = System.Enum.GetName(typeof(EConfigType), value);
-			CfgManager.Instance.Load(cfgName, OnConfigPrepare);
+			ConfigManager.Instance.Load(cfgName, OnConfigPrepare);
 		}
 	}
 	private void OnConfigPrepare(Asset asset)

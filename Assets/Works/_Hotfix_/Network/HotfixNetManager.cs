@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using MotionGame;
+using MotionFramework.Network;
 
 namespace Hotfix
 {
@@ -40,7 +40,7 @@ namespace Hotfix
 			}
 
 			// 注册消息接收回调
-			NetManager.Instance.HotfixPackageCallback += OnHandleHotfixMsg;
+			NetworkManager.Instance.HotfixPackageCallback += OnHandleHotfixMsg;
 		}
 		public void Update()
 		{
@@ -75,7 +75,7 @@ namespace Hotfix
 			NetSendPackage package = new NetSendPackage();
 			package.MsgID = msgID;
 			package.MsgObj = msg;
-			NetManager.Instance.SendMsg(package);
+			NetworkManager.Instance.SendMsg(package);
 		}
 	}
 }

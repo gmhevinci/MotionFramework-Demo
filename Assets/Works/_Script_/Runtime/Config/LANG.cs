@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using MotionGame;
+using MotionFramework.Config;
 
 /// <summary>
 /// 多语言接口类
@@ -9,7 +9,7 @@ public static class LANG
 {
 	public static string Convert(int hashCode)
 	{
-		CfgAutoGenerateLanguage cfg = CfgManager.Instance.GetConfig(EConfigType.AutoGenerateLanguage.ToString()) as CfgAutoGenerateLanguage;
+		CfgAutoGenerateLanguage cfg = ConfigManager.Instance.GetConfig(EConfigType.AutoGenerateLanguage.ToString()) as CfgAutoGenerateLanguage;
 		CfgAutoGenerateLanguageTab tab = cfg.GetTab(hashCode) as CfgAutoGenerateLanguageTab;
 		if (tab != null)
 			return tab.Lang;
@@ -19,7 +19,7 @@ public static class LANG
 
 	public static List<string> Convert(List<int> hashCodes)
 	{
-		CfgAutoGenerateLanguage cfg = CfgManager.Instance.GetConfig(EConfigType.AutoGenerateLanguage.ToString()) as CfgAutoGenerateLanguage;
+		CfgAutoGenerateLanguage cfg = ConfigManager.Instance.GetConfig(EConfigType.AutoGenerateLanguage.ToString()) as CfgAutoGenerateLanguage;
 
 		List<string> result = new List<string>();
 		for (int i = 0; i < hashCodes.Count; i++)

@@ -1,8 +1,9 @@
-//--自动生成  请勿修改--
-//--研发人员实现LANG多语言接口--
-
-using MotionGame;
-using MotionEngine.IO;
+//--------------------------------------------------
+// 自动生成  请勿修改
+// 研发人员实现LANG多语言接口
+//--------------------------------------------------
+using MotionFramework.IO;
+using MotionFramework.Config;
 using System.Collections.Generic;
 
 public class CfgHeroTab : ConfigTab
