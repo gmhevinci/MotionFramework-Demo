@@ -72,9 +72,10 @@ namespace Hotfix
 			UIManifest manifest = go.GetComponent<UIManifest>();
 
 			// 获取UISprite组件
-			_loginSprite = manifest.GetComponent("UILogin/BtnLogin", "UISprite") as UISprite;
+			_loginSprite = manifest.GetComponent("UILogin/box_login/btn_login", "UISprite") as UISprite;
 
 			// 通过配表数据设置文本
+			/*
 			var hero1 = CfgHero.Instance.GetCfgTab(1001);
 			var text1 = manifest.GetComponent("UILogin/Text1", "Text") as Text;
 			text1.text = hero1.Name;
@@ -85,9 +86,10 @@ namespace Hotfix
 			var text2 = manifest.GetComponent("UILogin/Text2", "Text") as Text;
 			text2.text = hero2.Name;
 			Debug.Log($"热更新表格数据：{hero2.Name}");
+			*/
 
 			// 监听按钮点击事件
-			Button btnLogin = manifest.GetComponent("UILogin/BtnLogin", "Button") as Button;
+			Button btnLogin = manifest.GetComponent("UILogin/box_login/btn_login", "Button") as Button;
 			btnLogin.onClick.AddListener(OnClickLogin);
 		}
 		private void OnClickLogin()
@@ -96,10 +98,10 @@ namespace Hotfix
 			AudioManager.Instance.PlaySound("click");
 
 			// 替换按钮图片
-			if (_loginSprite.SpriteName == "button_1")
-				_loginSprite.SpriteName = "button_2";
+			if (_loginSprite.SpriteName == "button_login")
+				_loginSprite.SpriteName = "button_start";
 			else
-				_loginSprite.SpriteName = "button_1";
+				_loginSprite.SpriteName = "button_login";
 
 			// 连接到ET5.0服务器
 			if (NetworkManager.Instance.State == ENetworkState.Disconnect)
