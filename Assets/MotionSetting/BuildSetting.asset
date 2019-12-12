@@ -19,6 +19,3 @@ MonoBehaviour:
   - FolderPath: Assets/WorksArt/Panel/UISprite
     PackRule: 0
     NameRule: 2
-  - FolderPath: Assets/Works/MyResources/Scene
-    PackRule: 1
-    NameRule: 0

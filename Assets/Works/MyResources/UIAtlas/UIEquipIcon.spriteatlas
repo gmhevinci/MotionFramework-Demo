@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UIEquipIcon
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 91c5edb066660e841a54317f05241d42, type: 3}
+    totalSpriteSurfaceArea: 98304
+    bindAsDefault: 0
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: fa306bf14436f4d45961032172d9f5a5, type: 3}
+  - {fileID: 21300000, guid: 81cbce1597779fb40899655101eaab7b, type: 3}
+  - {fileID: 21300000, guid: 6887368610f98a241b7cc772e274a3f5, type: 3}
+  - {fileID: 21300000, guid: 308abe282aed41245b01c9f2676c1429, type: 3}
+  - {fileID: 21300000, guid: af7659cb837975d4287fa6a750b95e6f, type: 3}
+  - {fileID: 21300000, guid: b66f172eac4213142b5cc932946647aa, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Pendant_F
+  - Pendant_C
+  - Pendant_B
+  - Pendant_A
+  - Pendant_E
+  - Pendant_D
+  m_Tag: UIEquipIcon
+  m_IsVariant: 0
