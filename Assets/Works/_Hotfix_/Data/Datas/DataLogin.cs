@@ -50,7 +50,7 @@ namespace Hotfix
 
 				// 连接到ET5.0服务器
 				if (NetworkManager.Instance.State == ENetworkState.Disconnect)
-					NetworkManager.Instance.ConnectServer("49.233.151.34", 10002, typeof(NetProtoPackageParser));
+					NetworkManager.Instance.ConnectServer("127.0.0.1", 10002, typeof(NetProtoPackageParser));
 			}
 		}
 
