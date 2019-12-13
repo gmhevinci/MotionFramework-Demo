@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-public static class GameTools
+public static class GameUtility
 {
 	/// <summary>
 	/// 数值组比较

@@ -70,7 +70,7 @@ namespace UnityEngine.UI
 		/// <summary>
 		/// 根据全路径获取UI元素
 		/// </summary>
-		public Transform GetElement(string path)
+		public Transform GetUIElement(string path)
 		{
 			if (string.IsNullOrEmpty(path))
 				return null;
@@ -86,9 +86,9 @@ namespace UnityEngine.UI
 		/// <summary>
 		/// 根据全路径获取UI组件
 		/// </summary>
-		public Component GetComponent(string path, string typeName)
+		public Component GetUIComponent(string path, string typeName)
 		{
-			Transform element = GetElement(path);
+			Transform element = GetUIElement(path);
 			if (element == null)
 				return null;
 
@@ -96,6 +96,21 @@ namespace UnityEngine.UI
 			if (component == null)
 				LogSystem.Log(ELogType.Warning, $"Not found ui component : {path}, {typeName}");
 			return component;
+		}
+
+		/// <summary>
+		/// 根据全路径获取UI组件
+		/// </summary>
+		public T GetUIComponent<T>(string path) where T : UnityEngine.Component
+		{
+			Transform element = GetUIElement(path);
+			if (element == null)
+				return null;
+
+			Component component = element.GetComponent<T>();
+			if (component == null)
+				LogSystem.Log(ELogType.Warning, $"Not found ui component : {path}, {typeof(T)}");
+			return component as T;
 		}
 
 		/// <summary>

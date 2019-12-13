@@ -12,7 +12,7 @@ namespace Hotfix
 		/// <summary>
 		/// 监听集合
 		/// </summary>
-		private readonly Dictionary<string, List<Action<IHotfixEventMessage>>> _handlers = new Dictionary<string, List<Action<IHotfixEventMessage>>>();
+		private readonly Dictionary<HotfixEventMessageTag, List<Action<IHotfixEventMessage>>> _handlers = new Dictionary<HotfixEventMessageTag, List<Action<IHotfixEventMessage>>>();
 
 
 		/// <summary>
@@ -20,7 +20,7 @@ namespace Hotfix
 		/// </summary>
 		public void ClearListeners()
 		{
-			foreach (string type in _handlers.Keys)
+			foreach (HotfixEventMessageTag type in _handlers.Keys)
 			{
 				_handlers[type].Clear();
 			}
@@ -30,7 +30,7 @@ namespace Hotfix
 		/// <summary>
 		/// 注册监听
 		/// </summary>
-		public void AddListener(string eventTag, Action<IHotfixEventMessage> listener)
+		public void AddListener(HotfixEventMessageTag eventTag, Action<IHotfixEventMessage> listener)
 		{
 			if (_handlers.ContainsKey(eventTag) == false)
 				_handlers.Add(eventTag, new List<Action<IHotfixEventMessage>>());
@@ -42,7 +42,7 @@ namespace Hotfix
 		/// <summary>
 		/// 移除监听
 		/// </summary>
-		public void RemoveListener(string eventTag, Action<IHotfixEventMessage> listener)
+		public void RemoveListener(HotfixEventMessageTag eventTag, Action<IHotfixEventMessage> listener)
 		{
 			if (_handlers.ContainsKey(eventTag))
 			{
@@ -54,7 +54,7 @@ namespace Hotfix
 		/// <summary>
 		/// 发送事件
 		/// </summary>
-		public void Send(string eventTag, IHotfixEventMessage msg)
+		public void Send(HotfixEventMessageTag eventTag, IHotfixEventMessage msg)
 		{
 			if (_handlers.ContainsKey(eventTag) == false)
 			{

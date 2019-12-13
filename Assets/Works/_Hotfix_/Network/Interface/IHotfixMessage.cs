@@ -1,16 +1,16 @@
 ﻿
 namespace Hotfix
 {
-	public interface IHotfixMessage : Google.Protobuf.IMessage
+	public interface IHotfixNetMessage : Google.Protobuf.IMessage
 	{
 	}
 
-	public interface IRequest : IHotfixMessage
+	public interface IRequest : IHotfixNetMessage
 	{
 		int RpcId { get; set; }
 	}
 
-	public interface IResponse : IHotfixMessage
+	public interface IResponse : IHotfixNetMessage
 	{
 		int RpcId { get; set; }
 		int ErrorID { get; set; }
