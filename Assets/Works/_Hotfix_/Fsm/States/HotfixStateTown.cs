@@ -16,6 +16,7 @@ namespace Hotfix
 			string sceneName = "Scene/Town";		
 			SceneManager.Instance.ChangeMainScene(sceneName, null);
 			UIManager.Instance.OpenWindow(EWindowType.UILoading, sceneName);
+			UIManager.Instance.OpenWindow(EWindowType.UIMain);
 		}
 
 		public override void Execute()

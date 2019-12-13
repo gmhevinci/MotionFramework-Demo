@@ -49,8 +49,12 @@ namespace Hotfix
 				_password = message.Password;
 
 				// 连接到ET5.0服务器
+				/*
 				if (NetworkManager.Instance.State == ENetworkState.Disconnect)
 					NetworkManager.Instance.ConnectServer("127.0.0.1", 10002, typeof(NetProtoPackageParser));
+				*/
+				// TODO 跳过服务器直接进入游戏
+				HotfixFsmManager.Instance.ChangeState(EHotfixStateType.Town);
 			}
 		}
 
