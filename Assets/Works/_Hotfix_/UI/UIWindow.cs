@@ -184,7 +184,7 @@ namespace Hotfix
 			_callback = null;
 
 			// 销毁面板对象
-			if(Go != null)
+			if (Go != null)
 			{
 				GameObject.Destroy(Go);
 				Go = null;
@@ -256,6 +256,7 @@ namespace Hotfix
 			_callback?.Invoke(this);
 		}
 
+		#region UI组件相关
 		/// <summary>
 		/// 获取窗口里缓存的组件对象
 		/// </summary>
@@ -279,6 +280,17 @@ namespace Hotfix
 				return null;
 			return _manifest.GetUIComponent(path, typeName);
 		}
+
+		/// <summary>
+		/// 监听按钮点击事件
+		/// </summary>
+		protected void AddButtonListener(string path, UnityEngine.Events.UnityAction call)
+		{
+			Button btn = GetUIComponent<Button>(path);
+			if (btn != null)
+				btn.onClick.AddListener(call);
+		}
+		#endregion
 
 		#region 事件相关
 		private readonly Dictionary<HotfixEventMessageTag, List<Action<IHotfixEventMessage>>> _cachedListener = new Dictionary<HotfixEventMessageTag, List<Action<IHotfixEventMessage>>>();

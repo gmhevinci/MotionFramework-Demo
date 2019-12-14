@@ -6,5 +6,6 @@ namespace Hotfix
 		UILoading,
 		UILogin,
 		UIMain,
+		UISetting,
 	}
 }

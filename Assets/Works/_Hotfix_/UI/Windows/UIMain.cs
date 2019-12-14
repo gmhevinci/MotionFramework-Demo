@@ -12,6 +12,7 @@ namespace Hotfix
 
 		public override void OnCreate()
 		{
+			AddButtonListener("UIMain/Meum/Button (Settings)", OnClickSetting);
 		}
 		public override void OnDestroy()
 		{
@@ -21,6 +22,11 @@ namespace Hotfix
 		}
 		public override void OnUpdate()
 		{
+		}
+
+		private void OnClickSetting()
+		{
+			UIManager.Instance.OpenWindow(EWindowType.UISetting);
 		}
 	}
 }

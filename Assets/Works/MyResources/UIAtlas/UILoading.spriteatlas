@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UILoading
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 1288fd74c50c1d7429a2b838eaedfde2, type: 3}
+    totalSpriteSurfaceArea: 779457
+    bindAsDefault: 0
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 1e634770eced7764da43936864cb12bd, type: 3}
+  - {fileID: 21300000, guid: 93548251ad78c4d4296231e8f9f91c70, type: 3}
+  - {fileID: 21300000, guid: c3106c02a02206d4ea3397d409513960, type: 3}
+  - {fileID: 21300000, guid: 9f4796a34765acb4fb90628c34482926, type: 3}
+  - {fileID: 21300000, guid: ccdf4f05d8a16144087d4cf7b30fde2e, type: 3}
+  - {fileID: 21300000, guid: 7c44b7152051ec249b651f963d2bd02c, type: 3}
+  - {fileID: 21300000, guid: 95fa0e9612ba06043b08685c67a1cc6c, type: 3}
+  - {fileID: 21300000, guid: 5d83a027a61fdc94ba26018daaba3a06, type: 3}
+  - {fileID: 21300000, guid: 9ac456a7576002f42bb913a904a57fc8, type: 3}
+  - {fileID: 21300000, guid: 3a41acd88fa3f6a4e9c634b99e4f37c8, type: 3}
+  - {fileID: 21300000, guid: 99a2dc49ed3d4ea4d8bf1fa5a3f2aeae, type: 3}
+  - {fileID: 21300000, guid: 2d005889bb15d3a47aa60c75432ac0c7, type: 3}
+  - {fileID: 21300000, guid: 131352f9a0b3a8e459a8913f75a459a4, type: 3}
+  - {fileID: 21300000, guid: 0365554ae0d46494aab421695a91e722, type: 3}
+  - {fileID: 21300000, guid: 595f065ad7ec5824c8c9c4beb8927dc7, type: 3}
+  - {fileID: 21300000, guid: c88eeb8a040357a4a9b17cb9a6a366e3, type: 3}
+  - {fileID: 21300000, guid: f602710b62edb3049ab810ed629e7127, type: 3}
+  - {fileID: 21300000, guid: 75d7a18ba56a7234f81600d5163f46c6, type: 3}
+  - {fileID: 21300000, guid: 7688a27c084df52458015259c495bcbb, type: 3}
+  - {fileID: 21300000, guid: c5fec6bc0d1b9ec47951435294f4dbb9, type: 3}
+  - {fileID: 21300000, guid: 0e56cf0d129e7654689ee319e39e6479, type: 3}
+  - {fileID: 21300000, guid: e508840eabfc4f74aa6dd82ce6cafee8, type: 3}
+  - {fileID: 21300000, guid: 46abcd4f2c4a59c4ba4d87fb7368796a, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Loading_Background
+  - Loading_Frame_0007
+  - Loading_Frame_0019
+  - Loading_Frame_0016
+  - Loading_Frame_0020
+  - Loading_Frame_0001
+  - Loading_Frame_0009
+  - Loading_Frame_0012
+  - Loading_Frame_0017
+  - Loading_Frame_0008
+  - Loading_Frame_0003
+  - Loading_Frame_0010
+  - Loading_Frame_0006
+  - Loading_Frame_0021
+  - Loading_Frame_0002
+  - Loading_Frame_0004
+  - Loading_Frame_0000
+  - Loading_Frame_0018
+  - Loading_Frame_0005
+  - Loading_Frame_0013
+  - Loading_Frame_0015
+  - Loading_Frame_0014
+  - Loading_Frame_0011
+  m_Tag: UILoading
+  m_IsVariant: 0

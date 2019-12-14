@@ -42,118 +42,84 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: a6ff3a27e3e85d344bed050e9aad5be0, type: 3}
-    totalSpriteSurfaceArea: 6482511
+    totalSpriteSurfaceArea: 884806
     bindAsDefault: 0
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 1481334038ea30a4bbbeb1912d9230ff, type: 3}
-  - {fileID: 21300000, guid: dce07060ba1c3964a84b3ec42f0c2477, type: 3}
-  - {fileID: 21300000, guid: 4c6ff0803aeb5d1418f145597c16d05e, type: 3}
-  - {fileID: 21300000, guid: a9a22c90a69285f4fba9717e84852717, type: 3}
-  - {fileID: 21300000, guid: 90523fd09249fed4291cb5227e137ea0, type: 3}
-  - {fileID: 21300000, guid: dbc49de063591e741821707087728b4e, type: 3}
-  - {fileID: 21300000, guid: e1172d0161030574dae11c5e2cb8921a, type: 3}
-  - {fileID: 21300000, guid: b9d57a4161b87ac43844cd039a58475f, type: 3}
-  - {fileID: 21300000, guid: 8f9f91a1bccbc7242b4c42bb7ae4e3d2, type: 3}
-  - {fileID: 21300000, guid: 8a394ad1372b8294f99ad9d2c33f59ad, type: 3}
-  - {fileID: 21300000, guid: 70783f222b0c71440a082ff647835516, type: 3}
-  - {fileID: 21300000, guid: fdd93a52409cf69489c9a92d23b18759, type: 3}
-  - {fileID: 21300000, guid: b57930d302719f64b80f87a38be0539e, type: 3}
-  - {fileID: 21300000, guid: b9907cd3f24a4544a9c6be4152badfde, type: 3}
-  - {fileID: 21300000, guid: d74c8e2402f636444b9f3de105e5c8f9, type: 3}
-  - {fileID: 21300000, guid: 7c39fe94d7cc03442ad53eac0cea5f71, type: 3}
-  - {fileID: 21300000, guid: e832f8a4f31186448b2c250268b36742, type: 3}
-  - {fileID: 21300000, guid: 7723d0c4abda2b24687491071e99af9e, type: 3}
-  - {fileID: 21300000, guid: 8173f0253e1d3b74a8660351f517c832, type: 3}
-  - {fileID: 21300000, guid: 560e0d8591efac84f9340ef1145d7123, type: 3}
-  - {fileID: 21300000, guid: dcbec4462de36684c98d45c71eee68b8, type: 3}
-  - {fileID: 21300000, guid: 8e02c966211256547b69c0381a52d995, type: 3}
-  - {fileID: 21300000, guid: 99236d6652d540e4a9b57040936dbd32, type: 3}
-  - {fileID: 21300000, guid: 289510762bc007f44acc805d19c07088, type: 3}
-  - {fileID: 21300000, guid: b44c79964f3be0747ae2b2a8a4fc8798, type: 3}
-  - {fileID: 21300000, guid: 582eccb6699391543a596e468b56d68c, type: 3}
-  - {fileID: 21300000, guid: aea0e8f6213c7c44cb8c3e6204459bcc, type: 3}
-  - {fileID: 21300000, guid: 41b00c3781537dd4e9d60980fc56f805, type: 3}
-  - {fileID: 21300000, guid: 5b321d4760f872f4aa9d4c5d856394c0, type: 3}
-  - {fileID: 21300000, guid: 730dbb57012a2cb4ab380b3079761b24, type: 3}
-  - {fileID: 21300000, guid: 7ca26ee7f8f599742972114fc284ac21, type: 3}
-  - {fileID: 21300000, guid: 169aaba8c20e92e45a85bf68e9159ff3, type: 3}
-  - {fileID: 21300000, guid: 275e7ec87a2bf9d47979ae7bced3c068, type: 3}
-  - {fileID: 21300000, guid: c5e101698caee1b46a2c1b3701ca3c3a, type: 3}
-  - {fileID: 21300000, guid: ec553aa9b5d98d84081542d078774b16, type: 3}
-  - {fileID: 21300000, guid: 24d91ca91631e4c4da0691901c74ffb1, type: 3}
-  - {fileID: 21300000, guid: a1159ed9b89dbe04ba0056251e64e58a, type: 3}
-  - {fileID: 21300000, guid: cc3c83ba2287c1b4ab01866e3b98285c, type: 3}
-  - {fileID: 21300000, guid: 722bf8ea9395ad0488f853393305780b, type: 3}
-  - {fileID: 21300000, guid: a0d6d74bc3dec5f45b0c9a4b0c9ebe5f, type: 3}
-  - {fileID: 21300000, guid: 2b0d4e7bf344774459d025e4c723ba78, type: 3}
-  - {fileID: 21300000, guid: 283378bbf45dff240a24c8c4549507de, type: 3}
-  - {fileID: 21300000, guid: f1fe9cdb96f0d9248a97b206cc146ebf, type: 3}
-  - {fileID: 21300000, guid: 9612150cbb33ebf4abaafcb0066d0c09, type: 3}
-  - {fileID: 21300000, guid: cf9f303cfb921a54c9b9127af2f877c0, type: 3}
-  - {fileID: 21300000, guid: 9a03924cfa2bc044eb0636711b68053e, type: 3}
-  - {fileID: 21300000, guid: e36d0c8caa3e8a64187ebb71b1c589b6, type: 3}
-  - {fileID: 21300000, guid: 4ce557cc090bf604999f084d5c52f88c, type: 3}
-  - {fileID: 21300000, guid: cfba19cc91fa2034e9f341a44621ac47, type: 3}
-  - {fileID: 21300000, guid: 484708ad00772824c8ff678c35cd3ded, type: 3}
-  - {fileID: 21300000, guid: 07ee7a3ee5a4c8a4cb632a9d8131a730, type: 3}
-  - {fileID: 21300000, guid: bfe8ff4e5c151374f8f0974f0cde948f, type: 3}
-  - {fileID: 21300000, guid: 333577eebe3cf2649a6c7f3d299dceba, type: 3}
-  - {fileID: 21300000, guid: 1a83ac7f195e82b40b81bc52dac17484, type: 3}
+  - {fileID: 21300000, guid: 98ab7b10a367b1d41819a773f2aaea3d, type: 3}
+  - {fileID: 21300000, guid: 9308d350204138641bd2a19cdcfd268f, type: 3}
+  - {fileID: 21300000, guid: 6db16bc0197ed884d91def2b00b813cd, type: 3}
+  - {fileID: 21300000, guid: 9af132a1c6834b049a741b3111211430, type: 3}
+  - {fileID: 21300000, guid: 7927cbb110cabfd42971dda5c689d43b, type: 3}
+  - {fileID: 21300000, guid: 502d3be1122c0194e8f8856d2c280dac, type: 3}
+  - {fileID: 21300000, guid: d3712fe276e89554c9ede1382de6253a, type: 3}
+  - {fileID: 21300000, guid: 6343a5f36b9b30243abd75ab57b2bbd6, type: 3}
+  - {fileID: 21300000, guid: 04f97634227c063408e32624c1721260, type: 3}
+  - {fileID: 21300000, guid: 120f31849f180214f877a50fab39a4cb, type: 3}
+  - {fileID: 21300000, guid: f3b162e4b76405646a8a9e51d2aae7fd, type: 3}
+  - {fileID: 21300000, guid: 92924215ed1efc446b08304fd58a3d09, type: 3}
+  - {fileID: 21300000, guid: 8d306385381e9984ca868d58a4cd4018, type: 3}
+  - {fileID: 21300000, guid: 567abba5b0507f54da66f6f38ad3b77a, type: 3}
+  - {fileID: 21300000, guid: 59d87526176caab439f96d2ffbea2424, type: 3}
+  - {fileID: 21300000, guid: e0d857c667ad8a24bb3f0d4a58646307, type: 3}
+  - {fileID: 21300000, guid: 556cf16761393b64982eb18e2df70777, type: 3}
+  - {fileID: 21300000, guid: dbd3a7a77e2a2ef4b83039847b813663, type: 3}
+  - {fileID: 21300000, guid: a834c4c7a505b014aa3af1f5b43eef48, type: 3}
+  - {fileID: 21300000, guid: 8fbc5d98e9d2747488c3407efeeaac83, type: 3}
+  - {fileID: 21300000, guid: 5db77779c1e2b7847a477e55737369bc, type: 3}
+  - {fileID: 21300000, guid: 7367359945a84a7438d24f8cb069e8ee, type: 3}
+  - {fileID: 21300000, guid: 899d2e1a1f1233c419c8b9652dc03618, type: 3}
+  - {fileID: 21300000, guid: 246d678a171d6b1479b55d8a96061267, type: 3}
+  - {fileID: 21300000, guid: 7dfb899aeb78fc3419ca4a9142df6472, type: 3}
+  - {fileID: 21300000, guid: 56cafa9a8953bac47b343db9f6434f5f, type: 3}
+  - {fileID: 21300000, guid: 2bd40caa93e689444bed11d4e9052d36, type: 3}
+  - {fileID: 21300000, guid: c422ec0bc61bcff4ea3e2331c37cc88b, type: 3}
+  - {fileID: 21300000, guid: 1fcaf74bcdff6ed47bc907ba197d3728, type: 3}
+  - {fileID: 21300000, guid: fee4319ba0c083a408eaf1f03d266408, type: 3}
+  - {fileID: 21300000, guid: b15961acbc6af2d4bbe78dde4c6b3795, type: 3}
+  - {fileID: 21300000, guid: 736758bc3cf69c74c8d644b0c9ede7b1, type: 3}
+  - {fileID: 21300000, guid: 114d492dfd00f124794410ca7ceb6a6f, type: 3}
+  - {fileID: 21300000, guid: 66130f6d4f308934ea0d5d6ab4ecd804, type: 3}
+  - {fileID: 21300000, guid: 3767171ffd06bb34fa63384fe6a3e8fc, type: 3}
+  - {fileID: 21300000, guid: c0101a7fe91828f409047ff154ead118, type: 3}
+  - {fileID: 21300000, guid: 922e44df3a3a04d459baedbaa659e86b, type: 3}
   m_PackedSpriteNamesToIndex:
-  - box_event2
-  - box_event1
-  - icon_07
-  - box_user information
-  - circle_2
-  - box_ID_PW
-  - button_round
-  - box_option2
-  - icon_01
-  - icon_04
-  - box_coin2
-  - icon_09
-  - box_exp3
-  - icon_08
-  - map_pin
-  - box_select3
-  - box_event3
-  - user
-  - button_plus
-  - button_triangle_left
-  - button_triangle_under
-  - box_exp1
-  - button_triangle_top
-  - box_login3
-  - box_exp2
-  - button_triangle_right
-  - icon_06
-  - button_square
-  - box_login2
-  - bar_sound
-  - box_coin3
-  - bar_exp
-  - button_exit
-  - stage_circle
-  - circle_1
-  - icon_10
-  - icon_03
-  - box_login1
-  - box_option1
-  - sound_pin
-  - box_option3
-  - box_option4
-  - button_login
-  - box_map name
-  - user_name
-  - board
-  - icon_05
-  - box_coin1
-  - box_select2
-  - icon_02
-  - button_start
-  - circle_3
-  - box_select1
-  - user_2
+  - Slider_Foreground
+  - Slider_Background
+  - Text_Field_Background
+  - UnitFrame_Fill_Power
+  - Button_Circular_Background
+  - UnitFrame_Fill_Health
+  - Controller_Handle_Background
+  - Button_Rectangular_Large_Red_Background
+  - Toggle_Checkbox_Press_Overlay
+  - Cross
+  - Button_Circular_Press_Overlay
+  - Toggle_Radio_Background
+  - Toggle_Radio_Foreground
+  - Cogwheel
+  - Controller_Handle_Foreground
+  - Heart
+  - Button_Rectangular_Medium_Press_Overlay
+  - Button_Square_SYellow_Press_Overlay
+  - Controller_Handle_Press_Overlay
+  - Flag
+  - Star
+  - Toggle_Checkbox_Foreground
+  - Slider_Thumb
+  - Text_Field_Icon_User
+  - Waterdrop
+  - Controller_Background
+  - Text_Field_Focus_Overlay
+  - Slider_Thumb_Press_Overlay
+  - Accpet
+  - Toggle_Checkbox_Background
+  - Button_Square_SYellow_Background
+  - UnitFrame_Background
+  - Button_Rectangular_Large_Green_Background
+  - UnitFrame_IconFrame
+  - Toggle_Radio_Press_Overlay
+  - Text_Field_Icon_Pass
+  - Button_Rectangular_Medium_Background
   m_Tag: UICommon
   m_IsVariant: 0

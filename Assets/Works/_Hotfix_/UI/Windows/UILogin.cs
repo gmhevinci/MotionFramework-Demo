@@ -18,13 +18,12 @@ namespace Hotfix
 
 		public override void OnCreate()
 		{
-			_loginSprite = GetUIComponent<UISprite>("UILogin/box_login/btn_login") ;
-			_account = GetUIComponent<InputField>("UILogin/box_login/box_id/InputField");
-			_password = GetUIComponent<InputField>("UILogin/box_login/box_pw/InputField");
+			_loginSprite = GetUIComponent<UISprite>("UILogin/Window/Button (Login)") ;
+			_account = GetUIComponent<InputField>("UILogin/Window/Content/Text Field (Username)");
+			_password = GetUIComponent<InputField>("UILogin/Window/Content/Text Field (Password)");
 
 			// 监听按钮点击事件
-			Button btnLogin = GetUIComponent<Button>("UILogin/box_login/btn_login");
-			btnLogin.onClick.AddListener(OnClickLogin);
+			AddButtonListener("UILogin/Window/Button (Login)", OnClickLogin);
 		}
 		public override void OnDestroy()
 		{
@@ -42,10 +41,10 @@ namespace Hotfix
 			AudioManager.Instance.PlaySound("click");
 
 			// 替换按钮图片
-			if (_loginSprite.SpriteName == "button_login")
-				_loginSprite.SpriteName = "button_start";
+			if (_loginSprite.SpriteName == "Button_Rectangular_Large_Green_Background")
+				_loginSprite.SpriteName = "Button_Rectangular_Large_Red_Background";
 			else
-				_loginSprite.SpriteName = "button_login";
+				_loginSprite.SpriteName = "Button_Rectangular_Large_Green_Background";
 
 			// 发送登录事件
 			var message = new HotfixEvent.ConnectServer();
