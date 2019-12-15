@@ -499,6 +499,8 @@ GameObject:
   - component: {fileID: 812258879990246416}
   - component: {fileID: 812258879974173160}
   - component: {fileID: 812258879990231442}
+  - component: {fileID: 6356331928240560702}
+  - component: {fileID: 4049695020567076619}
   m_Layer: 5
   m_Name: Button (Flag)
   m_TagString: Untagged
@@ -606,6 +608,32 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &6356331928240560702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812258879996300092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528bcd7893ff75f46a984c6ffd31f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Atlas: {fileID: 4343727234628468602, guid: 9383e90d8fd76f241af15da9d73d2e55, type: 2}
+--- !u!114 &4049695020567076619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812258879996300092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb33a5915fc063942bd3562b4dd82ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundName: sfx_click1
 --- !u!1 &812258879996312694
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +645,7 @@ GameObject:
   - component: {fileID: 812258879973957438}
   - component: {fileID: 812258879974198060}
   - component: {fileID: 812258879990254160}
+  - component: {fileID: 5293737612039814543}
   m_Layer: 5
   m_Name: Press Overlay
   m_TagString: Untagged
@@ -680,6 +709,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &5293737612039814543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812258879996312694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528bcd7893ff75f46a984c6ffd31f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Atlas: {fileID: 4343727234628468602, guid: 9383e90d8fd76f241af15da9d73d2e55, type: 2}
 --- !u!1 &2435885763671041595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,6 +1347,7 @@ GameObject:
   - component: {fileID: 2964040695289181265}
   - component: {fileID: 2964040695305660043}
   - component: {fileID: 3577394556936002489}
+  - component: {fileID: 8894088758502338063}
   m_Layer: 5
   m_Name: Joystick
   m_TagString: Untagged
@@ -1382,6 +1425,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Atlas: {fileID: 4343727234628468602, guid: 9383e90d8fd76f241af15da9d73d2e55, type: 2}
+--- !u!114 &8894088758502338063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2964040695311138951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8e08c79e96997429da7ca4d0f23b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Handle: {fileID: 2964040695289310445}
+  m_HandlingArea: {fileID: 2964040695289447317}
+  m_ActiveGraphic: {fileID: 2964040695305706367}
+  m_Axis: {x: 0, y: 0}
+  m_Spring: 25
+  m_DeadZone: 0.1
+  outputCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2964040695311159799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,6 +1779,8 @@ GameObject:
   - component: {fileID: 7295591083048028714}
   - component: {fileID: 7295591083028281146}
   - component: {fileID: 7295591083048024280}
+  - component: {fileID: 8587092269325808810}
+  - component: {fileID: 6079392059701515857}
   m_Layer: 5
   m_Name: Button (Settings)
   m_TagString: Untagged
@@ -1801,6 +1888,32 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &8587092269325808810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295591083041964584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528bcd7893ff75f46a984c6ffd31f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Atlas: {fileID: 4343727234628468602, guid: 9383e90d8fd76f241af15da9d73d2e55, type: 2}
+--- !u!114 &6079392059701515857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295591083041964584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb33a5915fc063942bd3562b4dd82ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundName: sfx_click1
 --- !u!1 &7295591083041976956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,6 +1925,7 @@ GameObject:
   - component: {fileID: 7295591083028612536}
   - component: {fileID: 7295591083028261670}
   - component: {fileID: 7295591083047947512}
+  - component: {fileID: 8773631902128456268}
   m_Layer: 5
   m_Name: Press Overlay
   m_TagString: Untagged
@@ -1875,6 +1989,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &8773631902128456268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295591083041976956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528bcd7893ff75f46a984c6ffd31f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Atlas: {fileID: 4343727234628468602, guid: 9383e90d8fd76f241af15da9d73d2e55, type: 2}
 --- !u!1 &7295591083042003812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,6 +2586,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -126.2, y: 124}
+  m_AnchoredPosition: {x: -126.200195, y: 124}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

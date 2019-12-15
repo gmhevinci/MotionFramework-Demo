@@ -3,9 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using MotionFramework.Event;
-using MotionFramework.Network;
-using MotionFramework.Audio;
 
 namespace Hotfix
 {
@@ -37,9 +34,6 @@ namespace Hotfix
 
 		private void OnClickLogin()
 		{
-			// 播放点击音效
-			AudioManager.Instance.PlaySound("click");
-
 			// 替换按钮图片
 			if (_loginSprite.SpriteName == "Button_Rectangular_Large_Green_Background")
 				_loginSprite.SpriteName = "Button_Rectangular_Large_Red_Background";

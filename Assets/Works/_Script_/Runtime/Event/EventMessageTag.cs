@@ -4,6 +4,4 @@ using UnityEngine;
 
 public enum EventMessageTag
 {
-	HotfixTag,
-	TestTag,
 }

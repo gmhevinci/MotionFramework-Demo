@@ -42,7 +42,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: a6ff3a27e3e85d344bed050e9aad5be0, type: 3}
-    totalSpriteSurfaceArea: 884806
+    totalSpriteSurfaceArea: 976749
     bindAsDefault: 0
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -51,8 +51,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6db16bc0197ed884d91def2b00b813cd, type: 3}
   - {fileID: 21300000, guid: 9af132a1c6834b049a741b3111211430, type: 3}
   - {fileID: 21300000, guid: 7927cbb110cabfd42971dda5c689d43b, type: 3}
+  - {fileID: 21300000, guid: b6cfadd1819657f4ba4c522936caf46f, type: 3}
   - {fileID: 21300000, guid: 502d3be1122c0194e8f8856d2c280dac, type: 3}
   - {fileID: 21300000, guid: d3712fe276e89554c9ede1382de6253a, type: 3}
+  - {fileID: 21300000, guid: fbf7b03346d6fd54ba22b4232c3bec84, type: 3}
+  - {fileID: 21300000, guid: 5a45a153ce04ade47a8647bc04408902, type: 3}
   - {fileID: 21300000, guid: 6343a5f36b9b30243abd75ab57b2bbd6, type: 3}
   - {fileID: 21300000, guid: 04f97634227c063408e32624c1721260, type: 3}
   - {fileID: 21300000, guid: 120f31849f180214f877a50fab39a4cb, type: 3}
@@ -60,14 +63,17 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 92924215ed1efc446b08304fd58a3d09, type: 3}
   - {fileID: 21300000, guid: 8d306385381e9984ca868d58a4cd4018, type: 3}
   - {fileID: 21300000, guid: 567abba5b0507f54da66f6f38ad3b77a, type: 3}
+  - {fileID: 21300000, guid: 7ff9afa51e85f1d47bfba9b608414e11, type: 3}
   - {fileID: 21300000, guid: 59d87526176caab439f96d2ffbea2424, type: 3}
   - {fileID: 21300000, guid: e0d857c667ad8a24bb3f0d4a58646307, type: 3}
   - {fileID: 21300000, guid: 556cf16761393b64982eb18e2df70777, type: 3}
   - {fileID: 21300000, guid: dbd3a7a77e2a2ef4b83039847b813663, type: 3}
   - {fileID: 21300000, guid: a834c4c7a505b014aa3af1f5b43eef48, type: 3}
   - {fileID: 21300000, guid: 8fbc5d98e9d2747488c3407efeeaac83, type: 3}
+  - {fileID: 21300000, guid: bcdff4f8e715bb44baf7b582dbc55218, type: 3}
   - {fileID: 21300000, guid: 5db77779c1e2b7847a477e55737369bc, type: 3}
   - {fileID: 21300000, guid: 7367359945a84a7438d24f8cb069e8ee, type: 3}
+  - {fileID: 21300000, guid: 0df002b96eeab8f4ca82d3b30ffdb0c5, type: 3}
   - {fileID: 21300000, guid: 899d2e1a1f1233c419c8b9652dc03618, type: 3}
   - {fileID: 21300000, guid: 246d678a171d6b1479b55d8a96061267, type: 3}
   - {fileID: 21300000, guid: 7dfb899aeb78fc3419ca4a9142df6472, type: 3}
@@ -89,8 +95,11 @@ SpriteAtlas:
   - Text_Field_Background
   - UnitFrame_Fill_Power
   - Button_Circular_Background
+  - Button_Square_SBrown_Press_Overlay2
   - UnitFrame_Fill_Health
   - Controller_Handle_Background
+  - Button_Square_SBrown_Background2
+  - Button_Square_SBrown_Press_Overlay
   - Button_Rectangular_Large_Red_Background
   - Toggle_Checkbox_Press_Overlay
   - Cross
@@ -98,14 +107,17 @@ SpriteAtlas:
   - Toggle_Radio_Background
   - Toggle_Radio_Foreground
   - Cogwheel
+  - Button_Square_SBrown_Background
   - Controller_Handle_Foreground
   - Heart
   - Button_Rectangular_Medium_Press_Overlay
   - Button_Square_SYellow_Press_Overlay
   - Controller_Handle_Press_Overlay
   - Flag
+  - Button_Square_SBrown_Press_Overlay3
   - Star
   - Toggle_Checkbox_Foreground
+  - Button_Square_SBrown_Background3
   - Slider_Thumb
   - Text_Field_Icon_User
   - Waterdrop

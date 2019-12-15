@@ -135,6 +135,5 @@ public class GameLauncher : MonoBehaviour
 		AppEngine.Instance.RegisterModule(AudioManager.Instance);
 		AppEngine.Instance.RegisterModule(NetworkManager.Instance);
 		AppEngine.Instance.RegisterModule(ILRManager.Instance);
-		AppEngine.Instance.RegisterModule(GameTest.Instance);
 	}
 }
