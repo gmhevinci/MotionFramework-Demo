@@ -13,7 +13,7 @@ namespace Hotfix
 		/// <summary>
 		/// 所有热更新协议的类型集合
 		/// </summary>
-		private readonly DoubleMap<ushort, Type> _types = new DoubleMap<ushort, Type>();
+		private readonly DoubleMap<int, Type> _types = new DoubleMap<int, Type>();
 
 
 		public void Start()
@@ -31,25 +31,27 @@ namespace Hotfix
 		/// <summary>
 		/// 接收消息回调函数
 		/// </summary>
-		private void OnHandleHotfixMsg(INetPackage package)
+		private void OnHandleHotfixMsg(INetPackage pack)
 		{
+			NetPackage package = pack as NetPackage;
 			Type msgType = _types.GetValueByKey(package.MsgID);
-			HotfixLogger.Log($"Handle net message : {msgType}");
-
+			HotfixLogger.Log($"Handle hotfix net message : {msgType}");
 			object instance = Activator.CreateInstance(msgType);
-			var message = ProtobufHelper.Decode(instance, package.MsgBytes);			
+			var message = ProtobufHelper.Decode(instance, package.BodyBytes);			
 			DataManager.Instance.HandleNetMessage(message as IHotfixNetMessage);
 		}
 
 		/// <summary>
 		/// 发送网络消息
 		/// </summary>
-		public void SendMsg(IHotfixNetMessage msg)
+		public void SendHotfixMsg(IHotfixNetMessage msg)
 		{
-			ushort msgID = _types.GetKeyByValue(msg.GetType());
-			NetSendPackage package = new NetSendPackage();
+			HotfixLogger.Log($"Send hotfix net message : {msg.GetType()}");
+			int msgID = _types.GetKeyByValue(msg.GetType());
+			NetPackage package = new NetPackage();
+			package.IsHotfixPackage = true;
 			package.MsgID = msgID;
-			package.MsgObj = msg;
+			package.BodyBytes = ProtobufHelper.Encode(msg);
 			NetworkManager.Instance.SendMsg(package);
 		}
 

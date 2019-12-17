@@ -51,8 +51,9 @@ namespace Hotfix
 				// 连接到ET5.0服务器
 				/*
 				if (NetworkManager.Instance.State == ENetworkState.Disconnect)
-					NetworkManager.Instance.ConnectServer("127.0.0.1", 10002, typeof(NetProtoPackageParser));
+					NetworkManager.Instance.ConnectServer("127.0.0.1", 10002, typeof(ProtoPackageParser));
 				*/
+
 				// TODO 跳过服务器直接进入游戏
 				HotfixFsmManager.Instance.ChangeState(EHotfixStateType.Town);
 			}
@@ -64,7 +65,7 @@ namespace Hotfix
 			msg.RpcId = 100;
 			msg.Account = account;
 			msg.Password = password;
-			HotfixNetManager.Instance.SendMsg(msg);
+			HotfixNetManager.Instance.SendHotfixMsg(msg);
 		}
 	}
 }
