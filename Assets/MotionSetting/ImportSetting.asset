@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: ImportSetting
   m_EditorClassIdentifier: 
   Toggle: 1
-  Elements:
-  - FolderPath: Assets/WorksArt/Panel/UISprite
-    ProcessorName: DefaultProcessor
-  - FolderPath: Assets/Works/MyResources/UIAtlas
-    ProcessorName: DefaultProcessor
+  Elements: []

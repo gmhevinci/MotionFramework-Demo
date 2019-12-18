@@ -10,6 +10,7 @@ class EditorInitialize
 	[InitializeOnLoadMethod]
 	static void CheckEditorVersion()
 	{
+		/*
 		// TODO：这里设置你团队当前使用的Unity版本
 		string version = "2018.4.6f1";
 		Debug.Log($"当前使用Unity版本：{Application.unityVersion}");
@@ -20,6 +21,7 @@ class EditorInitialize
 				EditorApplication.Exit(0);
 			}
 		}
+		*/
 	}
 
 	/// <summary>

@@ -1,7 +1,7 @@
 ﻿
 class GameDefine
 {
-	public const string StrAssetRootPath = "Assets/Works/MyResources";
+	public const string StrAssetRootPath = "Assets/Works/Resource";
 }
 
 public enum ERaceType
