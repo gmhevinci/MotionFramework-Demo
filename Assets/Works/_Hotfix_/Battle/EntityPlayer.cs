@@ -7,14 +7,20 @@ namespace Hotfix
 {
 	public class EntityPlayer : EntityCharacter
 	{
+		private readonly EHeroType _heroType;
 		private BhvCameraFlow _cameraFlow;
 
-		public EntityPlayer(int entityID) : base(entityID)
+		public EntityPlayer(int entityID, EHeroType heroType) : base(entityID)
 		{
+			_heroType = heroType;
 		}
 		protected override void OnCreate()
 		{
 			base.OnCreate();
+
+			// 初始化角色数据
+			CfgPlayerTab table = CfgPlayer.Instance.GetCfgTab((int)_heroType);
+			CharData.InitData(table.BodyRadius, table.MoveSpeed, table.Hp, table.Mp, table.Damage, table.Armor);
 
 			// 跟随相机脚本
 			_cameraFlow = Camera.main.GetComponent<BhvCameraFlow>();
@@ -29,6 +35,20 @@ namespace Hotfix
 			if (_cameraFlow != null)
 				_cameraFlow.FlowTarget = null;
 		}
+		protected override void OnUpdate(float deltaTime)
+		{
+			base.OnUpdate(deltaTime);
+
+			if (UIJoystick.Joystick != null)
+			{
+				if (CharSkill.IsAnyLife())
+					return;
+				if (UIJoystick.Joystick.IsDragging)
+				{
+					CharMove.BeginJoyMove(UIJoystick.Joystick.JoystickAxis);
+				}
+			}
+		}
 		protected override void OnPrepareAvatar()
 		{
 			base.OnPrepareAvatar();
@@ -37,16 +57,14 @@ namespace Hotfix
 			CharAnim.InitAnimState("idle03", CharacterAnimation.EAnimationLayer.DefaultLayer, WrapMode.Loop);
 			CharAnim.InitAnimState("walk", CharacterAnimation.EAnimationLayer.DefaultLayer, WrapMode.Loop);
 		}
-		protected override void OnUpdate(float deltaTime)
+		protected override void OnHandleEvent(IHotfixEventMessage msg)
 		{
-			base.OnUpdate(deltaTime);
+			base.OnHandleEvent(msg);
 
-			if (UIJoystick.Joystick != null)
+			if (msg is BattleEvent.PlayerSpell)
 			{
-				if (UIJoystick.Joystick.IsDragging)
-				{
-					CharMove.BeginJoyMove(UIJoystick.Joystick.JoystickAxis);
-				}
+				BattleEvent.PlayerSpell message = msg as BattleEvent.PlayerSpell;
+				CharSkill.Spell(message.SkillID);
 			}
 		}
 	}

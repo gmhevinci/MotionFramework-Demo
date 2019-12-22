@@ -6,8 +6,20 @@ namespace Hotfix
 {
 	public class EntityMonster : EntityCharacter
 	{
-		public EntityMonster(int entityID) : base(entityID)
+		private readonly int _monsterID;
+
+		public EntityMonster(int entityID, int monsterID) : base(entityID)
 		{
+			_monsterID = monsterID;
+		}
+
+		protected override void OnCreate()
+		{
+			base.OnCreate();
+
+			// 初始化角色数据
+			CfgMonsterTab table = CfgMonster.Instance.GetCfgTab(_monsterID);
+			CharData.InitData(table.BodyRadius, table.MoveSpeed, table.Hp, table.Mp, table.Damage, table.Armor);
 		}
 	}
 }

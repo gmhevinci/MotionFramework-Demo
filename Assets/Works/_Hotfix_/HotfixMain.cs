@@ -8,6 +8,8 @@ namespace Hotfix
 		{
 			Debug.Log("hello hotfix world");
 
+			AudioPlayerSetting.InitAudioSetting();
+
 			// 初始化数据管理器
 			DataManager.Instance.Start();
 

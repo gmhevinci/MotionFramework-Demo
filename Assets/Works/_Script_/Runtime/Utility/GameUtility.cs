@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using MotionFramework.IO;
 
 public static class GameUtility
 {
@@ -215,6 +216,31 @@ public static class GameUtility
 		string destDirectory = Path.GetDirectoryName(filePath);
 		if (Directory.Exists(destDirectory) == false)
 			Directory.CreateDirectory(destDirectory);
+	}
+	#endregion
+
+	#region 玩家偏好
+	// BOOL
+	public static void PlayerSetBool(string key, bool value)
+	{
+		PlayerPrefs.SetInt(key, value ? 1 : 0);
+	}
+	public static bool PlayerGetBool(string key, bool defaultValue)
+	{
+		int result = PlayerPrefs.GetInt(key, defaultValue ? 1 : 0);
+		return result != 0;
+	}
+
+	// 枚举
+	public static void PlayerSetEnum<T>(string key, T value)
+	{
+		string enumName = value.ToString();
+		PlayerPrefs.SetString(key, enumName);
+	}
+	public static T PlayerGetEnum<T>(string key, T defaultValue)
+	{
+		string enumName = PlayerPrefs.GetString(key, defaultValue.ToString());
+		return StringConvert.NameToEnum<T>(enumName);
 	}
 	#endregion
 }

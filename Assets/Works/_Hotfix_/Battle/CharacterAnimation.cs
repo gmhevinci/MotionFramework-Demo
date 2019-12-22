@@ -67,7 +67,7 @@ namespace Hotfix
 		/// <summary>
 		/// 播放动画
 		/// </summary>
-		public void PlayAnim(string name, float normalizedTime = 0, float fadeLength = 0.1f, PlayMode mode = PlayMode.StopSameLayer)
+		public void PlayAnim(string name, float fadeLength = 0.15f, float normalizedTime = 0, PlayMode mode = PlayMode.StopSameLayer)
 		{
 			if (_animation == null)
 				return;
@@ -84,16 +84,16 @@ namespace Hotfix
 		/// <summary>
 		/// 播放动画
 		/// </summary>
-		public void CrossFadeQueued(string animation, float fadeLength = 0.3f, QueueMode queue = QueueMode.CompleteOthers, PlayMode mode = PlayMode.StopSameLayer)
+		public void CrossFadeQueued(string name, float fadeLength = 0.3f, QueueMode queue = QueueMode.CompleteOthers, PlayMode mode = PlayMode.StopSameLayer)
 		{
 			if (_animation == null)
 				return;
 			if (_isPauseAll)
 				return;
-			AnimationState state = _animation[animation];
+			AnimationState state = _animation[name];
 			if (state != null)
 			{
-				_animation.CrossFadeQueued(animation, fadeLength, queue, mode);
+				_animation.CrossFadeQueued(name, fadeLength, queue, mode);
 			}
 		}
 

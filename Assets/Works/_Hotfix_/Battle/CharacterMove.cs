@@ -9,8 +9,8 @@ namespace Hotfix
 		private const float CompareEpsilon = 0.000001f;
 		private const float RotateSpeed = 20f;
 
-		private EntityCharacter _owner;
-		private Transform _trans;
+		private readonly EntityCharacter _owner;
+		private readonly Transform _trans;
 
 		// 上帧位置
 		private Vector3 _lastFramePosition = Vector3.zero;
@@ -64,7 +64,10 @@ namespace Hotfix
 		#region 玩家控制逻辑
 		public void BeginJoyMove(Vector2 joystickAxis)
 		{
-			Vector3 joyDir = new Vector3(-joystickAxis.x, _trans.position.y, -joystickAxis.y);
+			if (IsZeroVector(joystickAxis))
+				return;
+
+			Vector3 joyDir = new Vector3(-joystickAxis.x, 0, -joystickAxis.y);
 			joyDir.Normalize();
 
 			// 注视方向
@@ -83,7 +86,7 @@ namespace Hotfix
 		private void CheckMoving()
 		{
 			Vector3 tempPos = _trans.position;
-			IsMoving = !IsVecEqual(tempPos, _lastFramePosition);
+			IsMoving = !IsVectorEqual(tempPos, _lastFramePosition);
 			_lastFramePosition = tempPos;
 		}
 		private bool IsCanRotate()
@@ -94,17 +97,32 @@ namespace Hotfix
 		{
 			return _owner.CharData.IsCanMove();
 		}
-		private bool IsVecEqual(Vector3 l, Vector3 r)
+
+		private bool IsVectorEqual(Vector3 l, Vector3 r)
 		{
 			float x = l.x - r.x;
-			if (x > 0.000001f || x < -0.000001f)
+			if (x > CompareEpsilon || x < -CompareEpsilon)
 				return false;
 
 			float z = l.z - r.z;
-			if (z > 0.000001f || z < -0.000001f)
+			if (z > CompareEpsilon || z < -CompareEpsilon)
 				return false;
 
 			return true;
+		}
+		private bool IsZeroVector(Vector3 v)
+		{
+			if(v.sqrMagnitude < CompareEpsilon)
+				return true;
+			else
+				return false;
+		}
+		private bool IsZeroVector(Vector2 v)
+		{
+			if (v.sqrMagnitude < CompareEpsilon)
+				return true;
+			else
+				return false;
 		}
 	}
 }

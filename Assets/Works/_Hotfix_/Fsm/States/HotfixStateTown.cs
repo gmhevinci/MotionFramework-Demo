@@ -35,7 +35,8 @@ namespace Hotfix
 				}
 			}
 
-			_world.Update();
+			if(_initWorld)
+				_world.Update();
 		}
 		public override void Exit()
 		{

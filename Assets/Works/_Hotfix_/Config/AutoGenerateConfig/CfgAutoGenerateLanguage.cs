@@ -36,11 +36,6 @@ namespace Hotfix
 		}
 		public void Create()
 		{
-			AddElement(-565198022, new CfgAutoGenerateLanguageTab(-565198022, "瓦王"));
-			AddElement(-1396438525, new CfgAutoGenerateLanguageTab(-1396438525, "伊利丹"));
-			AddElement(-842349938, new CfgAutoGenerateLanguageTab(-842349938, "甲"));
-			AddElement(-842334729, new CfgAutoGenerateLanguageTab(-842334729, "乙"));
-			AddElement(-842334793, new CfgAutoGenerateLanguageTab(-842334793, "丙"));
 		}
 	}
 }
