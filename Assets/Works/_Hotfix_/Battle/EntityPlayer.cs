@@ -45,7 +45,9 @@ namespace Hotfix
 					return;
 				if (UIJoystick.Joystick.IsDragging)
 				{
-					CharMove.BeginJoyMove(UIJoystick.Joystick.JoystickAxis);
+					Vector2 joyAxis = UIJoystick.Joystick.JoystickAxis;
+					Vector3 joyDir = Camera.main.transform.forward * joyAxis.y + Camera.main.transform.right * joyAxis.x;
+					CharMove.BeginJoyMove(joyDir);
 				}
 			}
 		}

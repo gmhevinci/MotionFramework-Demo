@@ -16,6 +16,14 @@ public class BhvCameraFlow : MonoBehaviour
 	/// </summary>
 	public Transform FlowTarget;
 
+	public Transform CameraTransform
+	{
+		get
+		{
+			return _trans;
+		}
+	}
+
 	private void Awake()
 	{
 		_trans = this.transform;

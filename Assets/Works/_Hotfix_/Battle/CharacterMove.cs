@@ -62,13 +62,13 @@ namespace Hotfix
 		#endregion
 
 		#region 玩家控制逻辑
-		public void BeginJoyMove(Vector2 joystickAxis)
+		public void BeginJoyMove(Vector3 joyDir)
 		{
-			if (IsZeroVector(joystickAxis))
-				return;
-
-			Vector3 joyDir = new Vector3(-joystickAxis.x, 0, -joystickAxis.y);
+			joyDir.y = 0;
 			joyDir.Normalize();
+
+			if (IsZeroVector(joyDir))
+				return;
 
 			// 注视方向
 			if (IsCanRotate())
