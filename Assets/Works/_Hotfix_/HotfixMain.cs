@@ -33,12 +33,20 @@ namespace Hotfix
 		public static void Update()
 		{
 			HotfixFsmManager.Instance.Update();
-			HotfixNetManager.Instance.Update();	
+			HotfixNetManager.Instance.Update();
 			DataManager.Instance.Update();
 			UIManager.Instance.Update();
 		}
 		public static void LateUpdate()
 		{
+		}
+		public static string UILanguage(string key)
+		{
+			CfgUILanguageTab table = CfgUILanguage.Instance.GetCfgTab(key.GetHashCode());
+			if (table == null)
+				return key;
+			else
+				return table.Lang;
 		}
 	}
 }

@@ -1457,6 +1457,7 @@ GameObject:
   - component: {fileID: 1423176988928867018}
   - component: {fileID: 1423176988928867014}
   - component: {fileID: 1423176988928867015}
+  - component: {fileID: 1549003664494598548}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1524,7 +1525,20 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8FDB\u5165\u6E38\u620F"
+  m_Text: Run Game
+--- !u!114 &1549003664494598548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423176988928867019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37096c48f0803249a5665283f1d0d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyWord: UILogin1
 --- !u!1 &1423176989164756757
 GameObject:
   m_ObjectHideFlags: 0

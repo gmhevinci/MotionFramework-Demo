@@ -58,9 +58,9 @@ namespace Hotfix
 		}
 		public void Create()
 		{
-			AddElement(1, new CfgMonsterTab(1, "蓝色步兵", 1002, 10f, 1.5f, 4f, "10001", 8f, 20f, 100, 0, 20, 0));
-			AddElement(2, new CfgMonsterTab(2, "红色步兵", 1003, 10f, 1.5f, 4f, "10001", 8f, 20f, 200, 0, 10, 10));
-			AddElement(3, new CfgMonsterTab(3, "步兵队长", 1004, 30f, 3f, 4f, "10001", 8f, 20f, 1000, 0, 10, 10));
+			AddElement(1, new CfgMonsterTab(1, LANG.Convert(178940420), 1002, 10f, 1.5f, 4f, "10001", 8f, 20f, 100, 0, 20, 0));
+			AddElement(2, new CfgMonsterTab(2, LANG.Convert(178979727), 1003, 10f, 1.5f, 4f, "10001", 8f, 20f, 200, 0, 10, 10));
+			AddElement(3, new CfgMonsterTab(3, LANG.Convert(1421729370), 1004, 30f, 3f, 4f, "10001", 8f, 20f, 1000, 0, 10, 10));
 		}
 	}
 }

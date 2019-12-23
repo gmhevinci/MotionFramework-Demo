@@ -22,6 +22,7 @@ public class ILRManager : IModule
 	private IStaticMethod _startFun;
 	private IStaticMethod _updateFun;
 	private IStaticMethod _lateUpdateFun;
+	private IStaticMethod _uiLanguageFun;
 
 	/// <summary>
 	/// 热更新所有类型集合
@@ -68,6 +69,14 @@ public class ILRManager : IModule
 	}
 
 	/// <summary>
+	/// 是否初始化完毕
+	/// </summary>
+	public bool IsInitOK()
+	{
+		return HotfixAssemblyTypes != null;
+	}
+
+	/// <summary>
 	/// 释放资源
 	/// </summary>
 	public void ReleaseILRuntime()
@@ -83,6 +92,15 @@ public class ILRManager : IModule
 			_pdbStream = null;
 		}
 	}
+
+	/// <summary>
+	/// 从热更配备里获取界面多语言
+	/// </summary>
+	public string UILanguage(string key)
+	{
+		return (string)_uiLanguageFun.Invoke(key);
+	}
+
 
 	// 加载热更的动态库文件
 	private void LoadHotfixAssembly()
@@ -138,6 +156,7 @@ public class ILRManager : IModule
 		string startFunName = "Start";
 		string updateFunName = "Update";
 		string lateUpdateFunName = "LateUpdate";
+		string uiLanguageFunName = "UILanguage";
 
 		if (EnableILRuntime)
 		{
@@ -145,6 +164,7 @@ public class ILRManager : IModule
 			_startFun = new ILRStaticMethod(ILRDomain, typeName, startFunName, 0);
 			_updateFun = new ILRStaticMethod(ILRDomain, typeName, updateFunName, 0);
 			_lateUpdateFun = new ILRStaticMethod(ILRDomain, typeName, lateUpdateFunName, 0);
+			_uiLanguageFun = new ILRStaticMethod(ILRDomain, typeName, uiLanguageFunName, 1);
 			HotfixAssemblyTypes = ILRDomain.LoadedTypes.Values.Select(x => x.ReflectionType).ToList();
 		}
 		else
@@ -153,6 +173,7 @@ public class ILRManager : IModule
 			_startFun = new MonoStaticMethod(type, startFunName);
 			_updateFun = new MonoStaticMethod(type, updateFunName);
 			_lateUpdateFun = new MonoStaticMethod(type, lateUpdateFunName);
+			_uiLanguageFun = new MonoStaticMethod(type, uiLanguageFunName);
 			HotfixAssemblyTypes = _monoAssembly.GetTypes().ToList<Type>();
 		}
 	}
