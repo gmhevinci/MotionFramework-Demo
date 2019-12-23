@@ -52,7 +52,7 @@ namespace Hotfix
 		}
 		public void Create()
 		{
-			AddElement(1, new CfgPlayerTab(1, LANG.Convert(91216312), 1001, 1.5f, 4f, "10001", 100, 100, 20, 10));
+			AddElement(1, new CfgPlayerTab(1, LANG.Convert(91216312), 1001, 1.2f, 4f, "10001", 100, 100, 20, 10));
 		}
 	}
 }

@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 1614513564805971295}
   - component: {fileID: 1614513564795670635}
   - component: {fileID: 1614513564795678699}
+  - component: {fileID: 2297385432917490001}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -219,7 +220,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8BBE\u7F6E"
+  m_Text: setting
 --- !u!114 &1614513564795678699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +236,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0.20392157, g: 0.10980392, b: 0.03137255, a: 1}
   m_EffectDistance: {x: 0, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &2297385432917490001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614513564785934585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37096c48f0803249a5665283f1d0d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyWord: UISetting1
 --- !u!1 &1614513564785936527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1138,7 @@ GameObject:
   - component: {fileID: 1614513564806011917}
   - component: {fileID: 1614513564795696081}
   - component: {fileID: 1614513564795693729}
+  - component: {fileID: 2993309721262427695}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -1191,7 +1206,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u97F3\u4E50"
+  m_Text: music
 --- !u!114 &1614513564795693729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,6 +1222,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0.69803923, g: 0.57254905, b: 0.43137255, a: 1}
   m_EffectDistance: {x: 2, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &2993309721262427695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614513564785966037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37096c48f0803249a5665283f1d0d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyWord: UISetting4
 --- !u!1 &1614513564785966413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,6 +1425,7 @@ GameObject:
   - component: {fileID: 1614513564805637647}
   - component: {fileID: 1614513564805972457}
   - component: {fileID: 1614513564795749915}
+  - component: {fileID: 4021238132446059878}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1464,7 +1493,20 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u786E\u5B9A"
+  m_Text: ok
+--- !u!114 &4021238132446059878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614513564785971221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37096c48f0803249a5665283f1d0d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyWord: UICommon1
 --- !u!1 &1614513564785974555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,6 +1606,7 @@ GameObject:
   - component: {fileID: 1614513564805629413}
   - component: {fileID: 1614513564805524163}
   - component: {fileID: 1614513564795749843}
+  - component: {fileID: 2633735134507082583}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -1631,7 +1674,20 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5F00\u5173"
+  m_Text: switch
+--- !u!114 &2633735134507082583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614513564785975559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37096c48f0803249a5665283f1d0d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyWord: UISetting3
 --- !u!1 &1614513564785976693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,6 +1913,7 @@ GameObject:
   - component: {fileID: 1614513564805669745}
   - component: {fileID: 1614513564805525983}
   - component: {fileID: 1614513564795731379}
+  - component: {fileID: 5903536322083191728}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -1924,7 +1981,20 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u97F3\u91CF"
+  m_Text: volume
+--- !u!114 &5903536322083191728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614513564785984481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37096c48f0803249a5665283f1d0d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyWord: UISetting2
 --- !u!1 &1614513564785986693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2279,6 +2349,7 @@ GameObject:
   - component: {fileID: 1614513564806001889}
   - component: {fileID: 1614513564795713875}
   - component: {fileID: 1614513564795714313}
+  - component: {fileID: 5556344643882701036}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -2346,7 +2417,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u97F3\u6548"
+  m_Text: sound
 --- !u!114 &1614513564795714313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2362,6 +2433,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0.69803923, g: 0.57254905, b: 0.43137255, a: 1}
   m_EffectDistance: {x: 2, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &5556344643882701036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614513564786011651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37096c48f0803249a5665283f1d0d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyWord: UISetting5
 --- !u!1 &1614513564786014285
 GameObject:
   m_ObjectHideFlags: 0

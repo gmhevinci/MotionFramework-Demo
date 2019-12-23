@@ -13,13 +13,21 @@ namespace Hotfix
 
 		public void Init()
 		{
-			_mainPlayer = CreatePlayer(EHeroType.Soldier, new Vector3(-6, 0, 0), Vector3.zero);
+			_mainPlayer = CreatePlayer(EHeroType.Soldier, new Vector3(-6, 0, 5), Vector3.zero);
 			if (_mainPlayer != null)
 				_entitys.Add(_mainPlayer);
 
-			EntityMonster monster = CreateMonster(1, new Vector3(-10, 0, 0), Vector3.zero);
-			if (monster != null)
-				_entitys.Add(monster);
+			EntityMonster monster1 = CreateMonster(1, new Vector3(-10, 0, 0), Vector3.zero);
+			if (monster1 != null)
+				_entitys.Add(monster1);
+
+			EntityMonster monster2 = CreateMonster(2, new Vector3(-6, 0, 0), Vector3.zero);
+			if (monster2 != null)
+				_entitys.Add(monster2);
+
+			EntityMonster monster3 = CreateMonster(3, new Vector3(-2, 0, 0), Vector3.zero);
+			if (monster3 != null)
+				_entitys.Add(monster3);
 
 			HotfixEventManager.Instance.AddListener(HotfixEventMessageTag.BattleEvent, OnHandleBattleEvent);
 		}
