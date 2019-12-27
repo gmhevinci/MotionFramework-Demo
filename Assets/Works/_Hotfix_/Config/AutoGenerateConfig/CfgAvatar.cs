@@ -56,10 +56,10 @@ namespace Hotfix
 		}
 		public void Create()
 		{
-			AddElement(1001, new CfgAvatarTab(1001, "", "Model/Character/footman_Blue", 1f, 1f, 4.5f, new List<string>(){"Footman/Attack"}, new List<string>(){"Footman/Hit1","Footman/Hit2","Footman/Hit3"}, "Footman/Death", "", "", 1f));
-			AddElement(1002, new CfgAvatarTab(1002, "", "Model/Character/footman_Green", 1f, 1f, 4.5f, new List<string>(){"Footman/Attack"}, new List<string>(){"Footman/Hit1","Footman/Hit2","Footman/Hit3"}, "Footman/Death", "", "", 1f));
-			AddElement(1003, new CfgAvatarTab(1003, "", "Model/Character/footman_Red", 1f, 1f, 4.5f, new List<string>(){"Footman/Attack"}, new List<string>(){"Footman/Hit1","Footman/Hit2","Footman/Hit3"}, "Footman/Death", "", "", 1f));
-			AddElement(1004, new CfgAvatarTab(1004, "", "Model/Character/footman_Yellow", 2f, 2f, 4.5f, new List<string>(){"Footman/Attack"}, new List<string>(){"Footman/Hit1","Footman/Hit2","Footman/Hit3"}, "Footman/Death", "", "", 1f));
+			AddElement(1001, new CfgAvatarTab(1001, "", "Model/Character/footman_Blue", 1f, 1f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
+			AddElement(1002, new CfgAvatarTab(1002, "", "Model/Character/footman_Green", 1f, 1f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
+			AddElement(1003, new CfgAvatarTab(1003, "", "Model/Character/footman_Red", 1f, 1f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
+			AddElement(1004, new CfgAvatarTab(1004, "", "Model/Character/footman_Yellow", 2f, 2f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
 		}
 	}
 }

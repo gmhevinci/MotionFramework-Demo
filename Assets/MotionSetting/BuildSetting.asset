@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BuildSetting
   m_EditorClassIdentifier: 
   Elements:
-  - FolderPath: Assets/WorksArt/Panel/UISprite
-    PackRule: 0
-    NameRule: 2
   - FolderPath: Assets/Works/Resource
     PackRule: 0
     NameRule: 1
+  - FolderPath: Assets/WorksArt/Panel/Sprite
+    PackRule: 0
+    NameRule: 2

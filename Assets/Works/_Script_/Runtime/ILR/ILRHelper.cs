@@ -8,30 +8,49 @@ using MotionFramework;
 
 public static class ILRHelper
 {
-	public static void Init(ILRuntime.Runtime.Enviorment.AppDomain appDomain)
+	public static void Init(ILRuntime.Runtime.Enviorment.AppDomain appdomain)
 	{
 		// 注册委托
-		appDomain.DelegateManager.RegisterMethodDelegate<List<object>>();
-		appDomain.DelegateManager.RegisterMethodDelegate<ILTypeInstance>();
-		appDomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Network.INetPackage>();
-		appDomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Event.IEventMessage>();
-		appDomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Resource.Asset>();
-		appDomain.DelegateManager.RegisterMethodDelegate<Google.Protobuf.Adapter_IMessage.Adaptor>();
-		appDomain.DelegateManager.RegisterFunctionDelegate<Google.Protobuf.Adapter_IMessage.Adaptor>();
+		appdomain.DelegateManager.RegisterMethodDelegate<float>();
+		appdomain.DelegateManager.RegisterMethodDelegate<bool>();
+		appdomain.DelegateManager.RegisterMethodDelegate<List<object>>();
+		appdomain.DelegateManager.RegisterMethodDelegate<ILTypeInstance>();
+		appdomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Network.INetPackage>();
+		appdomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Event.IEventMessage>();
+		appdomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Resource.AssetOperationHandle>();
+		appdomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Resource.SceneInstance>();
+		appdomain.DelegateManager.RegisterMethodDelegate<UnityEngine.GameObject>();
+		appdomain.DelegateManager.RegisterMethodDelegate<Google.Protobuf.Adapter_IMessage.Adaptor>();
+		appdomain.DelegateManager.RegisterFunctionDelegate<Google.Protobuf.Adapter_IMessage.Adaptor>();
 
 		// 注册委托转换器
-		appDomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction>((act) =>
+		appdomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction>((act) =>
 		{
 			return new UnityEngine.Events.UnityAction(() =>
 			{
 				((Action)act)();
 			});
 		});
+		appdomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction<float>>((act) =>
+		{
+			return new UnityEngine.Events.UnityAction<float>((arg0) =>
+			{
+				((Action<float>)act)(arg0);
+			});
+		});
+		appdomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction<bool>>((act) =>
+		{
+			return new UnityEngine.Events.UnityAction<bool>((arg0) =>
+			{
+				((Action<bool>)act)(arg0);
+			});
+		});
+
 
 		// 注册值类型绑定器
-		appDomain.RegisterValueTypeBinder(typeof(UnityEngine.Vector2), new Vector2Binder());
-		appDomain.RegisterValueTypeBinder(typeof(UnityEngine.Vector3), new Vector3Binder());
-		appDomain.RegisterValueTypeBinder(typeof(UnityEngine.Quaternion), new QuaternionBinder());
+		appdomain.RegisterValueTypeBinder(typeof(UnityEngine.Vector2), new Vector2Binder());
+		appdomain.RegisterValueTypeBinder(typeof(UnityEngine.Vector3), new Vector3Binder());
+		appdomain.RegisterValueTypeBinder(typeof(UnityEngine.Quaternion), new QuaternionBinder());
 
 		// 执行CLR绑定
 		//ILRuntime.Runtime.Generated.CLRBindings.Initialize(appDomain);
@@ -39,7 +58,7 @@ public static class ILRHelper
 		if (classCLRBinding != null)
 		{
 			var method = classCLRBinding.GetMethod("Initialize");
-			method.Invoke(null, new object[] { appDomain });
+			method.Invoke(null, new object[] { appdomain });
 		}
 		else
 		{
@@ -48,9 +67,9 @@ public static class ILRHelper
 
 		// 注册适配器
 		Google.Protobuf.Adapter_IMessage adaptor = new Google.Protobuf.Adapter_IMessage();
-		appDomain.RegisterCrossBindingAdaptor(adaptor);
+		appdomain.RegisterCrossBindingAdaptor(adaptor);
 
 		// 注册LitJson
-		LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(appDomain);
+		LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(appdomain);
 	}
 }

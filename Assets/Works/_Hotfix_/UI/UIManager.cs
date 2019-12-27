@@ -12,7 +12,8 @@ namespace Hotfix
 
 		private readonly Dictionary<EWindowType, Type> _types = new Dictionary<EWindowType, Type>();
 		private readonly List<UIWindow> _stack = new List<UIWindow>(100);
-		private AssetObject _assetRoot;
+		private AssetReference _assetRef;
+		private AssetOperationHandle _handle;
 		private GameObject _uiRoot;
 		private GameObject _uiDesktop;
 		private Camera _uiCamera;
@@ -76,9 +77,7 @@ namespace Hotfix
 		/// </summary>
 		public bool IsPrepareUIRoot()
 		{
-			if (_assetRoot == null)
-				return false;
-			return _assetRoot.Result == EAssetResult.OK;
+			return _handle.States == EAssetProviderStates.Succeed;
 		}
 
 		/// <summary>
@@ -155,18 +154,19 @@ namespace Hotfix
 		// UIRoot相关
 		private void CreateUIRoot()
 		{
-			if (_assetRoot == null)
+			if (_assetRef == null)
 			{
-				_assetRoot = new AssetObject();
-				_assetRoot.Load("UIPanel/UIRoot", OnUIRootLoad);
+				_assetRef = new AssetReference("UIPanel/UIRoot");
+				_handle = _assetRef.LoadAssetAsync<GameObject>();
+				_handle.Completed += Handle_Completed;
 			}
 		}
 		private void DestroyUIRoot()
 		{
-			if (_assetRoot != null)
+			if (_assetRef != null)
 			{
-				_assetRoot.UnLoad();
-				_assetRoot = null;
+				_assetRef.Release();
+				_assetRef = null;
 			}
 
 			if (_uiRoot != null)
@@ -175,9 +175,9 @@ namespace Hotfix
 				_uiRoot = null;
 			}
 		}
-		private void OnUIRootLoad(Asset asset)
+		private void Handle_Completed(AssetOperationHandle obj)
 		{
-			_uiRoot = _assetRoot.GetMainAsset<GameObject>();
+			_uiRoot = _handle.InstantiateObject;
 			_uiDesktop = _uiRoot.transform.FindChildByName("UIDesktop").gameObject;
 			_uiCamera = _uiRoot.transform.FindChildByName("UICamera").GetComponent<Camera>();
 			GameObject.DontDestroyOnLoad(_uiRoot);

@@ -12,7 +12,7 @@ namespace Hotfix
 	public class UILoading : UIWindow
 	{
 		private UISprite _progress;
-		private Text _txtLoading;
+		private Text _loadingTxt;
 
 		private string _sceneName = string.Empty;
 		private OnceTimer _hideTimer = new OnceTimer(0.5f);
@@ -28,7 +28,7 @@ namespace Hotfix
 		public override void OnCreate()
 		{
 			_progress = GetUIComponent<UISprite>("UILoading/Loading/Fill");
-			_txtLoading = GetUIComponent<Text>("UILoading/Loading/Text");
+			_loadingTxt = GetUIComponent<Text>("UILoading/Loading/Text");
 		}
 		public override void OnDestroy()
 		{
@@ -75,13 +75,13 @@ namespace Hotfix
 		private void UpdateLoadingText(int count)
 		{
 			if(_count == 0)
-				_txtLoading.text = "Loading";
+				_loadingTxt.text = "Loading";
 			else if(count == 1)
-				_txtLoading.text = "Loading.";
+				_loadingTxt.text = "Loading.";
 			else if (count == 2)
-				_txtLoading.text = "Loading..";
+				_loadingTxt.text = "Loading..";
 			else if (count == 3)
-				_txtLoading.text = "Loading...";
+				_loadingTxt.text = "Loading...";
 		}
 	}
 }

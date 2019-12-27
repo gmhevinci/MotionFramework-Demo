@@ -17,7 +17,7 @@ public class GameLauncher : MonoBehaviour
 	public bool EnableILRuntime = true;
 
 	[Tooltip("资源系统的加载模式")]
-	public EAssetLoadMode AssetLoadMode = EAssetLoadMode.ResourceMode;
+	public EAssetSystemMode AssetSystemMode = EAssetSystemMode.ResourceMode;
 
 	void Awake()
 	{
@@ -112,17 +112,17 @@ public class GameLauncher : MonoBehaviour
 	private void RegisterAndRunAllGameModule()
 	{
 		// 设置资源系统加载模式
-		AssetSystem.AssetLoadMode = AssetLoadMode;
+		AssetSystem.LoadMode = AssetSystemMode;
 
 		// 设置资源系统根路径
 		AssetSystem.AssetRootPath = GameDefine.StrAssetRootPath;
 
-		// 设置Bundle接口
-		if(AssetLoadMode == EAssetLoadMode.BundleMode)
+		// 设置Patch服务接口
+		if(AssetSystemMode == EAssetSystemMode.BundleMode)
 		{
-			PatchBundleMethod method = new PatchBundleMethod();
-			method.LoadManifestFile();
-			AssetSystem.BundleMethod = method;
+			PatchServices services = new PatchServices();
+			services.LoadManifestFile();
+			AssetSystem.PatchServices = services;
 		}
 
 		// 设置ILRuntime开关
