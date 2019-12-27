@@ -2,7 +2,7 @@
 using MotionFramework.Resource;
 using MotionFramework.Patch;
 
-public class PatchServices : IPatchServices
+public class BundleServices : IBundleServices
 {
 	private AssetBundleManifest _manifest;
 
