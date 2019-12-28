@@ -133,6 +133,17 @@ namespace Hotfix
 			}
 		}
 
+		/// <summary>
+		/// 是否加载完毕
+		/// </summary>
+		public bool IsDone
+		{
+			get
+			{
+				return _handle.IsDone;
+			}
+		}
+
 
 		public void Init(EWindowType type, EWindowLayer layer)
 		{
@@ -212,8 +223,7 @@ namespace Hotfix
 				return;
 
 			Go = _handle.InstantiateObject;
-			Go.SetActive(IsOpen);
-
+			
 			// 设置父类
 			GameObject uiDesktop = UIManager.Instance.GetUIDesktop();
 			Go.transform.SetParent(uiDesktop.transform, false);
@@ -253,6 +263,9 @@ namespace Hotfix
 				IsPrepare = true;
 				OnCreate();
 			}
+
+			// 最后设置是否激活
+			Go.SetActive(IsOpen);
 
 			// 通知UI管理器
 			_callback?.Invoke(this);

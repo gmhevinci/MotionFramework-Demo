@@ -6,6 +6,8 @@ namespace Hotfix
 {
 	public class HotfixStatePrepare : HotfixFsmState
 	{
+		private bool _isPreload = false;
+
 		public HotfixStatePrepare(EHotfixStateType type) : base(type)
 		{
 		}
@@ -17,7 +19,18 @@ namespace Hotfix
 		public override void Execute()
 		{
 			if (UIManager.Instance.IsPrepareUIRoot())
-				HotfixFsmManager.Instance.ChangeState(EHotfixStateType.Notice);
+			{
+				if (_isPreload == false)
+				{
+					_isPreload = true;
+					UIManager.Instance.PreloadWindow(EWindowType.UILoading);
+				}
+
+				if (UIManager.Instance.IsLoadingWindow() == false)
+				{
+					HotfixFsmManager.Instance.ChangeState(EHotfixStateType.Notice);
+				}
+			}
 		}
 
 		public override void Exit()

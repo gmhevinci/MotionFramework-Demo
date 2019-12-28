@@ -81,6 +81,36 @@ namespace Hotfix
 		}
 
 		/// <summary>
+		/// 预加载窗口
+		/// </summary>
+		public void PreloadWindow(EWindowType type)
+		{
+			// 如果窗口已经存在
+			if (IsContains(type))
+				return;
+
+			UIWindow window = CreateWindowClass(type);
+			Push(window);
+			window.InternalClose();
+			window.InternalLoad(OnWindowPrepare);
+			HotfixLogger.Log($"Preload window {type}");
+		}
+
+		/// <summary>
+		/// 是否有窗口正在加载
+		/// </summary>
+		public bool IsLoadingWindow()
+		{
+			for (int i = 0; i < _stack.Count; i++)
+			{
+				UIWindow window = _stack[i];
+				if (window.IsDone == false)
+					return true;
+			}
+			return false;
+		}
+
+		/// <summary>
 		/// 打开窗口
 		/// </summary>
 		/// <param name="type">窗口类型</param>
