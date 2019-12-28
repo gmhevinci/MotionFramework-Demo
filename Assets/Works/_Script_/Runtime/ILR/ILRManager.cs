@@ -142,11 +142,13 @@ public class ILRManager : IModule
 	}
 	private TextAsset LoadDLL()
 	{
-		return ResourceManager.Instance.SyncLoad<TextAsset>($"Assembly/{ILRDefine.StrMyHotfixDLLFileName}");
+		string location = $"Assembly/{ILRDefine.StrMyHotfixDLLFileName}";
+		return ResourceManager.Instance.SyncLoad<TextAsset>(location);
 	}
 	private TextAsset LoadPDB()
 	{
-		return ResourceManager.Instance.SyncLoad<TextAsset>($"Assembly/{ILRDefine.StrMyHotfixPDBFileName}");
+		string location = $"Assembly/{ILRDefine.StrMyHotfixPDBFileName}";
+		return ResourceManager.Instance.SyncLoad<TextAsset>(location);
 	}
 
 	// 初始化热更程序
