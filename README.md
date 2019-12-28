@@ -1,5 +1,5 @@
 # Demo1
-该演示程序是一款使用MotionFramework框架开发的RPG游戏。热更新是基于ILRuntime技术，所有的游戏业务逻辑（包括窗口和战斗）都可以实现热更。  
+演示程序是一款使用[MotionFramework](https://github.com/gmhevinci/MotionFramework)框架开发的RPG游戏。通过该演示程序我们可以快速学习如何使用MotionFramework框架来开发游戏。其中热更新是基于[ILRuntime](https://github.com/Ourpalm/ILRuntime)技术，所有的游戏业务逻辑（包括窗口和战斗）都可以实现热更。  
 
  **游戏截图**  
 ![image](https://github.com/gmhevinci/Demo1/raw/master/Docs/Image/img1.png)
