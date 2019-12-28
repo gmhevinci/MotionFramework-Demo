@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: ImportSetting
   m_EditorClassIdentifier: 
   Toggle: 1
-  Elements: []
+  Elements:
+  - FolderPath: Assets/WorksArt/Panel/Sprite
+    ProcessorName: DefaultProcessor
+  - FolderPath: Assets/Works/Resource/UITexture
+    ProcessorName: DefaultProcessor
