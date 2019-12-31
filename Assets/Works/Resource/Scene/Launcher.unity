@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnableILRuntime: 1
+  SkipCDN: 1
   AssetSystemMode: 0
 --- !u!4 &25884006
 Transform:

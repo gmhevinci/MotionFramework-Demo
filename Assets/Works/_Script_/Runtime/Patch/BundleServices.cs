@@ -12,7 +12,7 @@ public class BundleServices : IBundleServices
 	public void LoadManifestFile()
 	{
 		// 注意：可能从沙盒内加载或者从流文件夹内加载
-		string loadPath = AssetPathHelper.MakeStreamingLoadPath(PatchDefine.StrBuildManifestFileName);
+		string loadPath = AssetPathHelper.MakeStreamingLoadPath(PatchDefine.StrManifestFileName);
 		AssetBundle bundle = AssetBundle.LoadFromFile(loadPath);
 		if (bundle == null)
 			throw new System.Exception($"AssetBundleManifest file load failed : {loadPath}");

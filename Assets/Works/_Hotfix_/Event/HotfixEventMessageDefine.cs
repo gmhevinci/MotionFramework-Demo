@@ -1,7 +1,14 @@
 ﻿
 namespace Hotfix
 {
-	// 定义热更层的事件类型
+	// 热更层的事件标签
+	public enum HotfixEventMessageTag
+	{
+		BattleEvent,
+		ConnectServer,
+	}
+
+	// 热更层的事件类型
 	public class HotfixEvent
 	{
 		public class ConnectServer : IHotfixEventMessage

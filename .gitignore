@@ -4,6 +4,7 @@ obj/
 Library/
 Temp/
 BuildBundles/
+Sandbox/
 
 Assets/MotionFramework
 Assets/MotionFramework.meta

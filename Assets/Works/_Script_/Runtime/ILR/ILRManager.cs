@@ -9,7 +9,7 @@ using MotionFramework;
 using MotionFramework.Resource;
 using MotionFramework.Debug;
 
-public class ILRManager : IModule
+public class ILRManager : IGameModule
 {
 	public static readonly ILRManager Instance = new ILRManager();
 

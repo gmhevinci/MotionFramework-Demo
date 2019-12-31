@@ -52,7 +52,7 @@ namespace Hotfix
 			package.IsHotfixPackage = true;
 			package.MsgID = msgID;
 			package.BodyBytes = ProtobufHelper.Encode(msg);
-			NetworkManager.Instance.SendMsg(package);
+			NetworkManager.Instance.SendMessage(package);
 		}
 
 		// 收集所有网络协议的类型

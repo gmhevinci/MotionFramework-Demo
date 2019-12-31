@@ -8,6 +8,7 @@ using MotionFramework.Event;
 using MotionFramework.Config;
 using MotionFramework.Audio;
 using MotionFramework.Network;
+using MotionFramework.Patch;
 
 public class GameLauncher : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class GameLauncher : MonoBehaviour
 
 	[Tooltip("是否启用脚本热更模式")]
 	public bool EnableILRuntime = true;
+
+	[Tooltip("是否跳过CDN服务器")]
+	public bool SkipCDN = true;
 
 	[Tooltip("资源系统的加载模式")]
 	public EAssetSystemMode AssetSystemMode = EAssetSystemMode.ResourcesMode;
@@ -111,22 +115,16 @@ public class GameLauncher : MonoBehaviour
 	/// </summary>
 	private void RegisterAndRunAllGameModule()
 	{
-		// 设置资源系统加载模式
+		// 设置资源系统
 		AssetSystem.SystemMode = AssetSystemMode;
-
-		// 设置资源系统根路径
 		AssetSystem.AssetRootPath = GameDefine.StrAssetRootPath;
+		AssetSystem.BundleServices = PatchManager.Instance;
 
-		// 设置AssetBundle服务接口
-		if(AssetSystemMode == EAssetSystemMode.BundleMode)
-		{
-			BundleServices services = new BundleServices();
-			services.LoadManifestFile();
-			AssetSystem.BundleServices = services;
-		}
-
-		// 设置ILRuntime开关
+		// 设置ILRuntime
 		ILRManager.Instance.EnableILRuntime = EnableILRuntime;
+
+		// 设置补丁管理器
+		PatchManager.Instance.SkipCDN = SkipCDN;
 
 		// 注册所有游戏模块
 		AppEngine.Instance.RegisterModule(EventManager.Instance);
@@ -134,6 +132,15 @@ public class GameLauncher : MonoBehaviour
 		AppEngine.Instance.RegisterModule(ConfigManager.Instance);
 		AppEngine.Instance.RegisterModule(AudioManager.Instance);
 		AppEngine.Instance.RegisterModule(NetworkManager.Instance);
-		AppEngine.Instance.RegisterModule(ILRManager.Instance);
+		AppEngine.Instance.RegisterModule(PatchManager.Instance);
+		EventManager.Instance.AddListener(EPatchEventMessageTag.PatchManagerEvent.ToString(), OnHandleEvent);
+	}
+
+	private void OnHandleEvent(IEventMessage msg)
+	{
+		if(msg is PatchEventMessageDefine.PatchOver)
+		{
+			AppEngine.Instance.RegisterModule(ILRManager.Instance);
+		}
 	}
 }
