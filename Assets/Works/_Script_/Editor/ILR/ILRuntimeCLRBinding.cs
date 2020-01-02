@@ -53,5 +53,8 @@ public static class ILRuntimeCLRBinding
 			// 生成所有绑定脚本
 			ILRuntime.Runtime.CLRBinding.BindingCodeGenerator.GenerateBindingCode(domain, ILRDefine.StrMyBindingFolderPath);
 		}
+
+		// 刷新目录
+		AssetDatabase.Refresh();
 	}
 }

@@ -11,7 +11,7 @@ public class UILocalizeText : MonoBehaviour
 	private void Start()
 	{
 		Text txt = GetComponent<Text>();
-		if (ILRManager.Instance.IsInitOK())
+		if (ILRManager.Instance != null)
 			txt.text = ILRManager.Instance.UILanguage(KeyWord);
 	}
 }

@@ -2,7 +2,7 @@
     "name": "Hotfix",
     "references": [
         "MotionEngine",
-        "MotionGame",
+        "MotionModule",
         "Script",
         "Script.ThirdParty"
     ],

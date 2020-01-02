@@ -28,7 +28,7 @@ namespace Hotfix
 		{
 			if (_tabs.ContainsKey(key))
 			{
-				LogSystem.Log(ELogType.Warning, $"{this.GetType().Name} Element is already exsit, Key is {key}");
+				HotfixLogger.Warning($"{this.GetType().Name} Element is already exsit, Key is {key}");
 				return;
 			}
 
@@ -46,7 +46,7 @@ namespace Hotfix
 			}
 			else
 			{
-				LogSystem.Log(ELogType.Warning, $"Faild to get tab. File is {this.GetType().Name}, key is {key}");
+				HotfixLogger.Warning($"Faild to get tab. File is {this.GetType().Name}, key is {key}");
 				return null;
 			}
 		}

@@ -28,7 +28,7 @@ namespace Hotfix
 			HotfixFsmManager.Instance.AddState(notice);
 			HotfixFsmManager.Instance.AddState(login);
 			HotfixFsmManager.Instance.AddState(town);
-			HotfixFsmManager.Instance.Run((int)EHotfixStateType.Prepare);
+			HotfixFsmManager.Instance.Run(EHotfixStateType.Prepare);
 		}
 		public static void Update()
 		{

@@ -68,11 +68,11 @@ namespace Hotfix
 				{
 					// 判断是否重复
 					NetMessageAttribute attribute = HotfixTypeHelper.GetAttribute<NetMessageAttribute>(type);
-					if (_types.ContainsKey(attribute.MsgType))
-						throw new Exception($"Message {type} has same value : {attribute.MsgType}");
+					if (_types.ContainsKey(attribute.MsgID))
+						throw new Exception($"Message {type} has same value : {attribute.MsgID}");
 
 					// 添加到集合
-					_types.Add(attribute.MsgType, type);
+					_types.Add(attribute.MsgID, type);
 				}
 			}
 		}

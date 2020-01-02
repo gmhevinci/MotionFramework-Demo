@@ -9,10 +9,12 @@ using MotionFramework.Config;
 using MotionFramework.Audio;
 using MotionFramework.Network;
 using MotionFramework.Patch;
+using MotionFramework.Scene;
+using MotionFramework.Pool;
 
 public class GameLauncher : MonoBehaviour
 {
-	public static GameLauncher Instance = null;
+	private IEngine _engine;
 
 	[Tooltip("是否启用脚本热更模式")]
 	public bool EnableILRuntime = true;
@@ -25,20 +27,20 @@ public class GameLauncher : MonoBehaviour
 
 	void Awake()
 	{
-		Instance = this;
+		_engine = AppEngine.Instance;
 
 		// 不销毁游戏对象
 		DontDestroyOnLoad(gameObject);
 
 		// 注册日志系统
-		LogSystem.RegisterCallback(HandleMotionEngineLog);
+		LogHelper.RegisterCallback(HandleMotionEngineLog);
 
 		// 设置协程脚本
 		AppEngine.Instance.InitCoroutineBehaviour(this);
 
 		// 初始化调试控制台
 		if (Application.isEditor || Debug.isDebugBuild)
-			DebugConsole.Init();
+			DebugConsole.Initialize();
 
 		// 初始化应用
 		InitAppliaction();
@@ -49,11 +51,7 @@ public class GameLauncher : MonoBehaviour
 	}
 	void Update()
 	{
-		AppEngine.Instance.Update();
-	}
-	void LateUpdate()
-	{
-		AppEngine.Instance.LateUpdate();
+		_engine.OnUpdate();
 	}
 	void OnApplicationQuit()
 	{
@@ -115,24 +113,37 @@ public class GameLauncher : MonoBehaviour
 	/// </summary>
 	private void RegisterAndRunAllGameModule()
 	{
-		// 设置资源系统
-		AssetSystem.SystemMode = AssetSystemMode;
-		AssetSystem.AssetRootPath = GameDefine.StrAssetRootPath;
-		AssetSystem.BundleServices = PatchManager.Instance;
+		// 模块创建参数
+		var patchCreateParam = new PatchManager.CreateParameters();
+		patchCreateParam.StrCDNServerIP = "127.0.0.1/CDN";
+		patchCreateParam.StrWebServerIP = "127.0.0.1/WEB";
+		patchCreateParam.SkipCDN = SkipCDN;
 
-		// 设置ILRuntime
-		ILRManager.Instance.EnableILRuntime = EnableILRuntime;
+		// 模块创建参数
+		var resourceCreateParam = new ResourceManager.CreateParameters();
+		resourceCreateParam.AssetRootPath = GameDefine.StrAssetRootPath;
+		resourceCreateParam.AssetSystemMode = AssetSystemMode;
 
-		// 设置补丁管理器
-		PatchManager.Instance.SkipCDN = SkipCDN;
+		// 模块创建参数
+		var configCreateParam = new ConfigManager.CreateParameters();
+		configCreateParam.BaseFolderPath = "Config";
+		
+		// 创建游戏模块
+		AppEngine.Instance.CreateModule<EventManager>();
+		AppEngine.Instance.CreateModule<NetworkManager>();
+		AppEngine.Instance.CreateModule<ResourceManager>(resourceCreateParam);
+		AppEngine.Instance.CreateModule<ConfigManager>(configCreateParam);
+		AppEngine.Instance.CreateModule<AudioManager>();
+		AppEngine.Instance.CreateModule<SceneManager>();
+		AppEngine.Instance.CreateModule<PoolManager>();
 
-		// 注册所有游戏模块
-		AppEngine.Instance.RegisterModule(EventManager.Instance);
-		AppEngine.Instance.RegisterModule(ResourceManager.Instance);
-		AppEngine.Instance.RegisterModule(ConfigManager.Instance);
-		AppEngine.Instance.RegisterModule(AudioManager.Instance);
-		AppEngine.Instance.RegisterModule(NetworkManager.Instance);
-		AppEngine.Instance.RegisterModule(PatchManager.Instance);
+		// 最后创建补丁管理器
+		AppEngine.Instance.CreateModule<PatchManager>(patchCreateParam);
+
+		// 设置AssetBundle服务器接口
+		AssetSystem.Instance.BundleServices = PatchManager.Instance;
+
+		// 注册补丁更新结束事件
 		EventManager.Instance.AddListener(EPatchEventMessageTag.PatchManagerEvent.ToString(), OnHandleEvent);
 	}
 
@@ -140,7 +151,7 @@ public class GameLauncher : MonoBehaviour
 	{
 		if(msg is PatchEventMessageDefine.PatchOver)
 		{
-			AppEngine.Instance.RegisterModule(ILRManager.Instance);
+			AppEngine.Instance.CreateModule<ILRManager>(new ILRManager.CreateParameters() { IsEnableILRuntime = EnableILRuntime });
 		}
 	}
 }

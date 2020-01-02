@@ -34,7 +34,7 @@ public class UILocalizeDropdown : MonoBehaviour
 				return Keywords[i];
 		}
 
-		MotionFramework.LogSystem.Log(MotionFramework.ELogType.Warning, $"UILocalizationDropdown : index is out range {index}");
+		MotionFramework.LogHelper.Log(MotionFramework.ELogType.Warning, $"UILocalizationDropdown : index is out range {index}");
 		return string.Empty;
 	}
 }

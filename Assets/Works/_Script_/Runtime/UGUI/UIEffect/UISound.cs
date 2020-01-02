@@ -18,7 +18,8 @@ namespace UnityEngine.UI
 
 		private void OnClickButton()
 		{
-			AudioManager.Instance.PlaySound($"Audio/UI/{SoundName}");
+			if (AudioManager.Instance != null)
+				AudioManager.Instance.PlaySound($"Audio/UI/{SoundName}");
 		}
 	}
 }

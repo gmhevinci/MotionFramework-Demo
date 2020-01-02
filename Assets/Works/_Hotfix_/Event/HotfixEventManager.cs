@@ -58,7 +58,7 @@ namespace Hotfix
 		{
 			if (_handlers.ContainsKey(eventTag) == false)
 			{
-				LogSystem.Log(ELogType.Warning, $"Not found message eventTag : {eventTag}");
+				HotfixLogger.Warning($"Not found message eventTag : {eventTag}");
 				return;
 			}
 

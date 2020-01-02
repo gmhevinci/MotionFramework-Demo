@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using MotionFramework.Network;
 
-public class ProtoMessagePacker : DefaultNetMessagePacker
+public class ProtoPackageCoder : DefaultPackageCoder
 {
-	public ProtoMessagePacker()
+	public ProtoPackageCoder()
 	{
 		PackageSizeFieldType = EPackageSizeFieldType.UShort;
 		MessageIDFieldType = EMessageIDFieldType.UShort;
