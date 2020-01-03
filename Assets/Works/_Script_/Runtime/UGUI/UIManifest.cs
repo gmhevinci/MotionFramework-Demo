@@ -78,7 +78,7 @@ namespace UnityEngine.UI
 			Transform result = null;
 			if (_runtimeDic.TryGetValue(path, out result) == false)
 			{
-				LogHelper.Log(ELogType.Warning, $"Not found ui element : {path}");
+				AppLog.Log(ELogType.Warning, $"Not found ui element : {path}");
 			}
 			return result;
 		}
@@ -94,7 +94,7 @@ namespace UnityEngine.UI
 
 			Component component = element.GetComponent(typeName);
 			if (component == null)
-				LogHelper.Log(ELogType.Warning, $"Not found ui component : {path}, {typeName}");
+				AppLog.Log(ELogType.Warning, $"Not found ui component : {path}, {typeName}");
 			return component;
 		}
 
@@ -109,7 +109,7 @@ namespace UnityEngine.UI
 
 			Component component = element.GetComponent<T>();
 			if (component == null)
-				LogHelper.Log(ELogType.Warning, $"Not found ui component : {path}, {typeof(T)}");
+				AppLog.Log(ELogType.Warning, $"Not found ui component : {path}, {typeof(T)}");
 			return component as T;
 		}
 

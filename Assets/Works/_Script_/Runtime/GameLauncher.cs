@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MotionFramework;
-using MotionFramework.Debug;
+using MotionFramework.Console;
 using MotionFramework.Resource;
 using MotionFramework.Event;
 using MotionFramework.Config;
@@ -14,7 +14,7 @@ using MotionFramework.Pool;
 
 public class GameLauncher : MonoBehaviour
 {
-	private IEngine _engine;
+	private IMotionEngine _motionEngine;
 
 	[Tooltip("是否启用脚本热更模式")]
 	public bool EnableILRuntime = true;
@@ -27,20 +27,18 @@ public class GameLauncher : MonoBehaviour
 
 	void Awake()
 	{
-		_engine = AppEngine.Instance;
+		_motionEngine = AppEngine.Instance;
+		_motionEngine.Initialize(this);
 
 		// 不销毁游戏对象
 		DontDestroyOnLoad(gameObject);
 
 		// 注册日志系统
-		LogHelper.RegisterCallback(HandleMotionEngineLog);
+		AppLog.RegisterCallback(HandleMotionFrameworkLog);
 
-		// 设置协程脚本
-		AppEngine.Instance.InitCoroutineBehaviour(this);
-
-		// 初始化调试控制台
+		// 初始化控制台
 		if (Application.isEditor || Debug.isDebugBuild)
-			DebugConsole.Initialize();
+			AppConsole.Initialize();
 
 		// 初始化应用
 		InitAppliaction();
@@ -51,7 +49,7 @@ public class GameLauncher : MonoBehaviour
 	}
 	void Update()
 	{
-		_engine.OnUpdate();
+		_motionEngine.OnUpdate();
 	}
 	void OnApplicationQuit()
 	{
@@ -65,7 +63,7 @@ public class GameLauncher : MonoBehaviour
 	void OnGUI()
 	{
 		if (Application.isEditor || Debug.isDebugBuild)
-			DebugConsole.DrawGUI();
+			AppConsole.DrawGUI();
 	}
 
 	private void InitAppliaction()
@@ -83,8 +81,10 @@ public class GameLauncher : MonoBehaviour
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 	}
 
-	// 日志回调
-	private void HandleMotionEngineLog(ELogType logType, string log)
+	/// <summary>
+	/// 框架日志监听
+	/// </summary>
+	private void HandleMotionFrameworkLog(ELogType logType, string log)
 	{
 		if (logType == ELogType.Log)
 		{
@@ -113,35 +113,39 @@ public class GameLauncher : MonoBehaviour
 	/// </summary>
 	private void RegisterAndRunAllGameModule()
 	{
-		// 模块创建参数
-		var patchCreateParam = new PatchManager.CreateParameters();
-		patchCreateParam.StrCDNServerIP = "127.0.0.1/CDN";
-		patchCreateParam.StrWebServerIP = "127.0.0.1/WEB";
-		patchCreateParam.SkipCDN = SkipCDN;
+		// 创建事件管理器
+		AppEngine.Instance.CreateModule<EventManager>(201);
 
-		// 模块创建参数
+		// 创建网络管理器
+		AppEngine.Instance.CreateModule<NetworkManager>(200);
+
+		// 创建补丁管理器
+		var patchCreateParam = new PatchManager.CreateParameters();
+		patchCreateParam.CDNServerIP = "127.0.0.1/CDN";
+		patchCreateParam.WebServerIP = "127.0.0.1/WEB";
+		patchCreateParam.SkipCDN = SkipCDN;
+		AppEngine.Instance.CreateModule<PatchManager>(patchCreateParam);
+
+		// 创建资源管理器
 		var resourceCreateParam = new ResourceManager.CreateParameters();
 		resourceCreateParam.AssetRootPath = GameDefine.StrAssetRootPath;
 		resourceCreateParam.AssetSystemMode = AssetSystemMode;
+		resourceCreateParam.BundleServices = PatchManager.Instance;
+		AppEngine.Instance.CreateModule<ResourceManager>(resourceCreateParam, 104);
 
-		// 模块创建参数
+		// 创建配表管理器
 		var configCreateParam = new ConfigManager.CreateParameters();
 		configCreateParam.BaseFolderPath = "Config";
-		
-		// 创建游戏模块
-		AppEngine.Instance.CreateModule<EventManager>();
-		AppEngine.Instance.CreateModule<NetworkManager>();
-		AppEngine.Instance.CreateModule<ResourceManager>(resourceCreateParam);
-		AppEngine.Instance.CreateModule<ConfigManager>(configCreateParam);
-		AppEngine.Instance.CreateModule<AudioManager>();
-		AppEngine.Instance.CreateModule<SceneManager>();
-		AppEngine.Instance.CreateModule<PoolManager>();
+		AppEngine.Instance.CreateModule<ConfigManager>(configCreateParam, 103);
 
-		// 最后创建补丁管理器
-		AppEngine.Instance.CreateModule<PatchManager>(patchCreateParam);
+		// 创建音频管理器
+		AppEngine.Instance.CreateModule<AudioManager>(102);
 
-		// 设置AssetBundle服务器接口
-		AssetSystem.Instance.BundleServices = PatchManager.Instance;
+		// 创建场景管理器
+		AppEngine.Instance.CreateModule<SceneManager>(101);
+
+		// 创建对象池管理器
+		AppEngine.Instance.CreateModule<PoolManager>(100);
 
 		// 注册补丁更新结束事件
 		EventManager.Instance.AddListener(EPatchEventMessageTag.PatchManagerEvent.ToString(), OnHandleEvent);

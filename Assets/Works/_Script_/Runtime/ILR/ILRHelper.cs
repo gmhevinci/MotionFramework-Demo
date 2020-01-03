@@ -62,7 +62,7 @@ public static class ILRHelper
 		}
 		else
 		{
-			LogHelper.Log(ELogType.Warning, "ILRuntime not generated binding scripts.");
+			AppLog.Log(ELogType.Warning, "ILRuntime not generated binding scripts.");
 		}
 
 		// 注册适配器

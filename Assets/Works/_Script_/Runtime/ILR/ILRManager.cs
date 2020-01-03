@@ -7,9 +7,9 @@ using System.Reflection;
 using UnityEngine;
 using MotionFramework;
 using MotionFramework.Resource;
-using MotionFramework.Debug;
+using MotionFramework.Console;
 
-public class ILRManager : ModuleSingleton<ILRManager>, IModule
+public class ILRManager : ModuleSingleton<ILRManager>, IMotionModule
 {
 	/// <summary>
 	/// 游戏模块创建参数
@@ -44,7 +44,7 @@ public class ILRManager : ModuleSingleton<ILRManager>, IModule
 	public List<Type> HotfixAssemblyTypes { private set; get; }
 
 
-	void IModule.OnCreate(System.Object param)
+	void IMotionModule.OnCreate(System.Object param)
 	{
 		CreateParameters createParam = param as CreateParameters;
 		if (createParam == null)
@@ -52,7 +52,7 @@ public class ILRManager : ModuleSingleton<ILRManager>, IModule
 
 		_isEnableILRuntime = createParam.IsEnableILRuntime;
 	}
-	void IModule.OnStart()
+	void IMotionModule.OnStart()
 	{
 		if (Application.isEditor || Debug.isDebugBuild)
 			LoadHotfixAssemblyWithPDB();
@@ -64,14 +64,14 @@ public class ILRManager : ModuleSingleton<ILRManager>, IModule
 		if (_startFun != null)
 			_startFun.Invoke();
 	}
-	void IModule.OnUpdate()
+	void IMotionModule.OnUpdate()
 	{
 		if (_updateFun != null)
 			_updateFun.Invoke();
 	}
-	void IModule.OnGUI()
+	void IMotionModule.OnGUI()
 	{
-		DebugConsole.GUILable($"[{nameof(ILRManager)}] EnableILRuntime : {_isEnableILRuntime}");
+		AppConsole.GUILable($"[{nameof(ILRManager)}] EnableILRuntime : {_isEnableILRuntime}");
 	}
 
 	/// <summary>

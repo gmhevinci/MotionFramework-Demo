@@ -1,8 +1,7 @@
 {
     "name": "Hotfix",
     "references": [
-        "MotionEngine",
-        "MotionModule",
+        "MotionFramework",
         "Script",
         "Script.ThirdParty"
     ],

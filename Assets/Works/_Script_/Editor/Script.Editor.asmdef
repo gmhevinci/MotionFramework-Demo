@@ -3,8 +3,7 @@
     "references": [
         "Script",
         "Script.ThirdParty",
-        "MotionEngine",
-        "MotionEngine.Editor"
+        "MotionFramework.Editor"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [
