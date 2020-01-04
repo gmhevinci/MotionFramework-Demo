@@ -273,6 +273,17 @@ namespace Hotfix
 
 		#region UI组件相关
 		/// <summary>
+		/// 获取窗口里缓存的元素对象
+		/// </summary>
+		/// <param name="path">对象路径</param>
+		protected Transform GetUIElement(string path)
+		{
+			if (_manifest == null)
+				return null;
+			return _manifest.GetUIElement(path);
+		}
+
+		/// <summary>
 		/// 获取窗口里缓存的组件对象
 		/// </summary>
 		/// <typeparam name="T">组件类型</typeparam>
