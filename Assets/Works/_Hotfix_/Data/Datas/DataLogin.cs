@@ -18,7 +18,7 @@ namespace Hotfix
 		public override void Update()
 		{
 			// 当网络连接成功之后发送登录消息
-			if (_isSendLoginMsg == false && NetworkManager.Instance.State == ENetworkState.Connected)
+			if (_isSendLoginMsg == false && NetworkManager.Instance.State == ENetworkStates.Connected)
 			{
 				_isSendLoginMsg = true;
 				SendLoginMsg(_account, _password);
@@ -41,7 +41,7 @@ namespace Hotfix
 		{
 			if (msg is HotfixEvent.ConnectServer)
 			{
-				if (NetworkManager.Instance.State != ENetworkState.Disconnect)
+				if (NetworkManager.Instance.State != ENetworkStates.Disconnect)
 					return;
 
 				HotfixEvent.ConnectServer message = msg as HotfixEvent.ConnectServer;
