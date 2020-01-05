@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4816405779432280029}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,6 +36,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &708384827637607845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3362714082601923633}
+  - component: {fileID: 7658900651388930553}
+  - component: {fileID: 2327481116218140410}
+  m_Layer: 5
+  m_Name: txt_content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3362714082601923633
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708384827637607845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7364456472591864973}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 48.2}
+  m_SizeDelta: {x: 653.29, y: 230.13}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7658900651388930553
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708384827637607845}
+  m_CullTransparentMesh: 0
+--- !u!114 &2327481116218140410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708384827637607845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &761805027537097382
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,7 +126,7 @@ GameObject:
   - component: {fileID: 6700777545668007006}
   - component: {fileID: 7580328499602383545}
   - component: {fileID: 1788517251265116118}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +205,7 @@ GameObject:
   - component: {fileID: 437830951239733771}
   - component: {fileID: 1355231160889441076}
   - component: {fileID: 6967926783085988586}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: txt_tips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +284,7 @@ GameObject:
   - component: {fileID: 4905312450599078750}
   - component: {fileID: 6207308524176423538}
   - component: {fileID: 6330133458117038025}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +358,7 @@ GameObject:
   - component: {fileID: 1114061940513655482}
   - component: {fileID: 735904600532265444}
   - component: {fileID: 8039857594211992624}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +432,8 @@ GameObject:
   - component: {fileID: 4386721012487762777}
   - component: {fileID: 3319224031288169375}
   - component: {fileID: 1772475018305300754}
-  m_Layer: 0
+  - component: {fileID: 5109314894715478586}
+  m_Layer: 5
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,6 +496,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &5109314894715478586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479868398061231475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528bcd7893ff75f46a984c6ffd31f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Atlas: {fileID: 4343727234628468602, guid: 5e75075111027eb49b0fbe6fd37992c0, type: 2}
 --- !u!1 &5787501567641161552
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +521,7 @@ GameObject:
   - component: {fileID: 8806759594862431017}
   - component: {fileID: 6332665590940921443}
   - component: {fileID: 5765741795524791863}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +638,8 @@ GameObject:
   - component: {fileID: 8043405832402844149}
   - component: {fileID: 2866638930076975142}
   - component: {fileID: 2797733763540872118}
-  m_Layer: 0
+  - component: {fileID: 3553348445816452356}
+  m_Layer: 5
   m_Name: btn_yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +659,7 @@ RectTransform:
   m_Children:
   - {fileID: 6700777545668007006}
   m_Father: {fileID: 7364456472591864973}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -651,6 +745,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &3553348445816452356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878458689868227416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528bcd7893ff75f46a984c6ffd31f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Atlas: {fileID: 4343727234628468602, guid: 9383e90d8fd76f241af15da9d73d2e55, type: 2}
 --- !u!1 &6398736321721266466
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 884606798252365968}
   - component: {fileID: 1370628496876552108}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +923,7 @@ GameObject:
   - component: {fileID: 2100133421776013757}
   - component: {fileID: 635621778574328818}
   - component: {fileID: 7548433436208650775}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1044,13 +1151,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7364456472591864973}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MessgeBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7364456472591864973
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1064,6 +1171,7 @@ RectTransform:
   m_Children:
   - {fileID: 6664807459511361132}
   - {fileID: 4386721012487762777}
+  - {fileID: 3362714082601923633}
   - {fileID: 6078283948824305274}
   m_Father: {fileID: 2100133421776013757}
   m_RootOrder: 2
@@ -1085,8 +1193,9 @@ GameObject:
   - component: {fileID: 7065406879249176620}
   - component: {fileID: 8606153857348655283}
   - component: {fileID: 8460747169798259904}
+  - component: {fileID: 5399050336069814905}
   m_Layer: 0
-  m_Name: UIHotfix
+  m_Name: PatchWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1174,3 +1283,53 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5399050336069814905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9202222789747178935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e0368782857b6448416c394736646c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _elementPath:
+  - PatchWindow
+  - PatchWindow/EventSystem
+  - PatchWindow/UICamera
+  - PatchWindow/UIWindow
+  - PatchWindow/UIWindow/Background
+  - PatchWindow/UIWindow/Slider
+  - PatchWindow/UIWindow/Slider/Background
+  - PatchWindow/UIWindow/Slider/Fill Area
+  - PatchWindow/UIWindow/Slider/Fill Area/Fill
+  - PatchWindow/UIWindow/Slider/txt_tips
+  - PatchWindow/UIWindow/MessgeBox
+  - PatchWindow/UIWindow/MessgeBox/Mask
+  - PatchWindow/UIWindow/MessgeBox/Frame
+  - PatchWindow/UIWindow/MessgeBox/txt_content
+  - PatchWindow/UIWindow/MessgeBox/btn_yes
+  - PatchWindow/UIWindow/MessgeBox/btn_yes/Text
+  _elementTrans:
+  - {fileID: 9167895381957558164}
+  - {fileID: 8843699389177310126}
+  - {fileID: 7266466292851966540}
+  - {fileID: 2100133421776013757}
+  - {fileID: 6603670838871176784}
+  - {fileID: 884606798252365968}
+  - {fileID: 4905312450599078750}
+  - {fileID: 4816405779432280029}
+  - {fileID: 1114061940513655482}
+  - {fileID: 437830951239733771}
+  - {fileID: 7364456472591864973}
+  - {fileID: 6664807459511361132}
+  - {fileID: 4386721012487762777}
+  - {fileID: 3362714082601923633}
+  - {fileID: 6078283948824305274}
+  - {fileID: 6700777545668007006}
+  _cacheAtlasTags:
+  - UIWindow
+  - UICommon
+  AttachPrefabs: []

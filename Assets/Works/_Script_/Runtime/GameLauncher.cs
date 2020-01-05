@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using MotionFramework;
 using MotionFramework.Console;
@@ -27,14 +27,15 @@ public class GameLauncher : MonoBehaviour
 
 	void Awake()
 	{
-		_motionEngine = AppEngine.Instance;
-		_motionEngine.Initialize(this);
-
 		// 不销毁游戏对象
 		DontDestroyOnLoad(gameObject);
 
 		// 注册日志系统
 		AppLog.RegisterCallback(HandleMotionFrameworkLog);
+
+		// 初始化框架
+		_motionEngine = AppEngine.Instance;
+		_motionEngine.Initialize(this);
 
 		// 初始化控制台
 		if (Application.isEditor || Debug.isDebugBuild)
@@ -45,20 +46,11 @@ public class GameLauncher : MonoBehaviour
 	}
 	void Start()
 	{
-		RegisterAndRunAllGameModule();
+		CreateGameModules();
 	}
 	void Update()
 	{
 		_motionEngine.OnUpdate();
-	}
-	void OnApplicationQuit()
-	{
-	}
-	void OnApplicationFocus(bool focusStatus)
-	{
-	}
-	void OnApplicationPause(bool pauseStatus)
-	{
 	}
 	void OnGUI()
 	{
@@ -82,7 +74,7 @@ public class GameLauncher : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 框架日志监听
+	/// 监听框架日志
 	/// </summary>
 	private void HandleMotionFrameworkLog(ELogType logType, string log)
 	{
@@ -108,54 +100,81 @@ public class GameLauncher : MonoBehaviour
 		}
 	}
 
-	/// <summary>
-	/// 注册所有游戏模块
-	/// </summary>
-	private void RegisterAndRunAllGameModule()
+	private void CreateGameModules()
 	{
 		// 创建事件管理器
-		AppEngine.Instance.CreateModule<EventManager>(201);
+		AppEngine.Instance.CreateModule<EventManager>();
 
 		// 创建网络管理器
-		AppEngine.Instance.CreateModule<NetworkManager>(200);
+		AppEngine.Instance.CreateModule<NetworkManager>();
 
 		// 创建补丁管理器
-		var patchCreateParam = new PatchManager.CreateParameters();
-		patchCreateParam.CDNServerIP = "127.0.0.1/CDN";
-		patchCreateParam.WebServerIP = "127.0.0.1/WEB";
-		patchCreateParam.SkipCDN = SkipCDN;
-		AppEngine.Instance.CreateModule<PatchManager>(patchCreateParam);
+		IBundleServices bundleServices = null;
+		if (AssetSystemMode == EAssetSystemMode.BundleMode)
+		{
+			var patchCreateParam = new PatchManager.CreateParameters();
+			patchCreateParam.CDNServerIP = "127.0.0.1/CDN";
+			patchCreateParam.WebServerIP = "127.0.0.1/WEB";
+			bundleServices = AppEngine.Instance.CreateModule<PatchManager>(patchCreateParam);
+			EventManager.Instance.AddListener(EPatchEventMessageTag.PatchSystemDispatchEvents.ToString(), OnHandleEvent);
+			EventManager.Instance.AddListener(EPatchEventMessageTag.PatchWindowDispatchEvents.ToString(), OnHandleEvent);
+		}
 
 		// 创建资源管理器
 		var resourceCreateParam = new ResourceManager.CreateParameters();
-		resourceCreateParam.AssetRootPath = GameDefine.StrAssetRootPath;
+		resourceCreateParam.AssetRootPath = GameDefine.AssetRootPath;
 		resourceCreateParam.AssetSystemMode = AssetSystemMode;
-		resourceCreateParam.BundleServices = PatchManager.Instance;
-		AppEngine.Instance.CreateModule<ResourceManager>(resourceCreateParam, 104);
-
-		// 创建配表管理器
-		var configCreateParam = new ConfigManager.CreateParameters();
-		configCreateParam.BaseFolderPath = "Config";
-		AppEngine.Instance.CreateModule<ConfigManager>(configCreateParam, 103);
+		resourceCreateParam.BundleServices = bundleServices;
+		AppEngine.Instance.CreateModule<ResourceManager>(resourceCreateParam);
 
 		// 创建音频管理器
-		AppEngine.Instance.CreateModule<AudioManager>(102);
+		AppEngine.Instance.CreateModule<AudioManager>();
 
 		// 创建场景管理器
-		AppEngine.Instance.CreateModule<SceneManager>(101);
+		AppEngine.Instance.CreateModule<SceneManager>();
 
 		// 创建对象池管理器
-		AppEngine.Instance.CreateModule<PoolManager>(100);
+		AppEngine.Instance.CreateModule<PoolManager>();
 
-		// 注册补丁更新结束事件
-		EventManager.Instance.AddListener(EPatchEventMessageTag.PatchManagerEvent.ToString(), OnHandleEvent);
+		// 直接进入游戏
+		if (bundleServices == null)
+			CreateILRManager();
 	}
-
+	private void CreateILRManager()
+	{
+		ILRManager.CreateParameters createParameters = new ILRManager.CreateParameters();
+		createParameters.IsEnableILRuntime = EnableILRuntime;
+		AppEngine.Instance.CreateModule<ILRManager>(createParameters);
+	}
 	private void OnHandleEvent(IEventMessage msg)
 	{
-		if(msg is PatchEventMessageDefine.PatchOver)
+		if (msg is PatchEventMessageDefine.PatchStatesChange)
 		{
-			AppEngine.Instance.CreateModule<ILRManager>(new ILRManager.CreateParameters() { IsEnableILRuntime = EnableILRuntime });
+			var message = msg as PatchEventMessageDefine.PatchStatesChange;
+
+			// 准备阶段结束
+			if (message.CurrentStates == EPatchStates.PrepareOver)
+			{
+				if (SkipCDN)
+					CreateILRManager();
+				else
+					AppEngine.Instance.CreateModule<PatchWindow>();
+			}
+
+			// 补丁下载完毕
+			// 注意：在补丁下载结束之后，一定要强制释放资源管理器里所有的资源，还有重新载入Unity清单。
+			if (message.CurrentStates == EPatchStates.DownloadOver)
+			{
+				PatchWindow.Instance.DestroyWindow();
+				ResourceManager.Instance.ForceReleaseAll();
+				PatchManager.Instance.ReloadUnityManifest();
+				CreateILRManager();
+			}
+		}
+
+		if(msg is PatchEventMessageDefine.OperationEvent)
+		{
+			PatchManager.Instance.HandleEventMessage(msg);
 		}
 	}
 }

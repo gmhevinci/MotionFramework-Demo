@@ -9,7 +9,7 @@ public class ILRDefine
 	/// <summary>
 	/// 我们设定的DLL存储目录
 	/// </summary>
-	public const string StrMyAssemblyFolderPath = GameDefine.StrAssetRootPath + "/Assembly";
+	public const string StrMyAssemblyFolderPath = GameDefine.AssetRootPath + "/Assembly";
 
 	/// <summary>
 	/// 热更程序集的名称
