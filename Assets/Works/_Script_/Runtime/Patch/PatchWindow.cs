@@ -118,7 +118,7 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 				Application.Quit();
 
 #if UNITY_DITOR
-			UnityEditor.EditorApplication.isPlaying = false;
+				UnityEditor.EditorApplication.isPlaying = false;
 #endif
 			};
 			ShowMessageBox($"发现新的安装包 : {message.NewVersion}，请重新下载游戏", callback);
