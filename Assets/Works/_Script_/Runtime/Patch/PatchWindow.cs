@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,8 +11,9 @@ using MotionFramework.Event;
 public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 {
 	private AssetReference _assetRef;
-	private EPatchStates _currentStates = EPatchStates.None;
-
+	private System.Action _clickYes;
+	private System.Action _clickNo;
+	
 	// UGUI相关
 	private GameObject _uiRoot;
 	private UIManifest _manifest;
@@ -36,10 +38,37 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 	{
 	}
 
+	private void Handle_Completed(AssetOperationHandle obj)
+	{
+		if (obj.AssetObject == null)
+			return;
+
+		_uiRoot = obj.InstantiateObject;
+		_manifest = _uiRoot.GetComponent<UIManifest>();
+		OnWindowCreate();
+	}
+	private void OnWindowCreate()
+	{
+		_slider = _manifest.GetUIComponent<Slider>("PatchWindow/UIWindow/Slider");
+		_tips = _manifest.GetUIComponent<Text>("PatchWindow/UIWindow/Slider/txt_tips");
+		_messageBoxObj = _manifest.GetUIElement("PatchWindow/UIWindow/MessgeBox").gameObject;
+		_messageBoxObj.SetActive(false);
+		_messageBoxContent = _manifest.GetUIComponent<Text>("PatchWindow/UIWindow/MessgeBox/txt_content");
+		_manifest.GetUIComponent<Button>("PatchWindow/UIWindow/MessgeBox/btn_yes").onClick.AddListener(OnClickMessageBoxOK);
+
+		EventManager.Instance.AddListener(EPatchEventMessageTag.PatchSystemDispatchEvents.ToString(), OnHandleEvent);
+
+		SendOperationEvent(EPatchOperation.BeginingRequestGameVersion);
+	}
+	private void OnWindowDestroy()
+	{
+		EventManager.Instance.RemoveListener(EPatchEventMessageTag.PatchSystemDispatchEvents.ToString(), OnHandleEvent);
+	}
+
 	/// <summary>
-	/// 销毁窗体
+	/// 关闭
 	/// </summary>
-	public void DestroyWindow()
+	public void Shutdown()
 	{
 		OnWindowDestroy();
 
@@ -57,47 +86,52 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 	}
 
 	/// <summary>
-	/// 事件
+	/// 接收事件
 	/// </summary>
 	private void OnHandleEvent(IEventMessage msg)
 	{
 		if (msg is PatchEventMessageDefine.PatchStatesChange)
 		{
 			var message = msg as PatchEventMessageDefine.PatchStatesChange;
-			_currentStates = message.CurrentStates;
-
-			if (_currentStates == EPatchStates.None)
+			if (message.CurrentStates == EPatchStates.None)
 				_tips.text = "正在准备游戏世界......";
-
-			if (_currentStates == EPatchStates.RequestGameVersion)
+			else if (message.CurrentStates == EPatchStates.RequestGameVersion)
 				_tips.text = "正在请求最新游戏版本";
-
-			if (_currentStates == EPatchStates.ParseWebPatchManifest)
+			else if(message.CurrentStates == EPatchStates.ParseWebPatchManifest)
 				_tips.text = "正在分析新清单";
-
-			if (_currentStates == EPatchStates.GetDonwloadList)
+			else if(message.CurrentStates == EPatchStates.GetDonwloadList)
 				_tips.text = "正在准备下载列表";
-
-			if (_currentStates == EPatchStates.DownloadWebFiles)
+			else if(message.CurrentStates == EPatchStates.DownloadWebFiles)
 				_tips.text = "正在下载更新文件";
-
-			if (_currentStates == EPatchStates.DownloadWebPatchManifest)
+			else if(message.CurrentStates == EPatchStates.DownloadWebPatchManifest)
 				_tips.text = "正在替换最新的清单";
-
-			if (_currentStates == EPatchStates.DownloadOver)
+			else if(message.CurrentStates == EPatchStates.DownloadOver)
 				_tips.text = "欢迎来到游戏世界";
 		}
 
 		else if (msg is PatchEventMessageDefine.FoundNewAPP)
 		{
 			var message = msg as PatchEventMessageDefine.FoundNewAPP;
-			ShowMessageBox($"发现新版本 : {message.NewVersion}");
+			System.Action callback = () => 
+			{
+				// 退出游戏
+				Application.Quit();
+
+#if UNITY_DITOR
+			UnityEditor.EditorApplication.isPlaying = false;
+#endif
+			};
+			ShowMessageBox($"发现新的安装包 : {message.NewVersion}，请重新下载游戏", callback);
 		}
 
 		else if (msg is PatchEventMessageDefine.FoundUpdateFiles)
 		{
 			var message = msg as PatchEventMessageDefine.FoundUpdateFiles;
-			ShowMessageBox($"发现更新文件需要下载 : 一共{message.TotalCount}个文件，总大小{message.TotalSizeKB / 1024f}MB");
+			System.Action callback = () =>
+			{
+				SendOperationEvent(EPatchOperation.BeginingDownloadWebFiles);
+			};
+			ShowMessageBox($"发现新版本需要更新 : 一共{message.TotalCount}个文件，总大小{message.TotalSizeKB / 1024f}MB", callback);
 		}
 
 		else if (msg is PatchEventMessageDefine.DownloadFilesProgress)
@@ -109,25 +143,41 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 
 		else if (msg is PatchEventMessageDefine.GameVersionRequestFailed)
 		{
-			ShowMessageBox($"请求最新游戏版本失败");
+			System.Action callback = () =>
+			{
+				SendOperationEvent(EPatchOperation.TryRequestGameVersion);
+			};
+			ShowMessageBox($"请求最新版本失败，请检查网络状况", callback);
 		}
 
 		else if (msg is PatchEventMessageDefine.WebFileDownloadFailed)
 		{
 			var message = msg as PatchEventMessageDefine.WebFileDownloadFailed;
-			ShowMessageBox($"更新文件下载失败 : {message.FilePath}");
+			System.Action callback = () =>
+			{
+				SendOperationEvent(EPatchOperation.TryDownloadWebFiles);
+			};
+			ShowMessageBox($"文件下载失败 : {message.FilePath}", callback);
 		}
 
 		else if (msg is PatchEventMessageDefine.WebFileMD5VerifyFailed)
 		{
 			var message = msg as PatchEventMessageDefine.WebFileMD5VerifyFailed;
-			ShowMessageBox($"更新文件验证失败 : {message.FilePath}");
+			System.Action callback = () =>
+			{
+				SendOperationEvent(EPatchOperation.TryDownloadWebFiles);
+			};
+			ShowMessageBox($"文件验证失败 : {message.FilePath}", callback);
 		}
 
 		else if (msg is PatchEventMessageDefine.WebPatchManifestDownloadFailed)
 		{
 			var message = msg as PatchEventMessageDefine.WebFileMD5VerifyFailed;
-			ShowMessageBox($"清单文件下载失败 : {message.FilePath}");
+			System.Action callback = () =>
+			{
+				SendOperationEvent(EPatchOperation.TryDownloadWebPatchManifest);
+			};
+			ShowMessageBox($"清单下载失败 : {message.FilePath}", callback);
 		}
 
 		else
@@ -136,41 +186,28 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 		}
 	}
 
-	private void Handle_Completed(AssetOperationHandle obj)
-	{
-		if (obj.AssetObject == null)
-			return;
-
-		_uiRoot = obj.InstantiateObject;
-		_manifest = _uiRoot.GetComponent<UIManifest>();
-		OnWindowCreate();
-	}
-	private void OnWindowCreate()
-	{
-		_slider = _manifest.GetUIComponent<Slider>("PatchWindow/UIWindow/Slider");
-		_tips = _manifest.GetUIComponent<Text>("PatchWindow/UIWindow/Slider/txt_tips");
-		_messageBoxObj = _manifest.GetUIElement("PatchWindow/UIWindow/MessgeBox").gameObject;
-		_messageBoxContent = _manifest.GetUIComponent<Text>("PatchWindow/UIWindow/MessgeBox/txt_content");
-		_manifest.GetUIComponent<Button>("PatchWindow/UIWindow/MessgeBox/btn_yes").onClick.AddListener(OnClickMessageBoxOK);
-
-		EventManager.Instance.AddListener(EPatchEventMessageTag.PatchSystemDispatchEvents.ToString(), OnHandleEvent);
-	}
-	private void OnWindowDestroy()
-	{
-		EventManager.Instance.RemoveListener(EPatchEventMessageTag.PatchSystemDispatchEvents.ToString(), OnHandleEvent);
-	}
-
 	// 消息框相关
 	private void OnClickMessageBoxOK()
 	{
+		_clickYes?.Invoke();
+		HideMessageBox();
 	}
-	private void ShowMessageBox(string content)
+	private void ShowMessageBox(string content, System.Action clickYes)
 	{
+		_clickYes = clickYes;
 		_messageBoxObj.SetActive(true);
 		_messageBoxContent.text = content;
 	}
 	private void HideMessageBox()
 	{
 		_messageBoxObj.SetActive(false);
+	}
+
+	// 事件相关
+	private void SendOperationEvent(EPatchOperation operation)
+	{
+		PatchEventMessageDefine.OperationEvent msg = new PatchEventMessageDefine.OperationEvent();
+		msg.operation = operation;
+		EventManager.Instance.SendMessage(EPatchEventMessageTag.PatchWindowDispatchEvents.ToString(), msg);
 	}
 }

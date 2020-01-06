@@ -165,7 +165,7 @@ public class GameLauncher : MonoBehaviour
 			// 注意：在补丁下载结束之后，一定要强制释放资源管理器里所有的资源，还有重新载入Unity清单。
 			if (message.CurrentStates == EPatchStates.DownloadOver)
 			{
-				PatchWindow.Instance.DestroyWindow();
+				PatchWindow.Instance.Shutdown();
 				ResourceManager.Instance.ForceReleaseAll();
 				PatchManager.Instance.ReloadUnityManifest();
 				CreateILRManager();
