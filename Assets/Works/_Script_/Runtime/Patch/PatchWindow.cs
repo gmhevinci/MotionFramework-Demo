@@ -114,11 +114,10 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 			var message = msg as PatchEventMessageDefine.FoundNewAPP;
 			System.Action callback = () => 
 			{
-				// 退出游戏
-				Application.Quit();
-
-#if UNITY_DITOR
+#if UNITY_EDITOR
 				UnityEditor.EditorApplication.isPlaying = false;
+#else
+				Application.Quit();
 #endif
 			};
 			ShowMessageBox($"发现新的安装包 : {message.NewVersion}，请重新下载游戏", callback);
@@ -131,14 +130,17 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 			{
 				SendOperationEvent(EPatchOperation.BeginingDownloadWebFiles);
 			};
-			ShowMessageBox($"发现新版本需要更新 : 一共{message.TotalCount}个文件，总大小{message.TotalSizeKB / 1024f}MB", callback);
+			string totalSize = (message.TotalSizeKB / 1024f).ToString("f3");
+			ShowMessageBox($"发现新版本需要更新 : 一共{message.TotalCount}个文件，总大小{totalSize}MB", callback);
 		}
 
 		else if (msg is PatchEventMessageDefine.DownloadFilesProgress)
 		{
 			var message = msg as PatchEventMessageDefine.DownloadFilesProgress;
 			_slider.value = message.CurrentDownloadCount / message.TotalDownloadCount;
-			_tips.text = $"{message.CurrentDownloadCount}/{message.TotalDownloadCount} {message.CurrentDownloadSizeKB / 1024f}MB/{message.TotalDownloadSizeKB / 1024f}MB";
+			string currentSize = (message.CurrentDownloadSizeKB / 1024f).ToString("f3");
+			string totalSize = (message.TotalDownloadSizeKB / 1024f).ToString("f3");
+			_tips.text = $"{message.CurrentDownloadCount}/{message.TotalDownloadCount} {currentSize}MB/{totalSize}MB";
 		}
 
 		else if (msg is PatchEventMessageDefine.GameVersionRequestFailed)
@@ -157,7 +159,7 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 			{
 				SendOperationEvent(EPatchOperation.TryDownloadWebFiles);
 			};
-			ShowMessageBox($"文件下载失败 : {message.FilePath}", callback);
+			ShowMessageBox($"文件下载失败 : {message.Name}", callback);
 		}
 
 		else if (msg is PatchEventMessageDefine.WebFileMD5VerifyFailed)
@@ -167,7 +169,7 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 			{
 				SendOperationEvent(EPatchOperation.TryDownloadWebFiles);
 			};
-			ShowMessageBox($"文件验证失败 : {message.FilePath}", callback);
+			ShowMessageBox($"文件验证失败 : {message.Name}", callback);
 		}
 
 		else if (msg is PatchEventMessageDefine.WebPatchManifestDownloadFailed)
@@ -177,7 +179,7 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 			{
 				SendOperationEvent(EPatchOperation.TryDownloadWebPatchManifest);
 			};
-			ShowMessageBox($"清单下载失败 : {message.FilePath}", callback);
+			ShowMessageBox($"清单下载失败 : {message.Name}", callback);
 		}
 
 		else

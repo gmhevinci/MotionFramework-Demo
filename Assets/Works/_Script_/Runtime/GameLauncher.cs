@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using MotionFramework;
 using MotionFramework.Console;
@@ -113,8 +114,14 @@ public class GameLauncher : MonoBehaviour
 		if (AssetSystemMode == EAssetSystemMode.BundleMode)
 		{
 			var patchCreateParam = new PatchManager.CreateParameters();
-			patchCreateParam.CDNServerIP = "127.0.0.1/CDN";
-			patchCreateParam.WebServerIP = "127.0.0.1/WEB";
+			patchCreateParam.WebServers = new Dictionary<RuntimePlatform, string>();
+			patchCreateParam.WebServers.Add(RuntimePlatform.Android, $"127.0.0.1/WEB/Android/GameVersion.php");
+			patchCreateParam.WebServers.Add(RuntimePlatform.IPhonePlayer, $"127.0.0.1/WEB/Iphone/GameVersion.php");
+			patchCreateParam.CDNServers = new Dictionary<RuntimePlatform, string>();
+			patchCreateParam.CDNServers.Add(RuntimePlatform.Android, "127.0.0.1/CDN/Android");
+			patchCreateParam.CDNServers.Add(RuntimePlatform.IPhonePlayer, "127.0.0.1/CDN/Iphone");
+			patchCreateParam.DefaultWebServerIP = "127.0.0.1/WEB/PC/GameVersion.php";
+			patchCreateParam.DefaultCDNServerIP = "127.0.0.1/CDN/PC";
 			bundleServices = AppEngine.Instance.CreateModule<PatchManager>(patchCreateParam);
 			EventManager.Instance.AddListener(EPatchEventMessageTag.PatchSystemDispatchEvents.ToString(), OnHandleEvent);
 			EventManager.Instance.AddListener(EPatchEventMessageTag.PatchWindowDispatchEvents.ToString(), OnHandleEvent);
