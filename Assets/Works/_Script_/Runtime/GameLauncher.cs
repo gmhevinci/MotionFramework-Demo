@@ -114,15 +114,23 @@ public class GameLauncher : MonoBehaviour
 		if (AssetSystemMode == EAssetSystemMode.BundleMode)
 		{
 			var patchCreateParam = new PatchManager.CreateParameters();
+			patchCreateParam.ServerID = PlayerPrefs.GetInt("SERVER_ID_KEY", 0);
+			patchCreateParam.ChannelID = 0;
+			patchCreateParam.DeviceID = 0;
+			patchCreateParam.TestFlag = PlayerPrefs.GetInt("TEST_FLAG_KEY", 0);
+
 			patchCreateParam.WebServers = new Dictionary<RuntimePlatform, string>();
-			patchCreateParam.WebServers.Add(RuntimePlatform.Android, $"127.0.0.1/WEB/Android/GameVersion.php");
-			patchCreateParam.WebServers.Add(RuntimePlatform.IPhonePlayer, $"127.0.0.1/WEB/Iphone/GameVersion.php");
+			patchCreateParam.WebServers.Add(RuntimePlatform.Android, "127.0.0.1/WEB/Android/GameVersion.php");
+			patchCreateParam.WebServers.Add(RuntimePlatform.IPhonePlayer, "127.0.0.1/WEB/Iphone/GameVersion.php");
+
 			patchCreateParam.CDNServers = new Dictionary<RuntimePlatform, string>();
 			patchCreateParam.CDNServers.Add(RuntimePlatform.Android, "127.0.0.1/CDN/Android");
 			patchCreateParam.CDNServers.Add(RuntimePlatform.IPhonePlayer, "127.0.0.1/CDN/Iphone");
+
 			patchCreateParam.DefaultWebServerIP = "127.0.0.1/WEB/PC/GameVersion.php";
 			patchCreateParam.DefaultCDNServerIP = "127.0.0.1/CDN/PC";
 			bundleServices = AppEngine.Instance.CreateModule<PatchManager>(patchCreateParam);
+
 			EventManager.Instance.AddListener(EPatchEventMessageTag.PatchSystemDispatchEvents.ToString(), OnHandleEvent);
 			EventManager.Instance.AddListener(EPatchEventMessageTag.PatchWindowDispatchEvents.ToString(), OnHandleEvent);
 		}
@@ -159,8 +167,8 @@ public class GameLauncher : MonoBehaviour
 		{
 			var message = msg as PatchEventMessageDefine.PatchStatesChange;
 
-			// 准备阶段结束
-			if (message.CurrentStates == EPatchStates.PrepareOver)
+			// 初始化结束
+			if (message.CurrentStates == EPatchStates.InitiationOver)
 			{
 				if (SkipCDN)
 					CreateILRManager();

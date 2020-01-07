@@ -109,18 +109,14 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 				_tips.text = "欢迎来到游戏世界";
 		}
 
-		else if (msg is PatchEventMessageDefine.FoundNewAPP)
+		else if (msg is PatchEventMessageDefine.FoundForceInstallAPP)
 		{
-			var message = msg as PatchEventMessageDefine.FoundNewAPP;
+			var message = msg as PatchEventMessageDefine.FoundForceInstallAPP;
 			System.Action callback = () => 
 			{
-#if UNITY_EDITOR
-				UnityEditor.EditorApplication.isPlaying = false;
-#else
-				Application.Quit();
-#endif
+				Application.OpenURL(message.InstallURL);
 			};
-			ShowMessageBox($"发现新的安装包 : {message.NewVersion}，请重新下载游戏", callback);
+			ShowMessageBox($"发现强制更新安装包 : {message.NewVersion}，请重新下载游戏", callback);
 		}
 
 		else if (msg is PatchEventMessageDefine.FoundUpdateFiles)
