@@ -131,8 +131,8 @@ public class GameLauncher : MonoBehaviour
 			patchCreateParam.DefaultCDNServerIP = "127.0.0.1/CDN/PC";
 			bundleServices = AppEngine.Instance.CreateModule<PatchManager>(patchCreateParam);
 
-			EventManager.Instance.AddListener(EPatchEventMessageTag.PatchSystemDispatchEvents.ToString(), OnHandleEvent);
-			EventManager.Instance.AddListener(EPatchEventMessageTag.PatchWindowDispatchEvents.ToString(), OnHandleEvent);
+			EventManager.Instance.AddListener<PatchEventMessageDefine.PatchStatesChange>(OnHandleEvent);
+			EventManager.Instance.AddListener<PatchEventMessageDefine.OperationEvent>(OnHandleEvent);
 		}
 
 		// 创建资源管理器
