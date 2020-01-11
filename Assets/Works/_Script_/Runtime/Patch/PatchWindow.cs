@@ -28,9 +28,6 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 		_assetRef = new AssetReference("UIPanel/PatchWindow");
 		_assetRef.LoadAssetAsync<GameObject>().Completed += Handle_Completed;
 	}
-	void IMotionModule.OnStart()
-	{
-	}
 	void IMotionModule.OnUpdate()
 	{
 	}

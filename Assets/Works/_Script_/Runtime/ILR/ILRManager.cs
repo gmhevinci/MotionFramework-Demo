@@ -52,7 +52,20 @@ public class ILRManager : ModuleSingleton<ILRManager>, IMotionModule
 
 		_isEnableILRuntime = createParam.IsEnableILRuntime;
 	}
-	void IMotionModule.OnStart()
+	void IMotionModule.OnUpdate()
+	{
+		if (_updateFun != null)
+			_updateFun.Invoke();
+	}
+	void IMotionModule.OnGUI()
+	{
+		AppConsole.GUILable($"[{nameof(ILRManager)}] EnableILRuntime : {_isEnableILRuntime}");
+	}
+
+	/// <summary>
+	/// 开始游戏
+	/// </summary>
+	public void StartGame()
 	{
 		if (Application.isEditor || Debug.isDebugBuild)
 			LoadHotfixAssemblyWithPDB();
@@ -63,15 +76,6 @@ public class ILRManager : ModuleSingleton<ILRManager>, IMotionModule
 
 		if (_startFun != null)
 			_startFun.Invoke();
-	}
-	void IMotionModule.OnUpdate()
-	{
-		if (_updateFun != null)
-			_updateFun.Invoke();
-	}
-	void IMotionModule.OnGUI()
-	{
-		AppConsole.GUILable($"[{nameof(ILRManager)}] EnableILRuntime : {_isEnableILRuntime}");
 	}
 
 	/// <summary>

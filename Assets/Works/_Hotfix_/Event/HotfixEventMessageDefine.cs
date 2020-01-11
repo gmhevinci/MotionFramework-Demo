@@ -1,15 +1,19 @@
 ﻿
 namespace Hotfix
 {
-	// 热更层的事件标签
+	/// <summary>
+	/// 热更层的事件标签
+	/// </summary>
 	public enum HotfixEventMessageTag
 	{
 		BattleEvent,
-		ConnectServer,
+		LoginEvent,
 	}
-
-	// 热更层的事件类型
-	public class HotfixEvent
+	
+	/// <summary>
+	/// 登录事件
+	/// </summary>
+	public class LoginEvent
 	{
 		public class ConnectServer : IHotfixEventMessage
 		{
@@ -18,7 +22,9 @@ namespace Hotfix
 		}
 	}
 
-	// 战斗事件类型
+	/// <summary>
+	/// 战斗事件
+	/// </summary>
 	public class BattleEvent
 	{
 		public class CharacterDead : IHotfixEventMessage

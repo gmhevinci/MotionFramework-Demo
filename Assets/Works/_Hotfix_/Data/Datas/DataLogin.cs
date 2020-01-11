@@ -2,30 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using MotionFramework.Network;
+using MotionFramework.Event;
 
 namespace Hotfix
 {
 	public class DataLogin : DataBase
 	{
-		private string _account = string.Empty;
-		private string _password = string.Empty;
-		private bool _isSendLoginMsg = false;
+		private string _account;
+		private string _password;
 
 		public override void Start()
 		{
-			AddEventListener(HotfixEventMessageTag.ConnectServer, OnHandleEventMessage);
+			AddEventListener(HotfixEventMessageTag.LoginEvent, OnHandleEventMessage);
+			EventManager.Instance.AddListener<NetworkEventMessageDefine.ConnectSuccess>(OnHandleMonoEventMessage);
 		}
 		public override void Update()
 		{
-			// 当网络连接成功之后发送登录消息
-			if (_isSendLoginMsg == false && NetworkManager.Instance.State == ENetworkStates.Connected)
-			{
-				_isSendLoginMsg = true;
-				SendLoginMsg(_account, _password);
-			}
 		}
 		public override void Destroy()
 		{
+			EventManager.Instance.RemoveListener<NetworkEventMessageDefine.ConnectSuccess>(OnHandleMonoEventMessage);
 		}
 		public override void OnHandleNetMessage(IHotfixNetMessage msg)
 		{
@@ -33,29 +29,31 @@ namespace Hotfix
 			{
 				R2C_Login message = msg as R2C_Login;
 				HotfixLogger.Log($"登录成功：{message.Address} {message.Key}");
-
 				HotfixFsmManager.Instance.ChangeState(EHotfixStateType.Town);
 			}
 		}
-		public void OnHandleEventMessage(IHotfixEventMessage msg)
-		{
-			if (msg is HotfixEvent.ConnectServer)
-			{
-				if (NetworkManager.Instance.State != ENetworkStates.Disconnect)
-					return;
 
-				HotfixEvent.ConnectServer message = msg as HotfixEvent.ConnectServer;
+		private void OnHandleEventMessage(IHotfixEventMessage msg)
+		{
+			if (msg is LoginEvent.ConnectServer)
+			{
+				LoginEvent.ConnectServer message = msg as LoginEvent.ConnectServer;
 				_account = message.Account;
 				_password = message.Password;
 
 				// 连接到ET5.0服务器
-				/*
-				if (NetworkManager.Instance.State == ENetworkState.Disconnect)
-					NetworkManager.Instance.ConnectServer("127.0.0.1", 10002, typeof(ProtoPackageParser));
-				*/
+				NetworkManager.Instance.ConnectServer("49.233.151.34", 10002);
 
 				// TODO 跳过服务器直接进入游戏
-				HotfixFsmManager.Instance.ChangeState(EHotfixStateType.Town);
+				//HotfixFsmManager.Instance.ChangeState(EHotfixStateType.Town);
+			}
+		}
+		private void OnHandleMonoEventMessage(IEventMessage msg)
+		{
+			// 当服务器连接成功
+			if(msg is NetworkEventMessageDefine.ConnectSuccess)
+			{
+				SendLoginMsg(_account, _password);
 			}
 		}
 

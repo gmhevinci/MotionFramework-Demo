@@ -41,10 +41,10 @@ namespace Hotfix
 				_loginSprite.SpriteName = "Button_Rectangular_Large_Green_Background";
 
 			// 发送登录事件
-			var message = new HotfixEvent.ConnectServer();
+			var message = new LoginEvent.ConnectServer();
 			message.Account = _account.text;
 			message.Password = _password.text;
-			HotfixEventManager.Instance.Send(HotfixEventMessageTag.ConnectServer, message);
+			HotfixEventManager.Instance.Send(HotfixEventMessageTag.LoginEvent, message);
 		}
 	}
 }

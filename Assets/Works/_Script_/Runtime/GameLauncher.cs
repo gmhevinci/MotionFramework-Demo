@@ -59,6 +59,9 @@ public class GameLauncher : MonoBehaviour
 			AppConsole.DrawGUI();
 	}
 
+	/// <summary>
+	/// 初始化应用
+	/// </summary>
 	private void InitAppliaction()
 	{
 		UnityEngine.Debug.Log($"Game run platform : {Application.platform}");
@@ -101,13 +104,18 @@ public class GameLauncher : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// 创建游戏模块
+	/// </summary>
 	private void CreateGameModules()
 	{
 		// 创建事件管理器
 		AppEngine.Instance.CreateModule<EventManager>();
 
 		// 创建网络管理器
-		AppEngine.Instance.CreateModule<NetworkManager>();
+		var networkCreateParam = new NetworkManager.CreateParameters();
+		networkCreateParam.PackageCoderType = typeof(ProtoPackageCoder);
+		AppEngine.Instance.CreateModule<NetworkManager>(networkCreateParam);
 
 		// 创建补丁管理器
 		IBundleServices bundleServices = null;
@@ -151,15 +159,16 @@ public class GameLauncher : MonoBehaviour
 		// 创建对象池管理器
 		AppEngine.Instance.CreateModule<PoolManager>();
 
-		// 直接进入游戏
-		if (bundleServices == null)
-			CreateILRManager();
-	}
-	private void CreateILRManager()
-	{
+		// 创建ILRuntime管理器
 		ILRManager.CreateParameters createParameters = new ILRManager.CreateParameters();
 		createParameters.IsEnableILRuntime = EnableILRuntime;
 		AppEngine.Instance.CreateModule<ILRManager>(createParameters);
+
+		// 直接进入游戏
+		if (bundleServices == null)
+			ILRManager.Instance.StartGame();
+		else
+			PatchManager.Instance.Run();
 	}
 	private void OnHandleEvent(IEventMessage msg)
 	{
@@ -171,7 +180,7 @@ public class GameLauncher : MonoBehaviour
 			if (message.CurrentStates == EPatchStates.InitiationOver)
 			{
 				if (SkipCDN)
-					CreateILRManager();
+					ILRManager.Instance.StartGame();
 				else
 					AppEngine.Instance.CreateModule<PatchWindow>();
 			}
@@ -183,7 +192,7 @@ public class GameLauncher : MonoBehaviour
 				PatchWindow.Instance.Shutdown();
 				ResourceManager.Instance.ForceReleaseAll();
 				PatchManager.Instance.ReloadUnityManifest();
-				CreateILRManager();
+				ILRManager.Instance.StartGame();
 			}
 		}
 

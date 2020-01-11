@@ -77,7 +77,7 @@ namespace Hotfix
 		/// </summary>
 		public bool IsPrepareUIRoot()
 		{
-			return _handle.States == EAssetProviderStates.Succeed;
+			return _handle.States == EAssetProviderStates.Success;
 		}
 
 		/// <summary>
@@ -208,8 +208,8 @@ namespace Hotfix
 		private void Handle_Completed(AssetOperationHandle obj)
 		{
 			_uiRoot = _handle.InstantiateObject;
-			_uiDesktop = _uiRoot.transform.FindChildByName("UIDesktop").gameObject;
-			_uiCamera = _uiRoot.transform.FindChildByName("UICamera").GetComponent<Camera>();
+			_uiDesktop = _uiRoot.transform.BFSearch("UIDesktop").gameObject;
+			_uiCamera = _uiRoot.transform.BFSearch("UICamera").GetComponent<Camera>();
 			GameObject.DontDestroyOnLoad(_uiRoot);
 		}
 
