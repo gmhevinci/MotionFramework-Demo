@@ -42,10 +42,10 @@ namespace Hotfix
 				_password = message.Password;
 
 				// 连接到ET5.0服务器
-				NetworkManager.Instance.ConnectServer("49.233.151.34", 10002);
+				//NetworkManager.Instance.ConnectServer("127.0.0.1", 10002);
 
 				// TODO 跳过服务器直接进入游戏
-				//HotfixFsmManager.Instance.ChangeState(EHotfixStateType.Town);
+				HotfixFsmManager.Instance.ChangeState(EHotfixStateType.Town);
 			}
 		}
 		private void OnHandleMonoEventMessage(IEventMessage msg)
