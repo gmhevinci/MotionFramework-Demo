@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using MotionFramework.Network;
+using MotionFramework.Network.Coder;
 
 public class ProtoPackageCoder : DefaultPackageCoder
 {

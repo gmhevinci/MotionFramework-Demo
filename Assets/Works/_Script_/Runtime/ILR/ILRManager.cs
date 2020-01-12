@@ -9,7 +9,7 @@ using MotionFramework;
 using MotionFramework.Resource;
 using MotionFramework.Console;
 
-public class ILRManager : ModuleSingleton<ILRManager>, IMotionModule
+public class ILRManager : ModuleSingleton<ILRManager>, IModule
 {
 	/// <summary>
 	/// 游戏模块创建参数
@@ -44,7 +44,7 @@ public class ILRManager : ModuleSingleton<ILRManager>, IMotionModule
 	public List<Type> HotfixAssemblyTypes { private set; get; }
 
 
-	void IMotionModule.OnCreate(System.Object param)
+	void IModule.OnCreate(System.Object param)
 	{
 		CreateParameters createParam = param as CreateParameters;
 		if (createParam == null)
@@ -52,14 +52,14 @@ public class ILRManager : ModuleSingleton<ILRManager>, IMotionModule
 
 		_isEnableILRuntime = createParam.IsEnableILRuntime;
 	}
-	void IMotionModule.OnUpdate()
+	void IModule.OnUpdate()
 	{
 		if (_updateFun != null)
 			_updateFun.Invoke();
 	}
-	void IMotionModule.OnGUI()
+	void IModule.OnGUI()
 	{
-		AppConsole.GUILable($"[{nameof(ILRManager)}] EnableILRuntime : {_isEnableILRuntime}");
+		ConsoleGUI.Lable($"[{nameof(ILRManager)}] EnableILRuntime : {_isEnableILRuntime}");
 	}
 
 	/// <summary>

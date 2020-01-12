@@ -15,8 +15,6 @@ using MotionFramework.Pool;
 
 public class GameLauncher : MonoBehaviour
 {
-	private IMotionEngine _motionEngine;
-
 	[Tooltip("是否启用脚本热更模式")]
 	public bool EnableILRuntime = true;
 
@@ -24,7 +22,7 @@ public class GameLauncher : MonoBehaviour
 	public bool SkipCDN = true;
 
 	[Tooltip("资源系统的加载模式")]
-	public EAssetSystemMode AssetSystemMode = EAssetSystemMode.ResourcesMode;
+	public EAssetSystemMode AssetSystemMode = EAssetSystemMode.Resources;
 
 	void Awake()
 	{
@@ -32,15 +30,14 @@ public class GameLauncher : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 
 		// 注册日志系统
-		AppLog.RegisterCallback(HandleMotionFrameworkLog);
+		MotionLog.RegisterCallback(HandleMotionFrameworkLog);
 
 		// 初始化框架
-		_motionEngine = AppEngine.Instance;
-		_motionEngine.Initialize(this);
+		MotionEngine.Initialize(this);
 
 		// 初始化控制台
 		if (Application.isEditor || Debug.isDebugBuild)
-			AppConsole.Initialize();
+			DeveloperConsole.Initialize();
 
 		// 初始化应用
 		InitAppliaction();
@@ -51,12 +48,12 @@ public class GameLauncher : MonoBehaviour
 	}
 	void Update()
 	{
-		_motionEngine.OnUpdate();
+		MotionEngine.Update();
 	}
 	void OnGUI()
 	{
 		if (Application.isEditor || Debug.isDebugBuild)
-			AppConsole.DrawGUI();
+			DeveloperConsole.DrawGUI();
 	}
 
 	/// <summary>
@@ -80,21 +77,21 @@ public class GameLauncher : MonoBehaviour
 	/// <summary>
 	/// 监听框架日志
 	/// </summary>
-	private void HandleMotionFrameworkLog(ELogType logType, string log)
+	private void HandleMotionFrameworkLog(ELogLevel logType, string log)
 	{
-		if (logType == ELogType.Log)
+		if (logType == ELogLevel.Log)
 		{
 			UnityEngine.Debug.Log(log);
 		}
-		else if (logType == ELogType.Error)
+		else if (logType == ELogLevel.Error)
 		{
 			UnityEngine.Debug.LogError(log);
 		}
-		else if (logType == ELogType.Warning)
+		else if (logType == ELogLevel.Warning)
 		{
 			UnityEngine.Debug.LogWarning(log);
 		}
-		else if (logType == ELogType.Exception)
+		else if (logType == ELogLevel.Exception)
 		{
 			UnityEngine.Debug.LogError(log);
 		}
@@ -110,16 +107,16 @@ public class GameLauncher : MonoBehaviour
 	private void CreateGameModules()
 	{
 		// 创建事件管理器
-		AppEngine.Instance.CreateModule<EventManager>();
+		MotionEngine.CreateModule<EventManager>();
 
 		// 创建网络管理器
 		var networkCreateParam = new NetworkManager.CreateParameters();
 		networkCreateParam.PackageCoderType = typeof(ProtoPackageCoder);
-		AppEngine.Instance.CreateModule<NetworkManager>(networkCreateParam);
+		MotionEngine.CreateModule<NetworkManager>(networkCreateParam);
 
 		// 创建补丁管理器
 		IBundleServices bundleServices = null;
-		if (AssetSystemMode == EAssetSystemMode.BundleMode)
+		if (AssetSystemMode == EAssetSystemMode.AssetBundle)
 		{
 			var patchCreateParam = new PatchManager.CreateParameters();
 			patchCreateParam.ServerID = PlayerPrefs.GetInt("SERVER_ID_KEY", 0);
@@ -137,7 +134,7 @@ public class GameLauncher : MonoBehaviour
 
 			patchCreateParam.DefaultWebServerIP = "127.0.0.1/WEB/PC/GameVersion.php";
 			patchCreateParam.DefaultCDNServerIP = "127.0.0.1/CDN/PC";
-			bundleServices = AppEngine.Instance.CreateModule<PatchManager>(patchCreateParam);
+			bundleServices = MotionEngine.CreateModule<PatchManager>(patchCreateParam);
 
 			EventManager.Instance.AddListener<PatchEventMessageDefine.PatchStatesChange>(OnHandleEvent);
 			EventManager.Instance.AddListener<PatchEventMessageDefine.OperationEvent>(OnHandleEvent);
@@ -148,21 +145,21 @@ public class GameLauncher : MonoBehaviour
 		resourceCreateParam.AssetRootPath = GameDefine.AssetRootPath;
 		resourceCreateParam.AssetSystemMode = AssetSystemMode;
 		resourceCreateParam.BundleServices = bundleServices;
-		AppEngine.Instance.CreateModule<ResourceManager>(resourceCreateParam);
+		MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
 
 		// 创建音频管理器
-		AppEngine.Instance.CreateModule<AudioManager>();
+		MotionEngine.CreateModule<AudioManager>();
 
 		// 创建场景管理器
-		AppEngine.Instance.CreateModule<SceneManager>();
+		MotionEngine.CreateModule<SceneManager>();
 
 		// 创建对象池管理器
-		AppEngine.Instance.CreateModule<PoolManager>();
+		MotionEngine.CreateModule<GameObjectPoolManager>();
 
 		// 创建ILRuntime管理器
 		ILRManager.CreateParameters createParameters = new ILRManager.CreateParameters();
 		createParameters.IsEnableILRuntime = EnableILRuntime;
-		AppEngine.Instance.CreateModule<ILRManager>(createParameters);
+		MotionEngine.CreateModule<ILRManager>(createParameters);
 
 		// 直接进入游戏
 		if (bundleServices == null)
@@ -182,7 +179,7 @@ public class GameLauncher : MonoBehaviour
 				if (SkipCDN)
 					ILRManager.Instance.StartGame();
 				else
-					AppEngine.Instance.CreateModule<PatchWindow>();
+					MotionEngine.CreateModule<PatchWindow>();
 			}
 
 			// 补丁下载完毕

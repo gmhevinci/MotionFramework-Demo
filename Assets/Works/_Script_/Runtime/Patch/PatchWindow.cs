@@ -8,7 +8,7 @@ using MotionFramework.Patch;
 using MotionFramework.Resource;
 using MotionFramework.Event;
 
-public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
+public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 {
 	private AssetReference _assetRef;
 	private System.Action _clickYes;
@@ -23,15 +23,15 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IMotionModule
 	private Text _messageBoxContent;
 
 
-	void IMotionModule.OnCreate(object createParam)
+	void IModule.OnCreate(object createParam)
 	{
 		_assetRef = new AssetReference("UIPanel/PatchWindow");
 		_assetRef.LoadAssetAsync<GameObject>().Completed += Handle_Completed;
 	}
-	void IMotionModule.OnUpdate()
+	void IModule.OnUpdate()
 	{
 	}
-	void IMotionModule.OnGUI()
+	void IModule.OnGUI()
 	{
 	}
 

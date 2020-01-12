@@ -77,7 +77,7 @@ namespace Hotfix
 		/// </summary>
 		public bool IsPrepareUIRoot()
 		{
-			return _handle.States == EAssetProviderStates.Success;
+			return _handle.States == EAssetStates.Success;
 		}
 
 		/// <summary>

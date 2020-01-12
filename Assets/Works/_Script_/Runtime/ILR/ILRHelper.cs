@@ -15,7 +15,7 @@ public static class ILRHelper
 		appdomain.DelegateManager.RegisterMethodDelegate<bool>();
 		appdomain.DelegateManager.RegisterMethodDelegate<List<object>>();
 		appdomain.DelegateManager.RegisterMethodDelegate<ILTypeInstance>();
-		appdomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Network.INetPackage>();
+		appdomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Network.INetworkPackage>();
 		appdomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Event.IEventMessage>();
 		appdomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Resource.AssetOperationHandle>();
 		appdomain.DelegateManager.RegisterMethodDelegate<MotionFramework.Resource.SceneInstance>();
@@ -62,7 +62,7 @@ public static class ILRHelper
 		}
 		else
 		{
-			AppLog.Log(ELogType.Warning, "ILRuntime not generated binding scripts.");
+			MotionLog.Log(ELogLevel.Warning, "ILRuntime not generated binding scripts.");
 		}
 
 		// 注册适配器

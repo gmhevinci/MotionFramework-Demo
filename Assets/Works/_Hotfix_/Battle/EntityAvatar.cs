@@ -42,7 +42,7 @@ namespace Hotfix
 			_avatarState = EAvatarState.Create;
 
 			// 对象池
-			PoolManager.Instance.Spawn(GetModelName(), OnAssetLoad);
+			GameObjectPoolManager.Instance.Spawn(GetModelName(), OnAssetLoad);
 		}
 		public void Destroy()
 		{
@@ -52,7 +52,7 @@ namespace Hotfix
 			// 对象池
 			if (GameObj != null)
 			{
-				PoolManager.Instance.Restore(GetModelName(), GameObj);
+				GameObjectPoolManager.Instance.Restore(GetModelName(), GameObj);
 				GameObj = null;
 			}
 		}
@@ -63,7 +63,7 @@ namespace Hotfix
 			// 注意：如果Avatar已经销毁，我们回收到对象池
 			if(_avatarState == EAvatarState.Destroy)
 			{
-				PoolManager.Instance.Restore(GetModelName(), go);
+				GameObjectPoolManager.Instance.Restore(GetModelName(), go);
 				return;
 			}
 

@@ -6,7 +6,7 @@ namespace Hotfix
 	{
 		public static void Start()
 		{
-			Debug.Log("hello hotfix world");
+			HotfixLogger.Log("hello hotfix world");
 
 			AudioPlayerSetting.InitAudioSetting();
 

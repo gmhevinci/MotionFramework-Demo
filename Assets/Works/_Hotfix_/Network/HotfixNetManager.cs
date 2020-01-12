@@ -31,9 +31,9 @@ namespace Hotfix
 		/// <summary>
 		/// 接收消息回调函数
 		/// </summary>
-		private void OnHandleHotfixMsg(INetPackage pack)
+		private void OnHandleHotfixMsg(INetworkPackage pack)
 		{
-			NetPackage package = pack as NetPackage;
+			NetworkPackage package = pack as NetworkPackage;
 			Type msgType = _types.GetValueByKey(package.MsgID);
 			HotfixLogger.Log($"Handle hotfix net message : {msgType}");
 			object instance = Activator.CreateInstance(msgType);
@@ -48,7 +48,7 @@ namespace Hotfix
 		{
 			HotfixLogger.Log($"Send hotfix net message : {msg.GetType()}");
 			int msgID = _types.GetKeyByValue(msg.GetType());
-			NetPackage package = new NetPackage();
+			NetworkPackage package = new NetworkPackage();
 			package.IsHotfixPackage = true;
 			package.MsgID = msgID;
 			package.BodyBytes = ProtobufHelper.Encode(msg);
@@ -64,10 +64,10 @@ namespace Hotfix
 				System.Type type = types[i];
 
 				// 判断属性标签
-				if (Attribute.IsDefined(type, typeof(NetMessageAttribute)))
+				if (Attribute.IsDefined(type, typeof(NetworkMessageAttribute)))
 				{
 					// 判断是否重复
-					NetMessageAttribute attribute = HotfixTypeHelper.GetAttribute<NetMessageAttribute>(type);
+					NetworkMessageAttribute attribute = HotfixTypeHelper.GetAttribute<NetworkMessageAttribute>(type);
 					if (_types.ContainsKey(attribute.MsgID))
 						throw new Exception($"Message {type} has same value : {attribute.MsgID}");
 

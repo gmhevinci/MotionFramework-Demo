@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MotionFramework.Scene;
-using MotionFramework;
+using MotionFramework.Utility;
 
 namespace Hotfix
 {

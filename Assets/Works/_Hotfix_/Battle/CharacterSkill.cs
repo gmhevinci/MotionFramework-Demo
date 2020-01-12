@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MotionFramework;
+using MotionFramework.Utility;
 using MotionFramework.Audio;
 
 namespace Hotfix

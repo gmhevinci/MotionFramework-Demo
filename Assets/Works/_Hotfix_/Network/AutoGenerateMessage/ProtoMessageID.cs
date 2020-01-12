@@ -2,10 +2,10 @@
 
 namespace Hotfix
 {
-	[NetMessage(ProtoMessageID.C2R_Login)]
+	[NetworkMessage(ProtoMessageID.C2R_Login)]
 	public partial class C2R_Login : IRequest { }
 
-	[NetMessage(ProtoMessageID.R2C_Login)]
+	[NetworkMessage(ProtoMessageID.R2C_Login)]
 	public partial class R2C_Login : IResponse { }
 }
 
