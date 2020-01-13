@@ -145,6 +145,7 @@ public class GameLauncher : MonoBehaviour
 		resourceCreateParam.AssetRootPath = GameDefine.AssetRootPath;
 		resourceCreateParam.AssetSystemMode = AssetSystemMode;
 		resourceCreateParam.BundleServices = bundleServices;
+		resourceCreateParam.AutoReleaseInterval = 10f;
 		MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
 
 		// 创建音频管理器
