@@ -15,14 +15,14 @@ using MotionFramework.Pool;
 
 public class GameLauncher : MonoBehaviour
 {
-	[Tooltip("是否启用脚本热更模式")]
+	[Tooltip("启用脚本热更模式")]
 	public bool EnableILRuntime = true;
 
-	[Tooltip("是否跳过CDN服务器")]
-	public bool SkipCDN = true;
+	[Tooltip("跳过CDN服务器")]
+	public bool SkipCDNServer = true;
 
-	[Tooltip("资源系统的虚拟模式")]
-	public bool VirtualSimulation = true;
+	[Tooltip("在编辑器下模拟运行")]
+	public bool SimulationOnEditor = true;
 
 	void Awake()
 	{
@@ -77,27 +77,27 @@ public class GameLauncher : MonoBehaviour
 	/// <summary>
 	/// 监听框架日志
 	/// </summary>
-	private void HandleMotionFrameworkLog(ELogLevel logType, string log)
+	private void HandleMotionFrameworkLog(ELogLevel logLevel, string log)
 	{
-		if (logType == ELogLevel.Log)
+		if (logLevel == ELogLevel.Log)
 		{
 			UnityEngine.Debug.Log(log);
 		}
-		else if (logType == ELogLevel.Error)
+		else if (logLevel == ELogLevel.Error)
 		{
 			UnityEngine.Debug.LogError(log);
 		}
-		else if (logType == ELogLevel.Warning)
+		else if (logLevel == ELogLevel.Warning)
 		{
 			UnityEngine.Debug.LogWarning(log);
 		}
-		else if (logType == ELogLevel.Exception)
+		else if (logLevel == ELogLevel.Exception)
 		{
 			UnityEngine.Debug.LogError(log);
 		}
 		else
 		{
-			throw new NotImplementedException($"{logType}");
+			throw new NotImplementedException($"{logLevel}");
 		}
 	}
 
@@ -116,7 +116,7 @@ public class GameLauncher : MonoBehaviour
 
 		// 创建补丁管理器
 		IBundleServices bundleServices = null;
-		if (VirtualSimulation == false)
+		if (SimulationOnEditor == false)
 		{
 			var patchCreateParam = new PatchManager.CreateParameters();
 			patchCreateParam.ServerID = PlayerPrefs.GetInt("SERVER_ID_KEY", 0);
@@ -148,7 +148,7 @@ public class GameLauncher : MonoBehaviour
 		// 创建资源管理器
 		var resourceCreateParam = new ResourceManager.CreateParameters();
 		resourceCreateParam.LocationRoot = GameDefine.AssetRootPath;
-		resourceCreateParam.VirtualSimulation = VirtualSimulation;
+		resourceCreateParam.SimulationOnEditor = SimulationOnEditor;
 		resourceCreateParam.BundleServices = bundleServices;
 		resourceCreateParam.DecryptServices = null;
 		resourceCreateParam.AutoReleaseInterval = 10f;
@@ -183,7 +183,7 @@ public class GameLauncher : MonoBehaviour
 			// 初始化结束
 			if (message.CurrentStates == EPatchStates.InitiationOver)
 			{
-				if (SkipCDN)
+				if (SkipCDNServer)
 					ILRManager.Instance.StartGame();
 				else
 					MotionEngine.CreateModule<PatchWindow>();
