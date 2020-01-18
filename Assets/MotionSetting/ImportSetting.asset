@@ -16,5 +16,3 @@ MonoBehaviour:
   Elements:
   - FolderPath: Assets/WorksArt/Panel/Sprite
     ProcessorName: DefaultProcessor
-  - FolderPath: Assets/Works/Resource/UITexture
-    ProcessorName: DefaultProcessor

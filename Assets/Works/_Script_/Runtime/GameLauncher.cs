@@ -21,8 +21,8 @@ public class GameLauncher : MonoBehaviour
 	[Tooltip("是否跳过CDN服务器")]
 	public bool SkipCDN = true;
 
-	[Tooltip("资源系统的加载模式")]
-	public EAssetSystemMode AssetSystemMode = EAssetSystemMode.Resources;
+	[Tooltip("资源系统的虚拟模式")]
+	public bool VirtualSimulation = true;
 
 	void Awake()
 	{
@@ -116,7 +116,7 @@ public class GameLauncher : MonoBehaviour
 
 		// 创建补丁管理器
 		IBundleServices bundleServices = null;
-		if (AssetSystemMode == EAssetSystemMode.AssetBundle)
+		if (VirtualSimulation == false)
 		{
 			var patchCreateParam = new PatchManager.CreateParameters();
 			patchCreateParam.ServerID = PlayerPrefs.GetInt("SERVER_ID_KEY", 0);
@@ -134,6 +134,11 @@ public class GameLauncher : MonoBehaviour
 
 			patchCreateParam.DefaultWebServerIP = "127.0.0.1/WEB/PC/GameVersion.php";
 			patchCreateParam.DefaultCDNServerIP = "127.0.0.1/CDN/PC";
+
+			var variantRule1 = new PatchManager.CreateParameters.VariantRule();
+			variantRule1.VariantGroup = new List<string>() { "CN", "EN", "KR" };
+			variantRule1.TargetVariant = "EN";
+			patchCreateParam.VariantRules = new List<PatchManager.CreateParameters.VariantRule>() { variantRule1 };
 			bundleServices = MotionEngine.CreateModule<PatchManager>(patchCreateParam);
 
 			EventManager.Instance.AddListener<PatchEventMessageDefine.PatchStatesChange>(OnHandleEvent);
@@ -142,9 +147,10 @@ public class GameLauncher : MonoBehaviour
 
 		// 创建资源管理器
 		var resourceCreateParam = new ResourceManager.CreateParameters();
-		resourceCreateParam.AssetRootPath = GameDefine.AssetRootPath;
-		resourceCreateParam.AssetSystemMode = AssetSystemMode;
+		resourceCreateParam.LocationRoot = GameDefine.AssetRootPath;
+		resourceCreateParam.VirtualSimulation = VirtualSimulation;
 		resourceCreateParam.BundleServices = bundleServices;
+		resourceCreateParam.DecryptServices = null;
 		resourceCreateParam.AutoReleaseInterval = 10f;
 		MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
 
@@ -194,7 +200,7 @@ public class GameLauncher : MonoBehaviour
 			}
 		}
 
-		if(msg is PatchEventMessageDefine.OperationEvent)
+		if (msg is PatchEventMessageDefine.OperationEvent)
 		{
 			PatchManager.Instance.HandleEventMessage(msg);
 		}

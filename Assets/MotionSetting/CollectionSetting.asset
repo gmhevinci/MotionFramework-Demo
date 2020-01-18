@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cc54f0173b27fb40aee29e7eb3364da, type: 3}
-  m_Name: BuildSetting
+  m_Name: CollectionSetting
   m_EditorClassIdentifier: 
   Elements:
-  - FolderPath: Assets/Works/Resource
-    PackRule: 0
-    NameRule: 1
   - FolderPath: Assets/WorksArt/Panel/Sprite
     PackRule: 0
-    NameRule: 2
+    LabelRule: 3
+  - FolderPath: Assets/Works/Resource
+    PackRule: 0
+    LabelRule: 1
+  - FolderPath: Assets/Works/Resource/UIAtlas/UIWordArt
+    PackRule: 0
+    LabelRule: 3
