@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnableILRuntime: 1
-  SkipCDN: 1
-  VirtualSimulation: 0
+  SkipCDNServer: 1
+  SimulationOnEditor: 1
 --- !u!4 &25884006
 Transform:
   m_ObjectHideFlags: 0
