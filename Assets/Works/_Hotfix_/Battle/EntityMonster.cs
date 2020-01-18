@@ -18,7 +18,7 @@ namespace Hotfix
 			base.OnCreate();
 
 			// 初始化角色数据
-			CfgMonsterTab table = CfgMonster.Instance.GetCfgTab(_monsterID);
+			CfgMonsterTable table = CfgMonster.Instance.GetConfigTable(_monsterID);
 			CharData.InitData(table.BodyRadius, table.MoveSpeed, table.Hp, table.Mp, table.Damage, table.Armor);
 		}
 	}

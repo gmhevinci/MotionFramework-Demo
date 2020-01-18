@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Hotfix
 {
-	public class CfgMonsterTab : ConfigTab
+	public class CfgMonsterTable : ConfigTable
 	{
 		public string Name { protected set; get; }
 		public int AvatarID { protected set; get; }
@@ -21,7 +21,7 @@ namespace Hotfix
 		public double Damage { protected set; get; }
 		public double Armor { protected set; get; }
 
-		public CfgMonsterTab(int id, string name, int avatarID, float destroyTime, float bodyRadius, float moveSpeed, string skills, float aiGuardRange, float aiFightRange, double hp, double mp, double damage, double armor)
+		public CfgMonsterTable(int id, string name, int avatarID, float destroyTime, float bodyRadius, float moveSpeed, string skills, float aiGuardRange, float aiFightRange, double hp, double mp, double damage, double armor)
 		{
 			Id = id;
 			Name = name;
@@ -52,15 +52,15 @@ namespace Hotfix
 		}
 
 		private CfgMonster() { }
-		public CfgMonsterTab GetCfgTab(int key)
+		public CfgMonsterTable GetConfigTable(int key)
 		{
-			return GetTab(key) as CfgMonsterTab;
+			return GetTable(key) as CfgMonsterTable;
 		}
 		public void Create()
 		{
-			AddElement(1, new CfgMonsterTab(1, LANG.Convert(178940420), 1002, 10f, 1.2f, 4f, "10001", 8f, 20f, 100, 0, 20, 0));
-			AddElement(2, new CfgMonsterTab(2, LANG.Convert(178979727), 1003, 10f, 1.2f, 4f, "10001", 8f, 20f, 200, 0, 10, 10));
-			AddElement(3, new CfgMonsterTab(3, LANG.Convert(1421729370), 1004, 30f, 2.4f, 4f, "10001", 8f, 20f, 1000, 0, 10, 10));
+			AddElement(1, new CfgMonsterTable(1, LANG.Convert(178940420), 1002, 10f, 1.2f, 4f, "10001", 8f, 20f, 100, 0, 20, 0));
+			AddElement(2, new CfgMonsterTable(2, LANG.Convert(178979727), 1003, 10f, 1.2f, 4f, "10001", 8f, 20f, 200, 0, 10, 10));
+			AddElement(3, new CfgMonsterTable(3, LANG.Convert(1421729370), 1004, 30f, 2.4f, 4f, "10001", 8f, 20f, 1000, 0, 10, 10));
 		}
 	}
 }

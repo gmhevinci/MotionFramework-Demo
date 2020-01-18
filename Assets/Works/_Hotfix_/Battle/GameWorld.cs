@@ -110,7 +110,7 @@ namespace Hotfix
 		}
 		private EntityPlayer CreatePlayer(EHeroType heroType, Vector3 pos, Vector3 rot)
 		{
-			CfgPlayerTab playerTable = CfgPlayer.Instance.GetCfgTab((int)heroType);
+			CfgPlayerTable playerTable = CfgPlayer.Instance.GetConfigTable((int)heroType);
 			if (playerTable == null)
 				return null;
 
@@ -120,7 +120,7 @@ namespace Hotfix
 		}
 		private EntityMonster CreateMonster(int monsterID, Vector3 pos, Vector3 rot)
 		{
-			CfgMonsterTab monsterTable = CfgMonster.Instance.GetCfgTab(monsterID);
+			CfgMonsterTable monsterTable = CfgMonster.Instance.GetConfigTable(monsterID);
 			if (monsterTable == null)
 				return null;
 

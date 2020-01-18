@@ -15,7 +15,7 @@ namespace Hotfix
 		}
 
 		private readonly EntityObject _owner;
-		private readonly CfgAvatarTab _avatarTable;
+		private readonly CfgAvatarTable _avatarTable;
 		private System.Action _callback;
 		private EAvatarState _avatarState = EAvatarState.None;
 
@@ -28,7 +28,7 @@ namespace Hotfix
 		public EntityAvatar(EntityObject owner, int avatarID)
 		{
 			_owner = owner;
-			_avatarTable = CfgAvatar.Instance.GetCfgTab(avatarID);
+			_avatarTable = CfgAvatar.Instance.GetConfigTable(avatarID);
 		}
 		public void Create(System.Action callback)
 		{

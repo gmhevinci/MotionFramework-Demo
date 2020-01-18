@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Hotfix
 {
-	public class CfgAvatarTab : ConfigTab
+	public class CfgAvatarTable : ConfigTable
 	{
 		public string HeadIcon { protected set; get; }
 		public string Model { protected set; get; }
@@ -20,7 +20,7 @@ namespace Hotfix
 		public string BornEffect { protected set; get; }
 		public float HudPointHeight { protected set; get; }
 
-		public CfgAvatarTab(int id, string headIcon, string model, float modelScale, float buffScale, float runAnimationSpeed, List<string> attackSounds, List<string> getHitSounds, string deadSound, string deadEffect, string bornEffect, float hudPointHeight)
+		public CfgAvatarTable(int id, string headIcon, string model, float modelScale, float buffScale, float runAnimationSpeed, List<string> attackSounds, List<string> getHitSounds, string deadSound, string deadEffect, string bornEffect, float hudPointHeight)
 		{
 			Id = id;
 			HeadIcon = headIcon;
@@ -50,16 +50,16 @@ namespace Hotfix
 		}
 
 		private CfgAvatar() { }
-		public CfgAvatarTab GetCfgTab(int key)
+		public CfgAvatarTable GetConfigTable(int key)
 		{
-			return GetTab(key) as CfgAvatarTab;
+			return GetTable(key) as CfgAvatarTable;
 		}
 		public void Create()
 		{
-			AddElement(1001, new CfgAvatarTab(1001, "", "Model/Character/footman_Blue", 1f, 1f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
-			AddElement(1002, new CfgAvatarTab(1002, "", "Model/Character/footman_Green", 1f, 1f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
-			AddElement(1003, new CfgAvatarTab(1003, "", "Model/Character/footman_Red", 1f, 1f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
-			AddElement(1004, new CfgAvatarTab(1004, "", "Model/Character/footman_Yellow", 2f, 2f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
+			AddElement(1001, new CfgAvatarTable(1001, "", "Model/Character/footman_Blue", 1f, 1f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
+			AddElement(1002, new CfgAvatarTable(1002, "", "Model/Character/footman_Green", 1f, 1f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
+			AddElement(1003, new CfgAvatarTable(1003, "", "Model/Character/footman_Red", 1f, 1f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
+			AddElement(1004, new CfgAvatarTable(1004, "", "Model/Character/footman_Yellow", 2f, 2f, 4.5f, new List<string>(){"Audio/Footman/Attack"}, new List<string>(){"Audio/Footman/Hit1","Audio/Footman/Hit2","Audio/Footman/Hit3"}, "Audio/Footman/Death", "", "", 1f));
 		}
 	}
 }

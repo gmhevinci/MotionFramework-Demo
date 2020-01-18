@@ -19,7 +19,7 @@ namespace Hotfix
 			base.OnCreate();
 
 			// 初始化角色数据
-			CfgPlayerTab table = CfgPlayer.Instance.GetCfgTab((int)_heroType);
+			CfgPlayerTable table = CfgPlayer.Instance.GetConfigTable((int)_heroType);
 			CharData.InitData(table.BodyRadius, table.MoveSpeed, table.Hp, table.Mp, table.Damage, table.Armor);
 
 			// 跟随相机脚本

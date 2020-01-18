@@ -12,8 +12,8 @@ namespace Hotfix
 		private class Skill
 		{
 			private readonly EntityCharacter _owner;
-			private readonly CfgSkillTab _skillTable;
-			private readonly CfgAnimationTab _animTable;
+			private readonly CfgSkillTable _skillTable;
+			private readonly CfgAnimationTable _animTable;
 			private readonly OnceTimer _delayTimer;
 			private bool _isSpelling = false;
 			private float _lifeTimer = 0;
@@ -30,13 +30,13 @@ namespace Hotfix
 			public Skill(EntityCharacter owner, int skillID)
 			{
 				_owner = owner;
-				_skillTable = CfgSkill.Instance.GetCfgTab(skillID);
+				_skillTable = CfgSkill.Instance.GetConfigTable(skillID);
 				_delayTimer = new OnceTimer(_skillTable.Delay);
 
 				// 初始化技能动画
 				if (_skillTable.AnimationID > 0)
 				{
-					_animTable = CfgAnimation.Instance.GetCfgTab(_skillTable.AnimationID);
+					_animTable = CfgAnimation.Instance.GetConfigTable(_skillTable.AnimationID);
 					_owner.CharAnim.InitAnimState(_animTable.AnimName, CharacterAnimation.EAnimationLayer.SkillLayer, (WrapMode)_animTable.AnimMode);
 				}
 			}

@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace Hotfix
 {
-	public class CfgAutoGenerateLanguageTab : ConfigTab
+	public class CfgAutoGenerateLanguageTable : ConfigTable
 	{
 		public string Lang { protected set; get; }
 
-		public CfgAutoGenerateLanguageTab(int id, string lang)
+		public CfgAutoGenerateLanguageTable(int id, string lang)
 		{
 			Id = id;
 			Lang = lang;
@@ -30,26 +30,26 @@ namespace Hotfix
 		}
 
 		private CfgAutoGenerateLanguage() { }
-		public CfgAutoGenerateLanguageTab GetCfgTab(int key)
+		public CfgAutoGenerateLanguageTable GetConfigTable(int key)
 		{
-			return GetTab(key) as CfgAutoGenerateLanguageTab;
+			return GetTable(key) as CfgAutoGenerateLanguageTable;
 		}
 		public void Create()
 		{
-			AddElement(178940420, new CfgAutoGenerateLanguageTab(178940420, "蓝色步兵"));
-			AddElement(178979727, new CfgAutoGenerateLanguageTab(178979727, "红色步兵"));
-			AddElement(1421729370, new CfgAutoGenerateLanguageTab(1421729370, "步兵队长"));
-			AddElement(91216312, new CfgAutoGenerateLanguageTab(91216312, "战士"));
-			AddElement(88134997, new CfgAutoGenerateLanguageTab(88134997, "普通攻击"));
-			AddElement(1351039565, new CfgAutoGenerateLanguageTab(1351039565, "跳跃"));
-			AddElement(-1257327582, new CfgAutoGenerateLanguageTab(-1257327582, "盾牌防守"));
-			AddElement(-347589321, new CfgAutoGenerateLanguageTab(-347589321, "进入游戏"));
-			AddElement(-487833582, new CfgAutoGenerateLanguageTab(-487833582, "设置"));
-			AddElement(1015751757, new CfgAutoGenerateLanguageTab(1015751757, "音量"));
-			AddElement(-50860896, new CfgAutoGenerateLanguageTab(-50860896, "开关"));
-			AddElement(337257549, new CfgAutoGenerateLanguageTab(337257549, "音乐"));
-			AddElement(-384687027, new CfgAutoGenerateLanguageTab(-384687027, "音效"));
-			AddElement(107007938, new CfgAutoGenerateLanguageTab(107007938, "确定"));
+			AddElement(178940420, new CfgAutoGenerateLanguageTable(178940420, "蓝色步兵"));
+			AddElement(178979727, new CfgAutoGenerateLanguageTable(178979727, "红色步兵"));
+			AddElement(1421729370, new CfgAutoGenerateLanguageTable(1421729370, "步兵队长"));
+			AddElement(91216312, new CfgAutoGenerateLanguageTable(91216312, "战士"));
+			AddElement(88134997, new CfgAutoGenerateLanguageTable(88134997, "普通攻击"));
+			AddElement(1351039565, new CfgAutoGenerateLanguageTable(1351039565, "跳跃"));
+			AddElement(-1257327582, new CfgAutoGenerateLanguageTable(-1257327582, "盾牌防守"));
+			AddElement(-347589321, new CfgAutoGenerateLanguageTable(-347589321, "进入游戏"));
+			AddElement(-487833582, new CfgAutoGenerateLanguageTable(-487833582, "设置"));
+			AddElement(1015751757, new CfgAutoGenerateLanguageTable(1015751757, "音量"));
+			AddElement(-50860896, new CfgAutoGenerateLanguageTable(-50860896, "开关"));
+			AddElement(337257549, new CfgAutoGenerateLanguageTable(337257549, "音乐"));
+			AddElement(-384687027, new CfgAutoGenerateLanguageTable(-384687027, "音效"));
+			AddElement(107007938, new CfgAutoGenerateLanguageTable(107007938, "确定"));
 		}
 	}
 }

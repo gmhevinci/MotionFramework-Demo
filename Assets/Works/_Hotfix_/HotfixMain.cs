@@ -42,7 +42,7 @@ namespace Hotfix
 		}
 		public static string UILanguage(string key)
 		{
-			CfgUILanguageTab table = CfgUILanguage.Instance.GetCfgTab(key.GetHashCode());
+			CfgUILanguageTable table = CfgUILanguage.Instance.GetConfigTable(key.GetHashCode());
 			if (table == null)
 				return key;
 			else

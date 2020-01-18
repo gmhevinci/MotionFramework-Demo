@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Hotfix
 {
-	public class CfgPlayerTab : ConfigTab
+	public class CfgPlayerTable : ConfigTable
 	{
 		public string Name { protected set; get; }
 		public int AvatarID { protected set; get; }
@@ -18,7 +18,7 @@ namespace Hotfix
 		public double Damage { protected set; get; }
 		public double Armor { protected set; get; }
 
-		public CfgPlayerTab(int id, string name, int avatarID, float bodyRadius, float moveSpeed, string skills, double hp, double mp, double damage, double armor)
+		public CfgPlayerTable(int id, string name, int avatarID, float bodyRadius, float moveSpeed, string skills, double hp, double mp, double damage, double armor)
 		{
 			Id = id;
 			Name = name;
@@ -46,13 +46,13 @@ namespace Hotfix
 		}
 
 		private CfgPlayer() { }
-		public CfgPlayerTab GetCfgTab(int key)
+		public CfgPlayerTable GetConfigTable(int key)
 		{
-			return GetTab(key) as CfgPlayerTab;
+			return GetTable(key) as CfgPlayerTable;
 		}
 		public void Create()
 		{
-			AddElement(1, new CfgPlayerTab(1, LANG.Convert(91216312), 1001, 1.2f, 4f, "10001", 100, 100, 20, 10));
+			AddElement(1, new CfgPlayerTable(1, LANG.Convert(91216312), 1001, 1.2f, 4f, "10001", 100, 100, 20, 10));
 		}
 	}
 }

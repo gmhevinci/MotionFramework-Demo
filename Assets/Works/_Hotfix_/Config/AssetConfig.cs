@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using MotionFramework;
 
 namespace Hotfix
 {
 	/// <summary>
 	/// 配表数据类
 	/// </summary>
-	public abstract class ConfigTab
+	public abstract class ConfigTable
 	{
 		public int Id { get; protected set; }
 	}
@@ -18,31 +17,31 @@ namespace Hotfix
 		/// <summary>
 		/// 配表数据集合
 		/// </summary>
-		protected readonly Dictionary<int, ConfigTab> _tabs = new Dictionary<int, ConfigTab>();
+		protected readonly Dictionary<int, ConfigTable> _tables = new Dictionary<int, ConfigTable>();
 
 
 		/// <summary>
 		/// 添加元素
 		/// </summary>
-		protected void AddElement(int key, ConfigTab element)
+		protected void AddElement(int key, ConfigTable element)
 		{
-			if (_tabs.ContainsKey(key))
+			if (_tables.ContainsKey(key))
 			{
 				HotfixLogger.Warning($"{this.GetType().Name} Element is already exsit, Key is {key}");
 				return;
 			}
 
-			_tabs.Add(key, element);
+			_tables.Add(key, element);
 		}
 
 		/// <summary>
 		/// 获取数据，如果不存在报警告
 		/// </summary>
-		public ConfigTab GetTab(int key)
+		public ConfigTable GetTable(int key)
 		{
-			if (_tabs.ContainsKey(key))
+			if (_tables.ContainsKey(key))
 			{
-				return _tabs[key];
+				return _tables[key];
 			}
 			else
 			{
@@ -54,9 +53,9 @@ namespace Hotfix
 		/// <summary>
 		/// 获取数据，如果不存在不会报警告
 		/// </summary>
-		public bool TryGetTab(int key, out ConfigTab tab)
+		public bool TryGetTable(int key, out ConfigTable tab)
 		{
-			return _tabs.TryGetValue(key, out tab);
+			return _tables.TryGetValue(key, out tab);
 		}
 
 		/// <summary>
@@ -64,7 +63,7 @@ namespace Hotfix
 		/// </summary>
 		public bool ContainsKey(int key)
 		{
-			return _tabs.ContainsKey(key);
+			return _tables.ContainsKey(key);
 		}
 
 		/// <summary>
@@ -73,7 +72,7 @@ namespace Hotfix
 		public List<int> GetKeys()
 		{
 			List<int> keys = new List<int>();
-			foreach (var tab in _tabs)
+			foreach (var tab in _tables)
 			{
 				keys.Add(tab.Key);
 			}

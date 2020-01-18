@@ -6,14 +6,14 @@ using System.Collections.Generic;
 
 namespace Hotfix
 {
-	public class CfgAnimationTab : ConfigTab
+	public class CfgAnimationTable : ConfigTable
 	{
 		public string AnimName { protected set; get; }
 		public int AnimMode { protected set; get; }
 		public float IdleToAnim { protected set; get; }
 		public float AnimToIdle { protected set; get; }
 
-		public CfgAnimationTab(int id, string animName, int animMode, float idleToAnim, float animToIdle)
+		public CfgAnimationTable(int id, string animName, int animMode, float idleToAnim, float animToIdle)
 		{
 			Id = id;
 			AnimName = animName;
@@ -36,18 +36,18 @@ namespace Hotfix
 		}
 
 		private CfgAnimation() { }
-		public CfgAnimationTab GetCfgTab(int key)
+		public CfgAnimationTable GetConfigTable(int key)
 		{
-			return GetTab(key) as CfgAnimationTab;
+			return GetTable(key) as CfgAnimationTable;
 		}
 		public void Create()
 		{
-			AddElement(1001, new CfgAnimationTab(1001, "attack", 1, 0.1f, 0.2f));
-			AddElement(1002, new CfgAnimationTab(1002, "attack02", 1, 0.1f, 0.2f));
-			AddElement(1003, new CfgAnimationTab(1003, "attack03", 1, 0.1f, 0.2f));
-			AddElement(1004, new CfgAnimationTab(1004, "defend", 1, 0.1f, 0.2f));
-			AddElement(1005, new CfgAnimationTab(1005, "jump", 1, 0.1f, 0.2f));
-			AddElement(1006, new CfgAnimationTab(1006, "taunt", 1, 0.1f, 0.2f));
+			AddElement(1001, new CfgAnimationTable(1001, "attack", 1, 0.1f, 0.2f));
+			AddElement(1002, new CfgAnimationTable(1002, "attack02", 1, 0.1f, 0.2f));
+			AddElement(1003, new CfgAnimationTable(1003, "attack03", 1, 0.1f, 0.2f));
+			AddElement(1004, new CfgAnimationTable(1004, "defend", 1, 0.1f, 0.2f));
+			AddElement(1005, new CfgAnimationTable(1005, "jump", 1, 0.1f, 0.2f));
+			AddElement(1006, new CfgAnimationTable(1006, "taunt", 1, 0.1f, 0.2f));
 		}
 	}
 }

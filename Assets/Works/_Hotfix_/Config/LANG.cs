@@ -10,7 +10,7 @@ namespace Hotfix
 	{
 		public static string Convert(int hashCode)
 		{
-			var tab = CfgAutoGenerateLanguage.Instance.GetCfgTab(hashCode);
+			var tab = CfgAutoGenerateLanguage.Instance.GetConfigTable(hashCode);
 			if (tab != null)
 				return tab.Lang;
 			else
