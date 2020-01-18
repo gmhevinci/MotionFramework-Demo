@@ -61,9 +61,6 @@ public class GameLauncher : MonoBehaviour
 	/// </summary>
 	private void InitAppliaction()
 	{
-		UnityEngine.Debug.Log($"Game run platform : {Application.platform}");
-		UnityEngine.Debug.Log($"Version of the runtime : {Application.unityVersion}");
-
 		Application.runInBackground = true;
 		Application.backgroundLoadingPriority = ThreadPriority.High;
 
