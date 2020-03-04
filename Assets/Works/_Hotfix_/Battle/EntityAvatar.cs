@@ -7,22 +7,21 @@ namespace Hotfix
 {
 	public class EntityAvatar
 	{
-		private enum EAvatarState
-		{
-			None,
-			Create,
-			Destroy,
-		}
-
 		private readonly EntityObject _owner;
 		private readonly CfgAvatarTable _avatarTable;
+		private SpawnGameObject _spawnGo;
 		private System.Action _callback;
-		private EAvatarState _avatarState = EAvatarState.None;
 
 		/// <summary>
 		/// 游戏对象
 		/// </summary>
-		public GameObject GameObj { private set; get; }
+		public GameObject GameObj
+		{
+			get
+			{
+				return _spawnGo.Go;
+			}
+		}
 
 
 		public EntityAvatar(EntityObject owner, int avatarID)
@@ -32,46 +31,34 @@ namespace Hotfix
 		}
 		public void Create(System.Action callback)
 		{
-			if (_avatarState != EAvatarState.None)
+			if (_spawnGo != null)
 			{
 				HotfixLogger.Error($"Avatar is create yet : {_avatarTable.Id}");
 				return;
 			}
 
 			_callback = callback;
-			_avatarState = EAvatarState.Create;
 
 			// 对象池
-			GameObjectPoolManager.Instance.Spawn(GetModelName(), OnAssetLoad);
+			_spawnGo = GameObjectPoolManager.Instance.Spawn(GetModelName());
+			_spawnGo.Completed += SpawnGo_Completed;
 		}
 		public void Destroy()
 		{
 			_callback = null;
-			_avatarState = EAvatarState.Destroy;
-
-			// 对象池
-			if (GameObj != null)
+			if (_spawnGo != null)
 			{
-				GameObjectPoolManager.Instance.Restore(GetModelName(), GameObj);
-				GameObj = null;
+				_spawnGo.Restore();
+				_spawnGo = null;
 			}
 		}
 
-		// 当美术资源加载完毕
-		private void OnAssetLoad(GameObject go)
+		private void SpawnGo_Completed(GameObject go)
 		{
-			// 注意：如果Avatar已经销毁，我们回收到对象池
-			if(_avatarState == EAvatarState.Destroy)
-			{
-				GameObjectPoolManager.Instance.Restore(GetModelName(), go);
-				return;
-			}
-
-			GameObj = go;
-			GameObj.transform.SetParent(_owner.Root.transform, false);
-			GameObj.transform.localPosition = Vector3.zero;
-			GameObj.transform.localRotation = Quaternion.identity;
-			GameObj.transform.localScale = Vector3.one * GetModelScale();
+			go.transform.SetParent(_owner.Root.transform, false);
+			go.transform.localPosition = Vector3.zero;
+			go.transform.localRotation = Quaternion.identity;
+			go.transform.localScale = Vector3.one * GetModelScale();
 
 			if (_callback != null)
 				_callback.Invoke();

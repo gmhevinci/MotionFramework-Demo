@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MotionFramework.Network;
 
-public class ProtoPackageCoder : DefaultPackageCoder
+public class ProtoPackageCoder : DefaultNetworkPackageCoder
 {
 	public ProtoPackageCoder()
 	{
