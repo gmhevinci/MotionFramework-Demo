@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: CollectionSetting
   m_EditorClassIdentifier: 
   Elements:
-  - FolderPath: Assets/WorksArt/Panel/Sprite
-    PackRule: 0
-    LabelRule: 3
   - FolderPath: Assets/Works/Resource
     PackRule: 0
     LabelRule: 1
   - FolderPath: Assets/Works/Resource/UIAtlas/UIWordArt
+    PackRule: 0
+    LabelRule: 3
+  - FolderPath: Assets/WorksArt/Panel/Sprite
     PackRule: 0
     LabelRule: 3
