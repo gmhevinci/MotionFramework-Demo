@@ -8,6 +8,7 @@ using UnityEngine;
 using MotionFramework;
 using MotionFramework.Resource;
 using MotionFramework.Console;
+using MotionFramework.Patch;
 
 public class ILRManager : ModuleSingleton<ILRManager>, IModule
 {
@@ -140,12 +141,12 @@ public class ILRManager : ModuleSingleton<ILRManager>, IModule
 	private TextAsset LoadDLL()
 	{
 		string location = $"Assembly/{ILRDefine.StrMyHotfixDLLFileName}";
-		return ResourceManager.Instance.SyncLoad<TextAsset>(location);
+		return ResourceManager.Instance.SyncLoad<TextAsset>(location, PatchDefine.AssetBundleDefaultVariant);
 	}
 	private TextAsset LoadPDB()
 	{
 		string location = $"Assembly/{ILRDefine.StrMyHotfixPDBFileName}";
-		return ResourceManager.Instance.SyncLoad<TextAsset>(location);
+		return ResourceManager.Instance.SyncLoad<TextAsset>(location, PatchDefine.AssetBundleDefaultVariant);
 	}
 
 	// 初始化热更程序
