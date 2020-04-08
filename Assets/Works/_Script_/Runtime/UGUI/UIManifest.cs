@@ -246,7 +246,14 @@ namespace UnityEngine.UI
 
 					string[] splits = assetPath.Split('/');
 					string atlasName = splits[4]; //注意：根据路径判断索引
-					string atlasAssetPath = $"{UIDefine.StrMyUIAtlasFolderPath}/{atlasName}.spriteatlas";
+					string atlasAssetPath = string.Empty;
+
+					// 注意：如果是艺术字图集
+					if (atlasName.StartsWith("UIWordArt"))
+						atlasAssetPath = $"{UIDefine.StrMyUIAtlasFolderPath}/UIWordArt/{atlasName}/UIWordArt.spriteatlas";
+					else
+						atlasAssetPath = $"{UIDefine.StrMyUIAtlasFolderPath}/{atlasName}.spriteatlas";
+
 					SpriteAtlas spriteAtlas = UnityEditor.AssetDatabase.LoadAssetAtPath<SpriteAtlas>(atlasAssetPath);
 					if (spriteAtlas == null)
 					{
