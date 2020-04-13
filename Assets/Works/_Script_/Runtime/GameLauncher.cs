@@ -109,6 +109,7 @@ public class GameLauncher : MonoBehaviour
 		// 创建网络管理器
 		var networkCreateParam = new NetworkManager.CreateParameters();
 		networkCreateParam.PackageCoderType = typeof(ProtoPackageCoder);
+		networkCreateParam.PackageMaxSize = ushort.MaxValue;
 		MotionEngine.CreateModule<NetworkManager>(networkCreateParam);
 
 		// 创建补丁管理器
