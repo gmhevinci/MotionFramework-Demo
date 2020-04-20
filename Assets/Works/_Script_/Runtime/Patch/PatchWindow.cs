@@ -181,12 +181,12 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 
 		else if (msg is PatchEventMessageDefine.WebPatchManifestDownloadFailed)
 		{
-			var message = msg as PatchEventMessageDefine.WebFileMD5VerifyFailed;
+			var message = msg as PatchEventMessageDefine.WebPatchManifestDownloadFailed;
 			System.Action callback = () =>
 			{
 				SendOperationEvent(EPatchOperation.TryDownloadWebPatchManifest);
 			};
-			ShowMessageBox($"清单下载失败 : {message.Name}", callback);
+			ShowMessageBox($"清单下载失败", callback);
 		}
 
 		else
