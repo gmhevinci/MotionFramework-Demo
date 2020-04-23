@@ -26,6 +26,10 @@ public class GameLauncher : MonoBehaviour
 
 	void Awake()
 	{
+#if !UNITY_EDITOR
+		SimulationOnEditor = false;
+#endif
+
 		// 不销毁游戏对象
 		DontDestroyOnLoad(gameObject);
 
