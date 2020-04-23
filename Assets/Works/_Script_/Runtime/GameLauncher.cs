@@ -120,6 +120,9 @@ public class GameLauncher : MonoBehaviour
 		IBundleServices bundleServices = null;
 		if (SimulationOnEditor == false)
 		{
+			string webIP = "127.0.0.1";
+			string cdnIP = "127.0.0.1";
+
 			var patchCreateParam = new PatchManager.CreateParameters();
 			patchCreateParam.ServerID = PlayerPrefs.GetInt("SERVER_ID_KEY", 0);
 			patchCreateParam.ChannelID = 0;
@@ -127,15 +130,15 @@ public class GameLauncher : MonoBehaviour
 			patchCreateParam.TestFlag = PlayerPrefs.GetInt("TEST_FLAG_KEY", 0);
 
 			patchCreateParam.WebServers = new Dictionary<RuntimePlatform, string>();
-			patchCreateParam.WebServers.Add(RuntimePlatform.Android, "127.0.0.1/WEB/Android/GameVersion.php");
-			patchCreateParam.WebServers.Add(RuntimePlatform.IPhonePlayer, "127.0.0.1/WEB/Iphone/GameVersion.php");
+			patchCreateParam.WebServers.Add(RuntimePlatform.Android, $"{webIP}/WEB/Android/GameVersion.php");
+			patchCreateParam.WebServers.Add(RuntimePlatform.IPhonePlayer, $"{webIP}/WEB/Iphone/GameVersion.php");
 
 			patchCreateParam.CDNServers = new Dictionary<RuntimePlatform, string>();
-			patchCreateParam.CDNServers.Add(RuntimePlatform.Android, "127.0.0.1/CDN/Android");
-			patchCreateParam.CDNServers.Add(RuntimePlatform.IPhonePlayer, "127.0.0.1/CDN/Iphone");
+			patchCreateParam.CDNServers.Add(RuntimePlatform.Android, $"{cdnIP}/CDN/Android");
+			patchCreateParam.CDNServers.Add(RuntimePlatform.IPhonePlayer, $"{cdnIP}/CDN/Iphone");
 
-			patchCreateParam.DefaultWebServerIP = "127.0.0.1/WEB/PC/GameVersion.php";
-			patchCreateParam.DefaultCDNServerIP = "127.0.0.1/CDN/PC";
+			patchCreateParam.DefaultWebServerIP = $"{webIP}/WEB/PC/GameVersion.php";
+			patchCreateParam.DefaultCDNServerIP = $"{cdnIP}/CDN/PC";
 
 			var variantRule1 = new PatchManager.CreateParameters.VariantRule();
 			variantRule1.VariantGroup = new List<string>() { "CN", "EN", "KR" };
