@@ -117,6 +117,9 @@ public class ILRManager : ModuleSingleton<ILRManager>, IModule
 		}
 		else
 		{
+#if ENABLE_IL2CPP
+			throw new NotImplementedException("You must enable ILRuntime when with IL2CPP mode.");
+#endif
 			_monoAssembly = Assembly.Load(dllAsset.bytes, null);
 		}
 	}
@@ -135,6 +138,9 @@ public class ILRManager : ModuleSingleton<ILRManager>, IModule
 		}
 		else
 		{
+#if ENABLE_IL2CPP
+			throw new NotImplementedException("You must enable ILRuntime when with IL2CPP mode.");
+#endif
 			_monoAssembly = Assembly.Load(dllAsset.bytes, pdbAsset.bytes);
 		}
 	}
