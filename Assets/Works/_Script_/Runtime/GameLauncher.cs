@@ -140,10 +140,10 @@ public class GameLauncher : MonoBehaviour
 			patchCreateParam.DefaultWebServerIP = $"{webIP}/WEB/PC/GameVersion.php";
 			patchCreateParam.DefaultCDNServerIP = $"{cdnIP}/CDN/PC";
 
-			var variantRule1 = new PatchManager.CreateParameters.VariantRule();
+			var variantRule1 = new VariantRule();
 			variantRule1.VariantGroup = new List<string>() { "CN", "EN", "KR" };
 			variantRule1.TargetVariant = "EN";
-			patchCreateParam.VariantRules = new List<PatchManager.CreateParameters.VariantRule>() { variantRule1 };
+			patchCreateParam.VariantRules = new List<VariantRule>() { variantRule1 };
 			bundleServices = MotionEngine.CreateModule<PatchManager>(patchCreateParam);
 
 			EventManager.Instance.AddListener<PatchEventMessageDefine.PatchStatesChange>(OnHandleEvent);
