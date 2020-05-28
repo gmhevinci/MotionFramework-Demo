@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: ImportSetting
   m_EditorClassIdentifier: 
   Toggle: 1
-  Elements:
-  - FolderPath: Assets/WorksArt/Panel/Sprite
-    ProcessorName: DefaultProcessor
+  Elements: []
