@@ -78,7 +78,7 @@ namespace UnityEngine.UI
 			Transform result = null;
 			if (_runtimeDic.TryGetValue(path, out result) == false)
 			{
-				MotionLog.Log(ELogLevel.Warning, $"Not found ui element : {path}");
+				GameLogger.Warning($"Not found ui element : {path}");
 			}
 			return result;
 		}
@@ -94,7 +94,7 @@ namespace UnityEngine.UI
 
 			Component component = element.GetComponent(typeName);
 			if (component == null)
-				MotionLog.Log(ELogLevel.Warning, $"Not found ui component : {path}, {typeName}");
+				GameLogger.Warning($"Not found ui component : {path}, {typeName}");
 			return component;
 		}
 
@@ -109,7 +109,7 @@ namespace UnityEngine.UI
 
 			Component component = element.GetComponent<T>();
 			if (component == null)
-				MotionLog.Log(ELogLevel.Warning, $"Not found ui component : {path}, {typeof(T)}");
+				GameLogger.Warning($"Not found ui component : {path}, {typeof(T)}");
 			return component as T;
 		}
 

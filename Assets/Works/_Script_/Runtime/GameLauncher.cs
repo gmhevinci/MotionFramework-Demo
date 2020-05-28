@@ -30,34 +30,27 @@ public class GameLauncher : MonoBehaviour
 		SimulationOnEditor = false;
 #endif
 
-		// 不销毁游戏对象
-		DontDestroyOnLoad(gameObject);
-
-		// 注册日志系统
-		MotionLog.RegisterCallback(HandleMotionFrameworkLog);
-
 		// 初始化框架
-		MotionEngine.Initialize(this);
-
-		// 初始化控制台
-		if (Application.isEditor || Debug.isDebugBuild)
-			DeveloperConsole.Initialize();
+		bool showConsole = Application.isEditor || Debug.isDebugBuild;
+		MotionEngine.Initialize(this, showConsole, HandleMotionFrameworkLog);
 
 		// 初始化应用
 		InitAppliaction();
 	}
 	void Start()
 	{
+		// 创建游戏模块
 		CreateGameModules();
 	}
 	void Update()
 	{
+		// 更新框架
 		MotionEngine.Update();
 	}
 	void OnGUI()
 	{
-		if (Application.isEditor || Debug.isDebugBuild)
-			DeveloperConsole.DrawGUI();
+		// 绘制控制台
+		MotionEngine.DrawConsole();
 	}
 
 	/// <summary>

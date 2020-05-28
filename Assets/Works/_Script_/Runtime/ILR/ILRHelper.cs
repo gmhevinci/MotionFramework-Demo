@@ -62,7 +62,7 @@ public static class ILRHelper
 		}
 		else
 		{
-			MotionLog.Log(ELogLevel.Warning, "ILRuntime not generated binding scripts.");
+			GameLogger.Warning("ILRuntime not generated binding scripts.");
 		}
 
 		// 注册适配器
