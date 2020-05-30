@@ -60,7 +60,7 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 		EventManager.Instance.AddListener<PatchEventMessageDefine.GameVersionRequestFailed>(OnHandleEvent);
 		EventManager.Instance.AddListener<PatchEventMessageDefine.WebPatchManifestDownloadFailed>(OnHandleEvent);
 		EventManager.Instance.AddListener<PatchEventMessageDefine.WebFileDownloadFailed>(OnHandleEvent);
-		EventManager.Instance.AddListener<PatchEventMessageDefine.WebFileMD5VerifyFailed>(OnHandleEvent);
+		EventManager.Instance.AddListener<PatchEventMessageDefine.WebFileCheckFailed>(OnHandleEvent);
 
 		SendOperationEvent(EPatchOperation.BeginingRequestGameVersion);
 	}
@@ -73,7 +73,7 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 		EventManager.Instance.RemoveListener<PatchEventMessageDefine.GameVersionRequestFailed>(OnHandleEvent);
 		EventManager.Instance.RemoveListener<PatchEventMessageDefine.WebPatchManifestDownloadFailed>(OnHandleEvent);
 		EventManager.Instance.RemoveListener<PatchEventMessageDefine.WebFileDownloadFailed>(OnHandleEvent);
-		EventManager.Instance.RemoveListener<PatchEventMessageDefine.WebFileMD5VerifyFailed>(OnHandleEvent);
+		EventManager.Instance.RemoveListener<PatchEventMessageDefine.WebFileCheckFailed>(OnHandleEvent);
 	}
 
 	/// <summary>
@@ -137,17 +137,17 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 			{
 				SendOperationEvent(EPatchOperation.BeginingDownloadWebFiles);
 			};
-			string totalSize = (message.TotalSizeKB / 1024f).ToString("f3");
-			ShowMessageBox($"发现新版本需要更新 : 一共{message.TotalCount}个文件，总大小{totalSize}MB", callback);
+			string totalSizeMB = (message.TotalSizeBytes / 1048576f).ToString("f1");
+			ShowMessageBox($"发现新版本需要更新 : 一共{message.TotalCount}个文件，总大小{totalSizeMB}MB", callback);
 		}
 
 		else if (msg is PatchEventMessageDefine.DownloadFilesProgress)
 		{
 			var message = msg as PatchEventMessageDefine.DownloadFilesProgress;
 			_slider.value = message.CurrentDownloadCount / message.TotalDownloadCount;
-			string currentSize = (message.CurrentDownloadSizeKB / 1024f).ToString("f3");
-			string totalSize = (message.TotalDownloadSizeKB / 1024f).ToString("f3");
-			_tips.text = $"{message.CurrentDownloadCount}/{message.TotalDownloadCount} {currentSize}MB/{totalSize}MB";
+			string currentSizeMB = (message.CurrentDownloadSizeBytes / 1048576f).ToString("f1");
+			string totalSizeMB = (message.TotalDownloadSizeBytes / 1048576f).ToString("f1");
+			_tips.text = $"{message.CurrentDownloadCount}/{message.TotalDownloadCount} {currentSizeMB}MB/{totalSizeMB}MB";
 		}
 
 		else if (msg is PatchEventMessageDefine.GameVersionRequestFailed)
@@ -169,9 +169,9 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 			ShowMessageBox($"文件下载失败 : {message.Name}", callback);
 		}
 
-		else if (msg is PatchEventMessageDefine.WebFileMD5VerifyFailed)
+		else if (msg is PatchEventMessageDefine.WebFileCheckFailed)
 		{
-			var message = msg as PatchEventMessageDefine.WebFileMD5VerifyFailed;
+			var message = msg as PatchEventMessageDefine.WebFileCheckFailed;
 			System.Action callback = () =>
 			{
 				SendOperationEvent(EPatchOperation.TryDownloadWebFiles);

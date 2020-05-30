@@ -121,6 +121,7 @@ public class GameLauncher : MonoBehaviour
 			patchCreateParam.ChannelID = 0;
 			patchCreateParam.DeviceID = 0;
 			patchCreateParam.TestFlag = PlayerPrefs.GetInt("TEST_FLAG_KEY", 0);
+			patchCreateParam.CheckLevel = ECheckLevel.CheckSize;
 
 			patchCreateParam.WebServers = new Dictionary<RuntimePlatform, string>();
 			patchCreateParam.WebServers.Add(RuntimePlatform.Android, $"{webIP}/WEB/Android/GameVersion.php");
