@@ -10,18 +10,63 @@ using MotionFramework.Event;
 
 public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 {
+	/// <summary>
+	/// 对话框封装类
+	/// </summary>
+	private class MessageBox
+	{
+		private GameObject _cloneObject;
+		private Text _content;
+		private System.Action _clickYes;
+
+		public void Create(GameObject cloneObject)
+		{
+			_cloneObject = cloneObject;
+			_content = cloneObject.transform.BFSearch("txt_content").GetComponent<Text>();
+			var btnYes = cloneObject.transform.BFSearch("btn_yes").GetComponent<Button>();
+			btnYes.onClick.AddListener(OnClickYes);
+		}
+		public void Show(string content, System.Action clickYes)
+		{
+			_content.text = content;
+			_clickYes = clickYes;
+			_cloneObject.SetActive(true);
+		}
+		public void Hide()
+		{
+			_content.text = string.Empty;
+			_clickYes = null;
+			_cloneObject.SetActive(false);
+		}
+		public bool ActiveSelf
+		{
+			get
+			{
+				return _cloneObject.activeSelf;
+			}
+		}
+
+		private void OnClickYes()
+		{
+			_clickYes?.Invoke();
+			Hide();
+		}
+	}
+
 	private AssetReference _assetRef;
-	private System.Action _clickYes;
-	private System.Action _clickNo;
-	
+
+	// 事件组
+	private EventGroup _eventGroup = new EventGroup();
+
+	// 对话框列表
+	private List<MessageBox> _msgBoxList = new List<MessageBox>();
+
 	// UGUI相关
 	private GameObject _uiRoot;
 	private UIManifest _manifest;
 	private Slider _slider;
 	private Text _tips;
 	private GameObject _messageBoxObj;
-	private Text _messageBoxContent;
-
 
 	void IModule.OnCreate(object createParam)
 	{
@@ -50,30 +95,21 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 		_tips = _manifest.GetUIComponent<Text>("PatchWindow/UIWindow/Slider/txt_tips");
 		_messageBoxObj = _manifest.GetUIElement("PatchWindow/UIWindow/MessgeBox").gameObject;
 		_messageBoxObj.SetActive(false);
-		_messageBoxContent = _manifest.GetUIComponent<Text>("PatchWindow/UIWindow/MessgeBox/txt_content");
-		_manifest.GetUIComponent<Button>("PatchWindow/UIWindow/MessgeBox/btn_yes").onClick.AddListener(OnClickMessageBoxOK);
 
-		EventManager.Instance.AddListener<PatchEventMessageDefine.PatchStatesChange>(OnHandleEvent);
-		EventManager.Instance.AddListener<PatchEventMessageDefine.FoundForceInstallAPP>(OnHandleEvent);
-		EventManager.Instance.AddListener<PatchEventMessageDefine.FoundUpdateFiles>(OnHandleEvent);
-		EventManager.Instance.AddListener<PatchEventMessageDefine.DownloadFilesProgress>(OnHandleEvent);
-		EventManager.Instance.AddListener<PatchEventMessageDefine.GameVersionRequestFailed>(OnHandleEvent);
-		EventManager.Instance.AddListener<PatchEventMessageDefine.WebPatchManifestDownloadFailed>(OnHandleEvent);
-		EventManager.Instance.AddListener<PatchEventMessageDefine.WebFileDownloadFailed>(OnHandleEvent);
-		EventManager.Instance.AddListener<PatchEventMessageDefine.WebFileCheckFailed>(OnHandleEvent);
+		_eventGroup.AddListener<PatchEventMessageDefine.PatchStatesChange>(OnHandleEvent);
+		_eventGroup.AddListener<PatchEventMessageDefine.FoundForceInstallAPP>(OnHandleEvent);
+		_eventGroup.AddListener<PatchEventMessageDefine.FoundUpdateFiles>(OnHandleEvent);
+		_eventGroup.AddListener<PatchEventMessageDefine.DownloadFilesProgress>(OnHandleEvent);
+		_eventGroup.AddListener<PatchEventMessageDefine.GameVersionRequestFailed>(OnHandleEvent);
+		_eventGroup.AddListener<PatchEventMessageDefine.WebPatchManifestDownloadFailed>(OnHandleEvent);
+		_eventGroup.AddListener<PatchEventMessageDefine.WebFileDownloadFailed>(OnHandleEvent);
+		_eventGroup.AddListener<PatchEventMessageDefine.WebFileCheckFailed>(OnHandleEvent);
 
 		SendOperationEvent(EPatchOperation.BeginingRequestGameVersion);
 	}
 	private void OnWindowDestroy()
 	{
-		EventManager.Instance.RemoveListener<PatchEventMessageDefine.PatchStatesChange>(OnHandleEvent);
-		EventManager.Instance.RemoveListener<PatchEventMessageDefine.FoundForceInstallAPP>(OnHandleEvent);
-		EventManager.Instance.RemoveListener<PatchEventMessageDefine.FoundUpdateFiles>(OnHandleEvent);
-		EventManager.Instance.RemoveListener<PatchEventMessageDefine.DownloadFilesProgress>(OnHandleEvent);
-		EventManager.Instance.RemoveListener<PatchEventMessageDefine.GameVersionRequestFailed>(OnHandleEvent);
-		EventManager.Instance.RemoveListener<PatchEventMessageDefine.WebPatchManifestDownloadFailed>(OnHandleEvent);
-		EventManager.Instance.RemoveListener<PatchEventMessageDefine.WebFileDownloadFailed>(OnHandleEvent);
-		EventManager.Instance.RemoveListener<PatchEventMessageDefine.WebFileCheckFailed>(OnHandleEvent);
+		_eventGroup.RemoveAllListener();
 	}
 
 	/// <summary>
@@ -96,9 +132,7 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 		}
 	}
 
-	/// <summary>
-	/// 接收事件
-	/// </summary>
+	// 接收事件
 	private void OnHandleEvent(IEventMessage msg)
 	{
 		if (msg is PatchEventMessageDefine.PatchStatesChange)
@@ -108,22 +142,22 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 				_tips.text = "正在准备游戏世界......";
 			else if (message.CurrentStates == EPatchStates.RequestGameVersion)
 				_tips.text = "正在请求最新游戏版本";
-			else if(message.CurrentStates == EPatchStates.ParseWebPatchManifest)
+			else if (message.CurrentStates == EPatchStates.ParseWebPatchManifest)
 				_tips.text = "正在分析新清单";
-			else if(message.CurrentStates == EPatchStates.GetDonwloadList)
+			else if (message.CurrentStates == EPatchStates.GetDonwloadList)
 				_tips.text = "正在准备下载列表";
-			else if(message.CurrentStates == EPatchStates.DownloadWebFiles)
+			else if (message.CurrentStates == EPatchStates.DownloadWebFiles)
 				_tips.text = "正在下载更新文件";
-			else if(message.CurrentStates == EPatchStates.DownloadWebPatchManifest)
+			else if (message.CurrentStates == EPatchStates.DownloadWebPatchManifest)
 				_tips.text = "正在替换最新的清单";
-			else if(message.CurrentStates == EPatchStates.DownloadOver)
+			else if (message.CurrentStates == EPatchStates.DownloadOver)
 				_tips.text = "欢迎来到游戏世界";
 		}
 
 		else if (msg is PatchEventMessageDefine.FoundForceInstallAPP)
 		{
 			var message = msg as PatchEventMessageDefine.FoundForceInstallAPP;
-			System.Action callback = () => 
+			System.Action callback = () =>
 			{
 				Application.OpenURL(message.InstallURL);
 			};
@@ -196,20 +230,31 @@ public class PatchWindow : ModuleSingleton<PatchWindow>, IModule
 	}
 
 	// 消息框相关
-	private void OnClickMessageBoxOK()
-	{
-		_clickYes?.Invoke();
-		HideMessageBox();
-	}
 	private void ShowMessageBox(string content, System.Action clickYes)
 	{
-		_clickYes = clickYes;
-		_messageBoxObj.SetActive(true);
-		_messageBoxContent.text = content;
-	}
-	private void HideMessageBox()
-	{
-		_messageBoxObj.SetActive(false);
+		// 尝试获取一个可用的对话框
+		MessageBox msgBox = null;
+		for (int i = 0; i < _msgBoxList.Count; i++)
+		{
+			var item = _msgBoxList[i];
+			if(item.ActiveSelf == false)
+			{
+				msgBox = item;
+				break;
+			}
+		}
+
+		// 如果没有可用的对话框则创建一个新的对话框
+		if(msgBox == null)
+		{
+			msgBox = new MessageBox();
+			var cloneObject = GameObject.Instantiate(_messageBoxObj, _messageBoxObj.transform.parent);
+			msgBox.Create(cloneObject);
+			_msgBoxList.Add(msgBox);
+		}
+
+		// 显示对话框
+		msgBox.Show(content, clickYes);
 	}
 
 	// 事件相关
