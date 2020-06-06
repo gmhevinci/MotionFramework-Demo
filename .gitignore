@@ -4,10 +4,10 @@ obj/
 Library/
 Temp/
 
-Assets/MotionFramework
-Assets/MotionFramework.meta
-Assets/StreamingAssets
-Assets/StreamingAssets.meta
+RPG/Assets/MotionFramework
+RPG/Assets/MotionFramework.meta
+RPG/Assets/StreamingAssets
+RPG/Assets/StreamingAssets.meta
 
 *.sln
 *.suo
