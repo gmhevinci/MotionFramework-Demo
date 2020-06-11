@@ -1,5 +1,5 @@
 ﻿
 class GameDefine
 {
-	public const string AssetRootPath = "Assets/GameArt/Res";
+	public const string AssetRootPath = "Assets/GameRes";
 }
