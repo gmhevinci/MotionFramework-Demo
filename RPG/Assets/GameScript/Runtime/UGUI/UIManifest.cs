@@ -1,9 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
-using MotionFramework;
 
 namespace UnityEngine.UI
 {
@@ -39,11 +39,11 @@ namespace UnityEngine.UI
 		{
 			_runtimeDic.Clear();
 
-			if(_elementPath.Count == 0)
+			if (_elementPath.Count == 0)
 				throw new Exception($"Fatal error : {this.gameObject.name} elementPath list is empty.");
-			if(_elementTrans.Count == 0)
+			if (_elementTrans.Count == 0)
 				throw new Exception($"Fatal error : {this.gameObject.name} elementTrans list is empty.");
-			if(_elementPath.Count != _elementTrans.Count)
+			if (_elementPath.Count != _elementTrans.Count)
 				throw new Exception($"Fatal error : {this.gameObject.name} elementTrans list and elementPath list must has same count.");
 
 			for (int i = 0; i < _elementPath.Count; i++)
@@ -244,16 +244,7 @@ namespace UnityEngine.UI
 					if (uiSprite == null)
 						uiSprite = img.gameObject.AddComponent<UISprite>();
 
-					string[] splits = assetPath.Split('/');
-					string atlasName = splits[4]; //注意：根据路径判断索引
-					string atlasAssetPath = string.Empty;
-
-					// 注意：如果是艺术字图集
-					if (atlasName.StartsWith("UIWordArt"))
-						atlasAssetPath = $"{UIDefine.StrMyUIAtlasFolderPath}/UIWordArt/{atlasName}/UIWordArt.spriteatlas";
-					else
-						atlasAssetPath = $"{UIDefine.StrMyUIAtlasFolderPath}/{atlasName}.spriteatlas";
-
+					string atlasAssetPath = GetAtlasPath(assetPath);
 					SpriteAtlas spriteAtlas = UnityEditor.AssetDatabase.LoadAssetAtPath<SpriteAtlas>(atlasAssetPath);
 					if (spriteAtlas == null)
 					{
@@ -262,11 +253,33 @@ namespace UnityEngine.UI
 					else
 					{
 						uiSprite.Atlas = spriteAtlas;
-
+						string atlasName = Path.GetFileNameWithoutExtension(atlasAssetPath);
 						if (_cacheAtlasTags.Contains(atlasName) == false)
 							_cacheAtlasTags.Add(atlasName);
 					}
 				}
+			}
+		}
+
+		/// <summary>
+		/// 获取精灵所属图集
+		/// </summary>
+		private string GetAtlasPath(string assetPath)
+		{
+			// 获取图片所在总文件下的子文件夹
+			string temp = assetPath.Replace(UIDefine.StrMyUISpriteFolderPath, string.Empty);
+			string[] splits = temp.Split('/');
+			string folderName = splits[1];
+
+			// 检测是否为艺术字图集
+			if (Path.HasExtension(folderName))
+			{
+				string altasName = Path.GetFileNameWithoutExtension(folderName);
+				return $"{UIDefine.StrMyUIAtlasFolderPath}/{folderName}/{altasName}.spriteatlas";
+			}
+			else
+			{
+				return $"{UIDefine.StrMyUIAtlasFolderPath}/{folderName}.spriteatlas";
 			}
 		}
 #endif
