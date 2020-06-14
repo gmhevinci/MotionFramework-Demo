@@ -34,7 +34,7 @@ public class GameLauncher : MonoBehaviour
 	void Start()
 	{
 		// 创建游戏模块
-		CreateGameModules();
+		StartCoroutine(CreateGameModules());
 	}
 	void Update()
 	{
@@ -92,16 +92,20 @@ public class GameLauncher : MonoBehaviour
 	/// <summary>
 	/// 创建游戏模块
 	/// </summary>
-	private void CreateGameModules()
+	private IEnumerator CreateGameModules()
 	{
 		// 创建事件管理器
 		MotionEngine.CreateModule<EventManager>();
+
+		// 本地资源服务接口
+		LocalBundleServices bundleServices = new LocalBundleServices();
+		yield return bundleServices.InitializeAsync(SimulationOnEditor);
 
 		// 创建资源管理器
 		var resourceCreateParam = new ResourceManager.CreateParameters();
 		resourceCreateParam.LocationRoot = GameDefine.AssetRootPath;
 		resourceCreateParam.SimulationOnEditor = SimulationOnEditor;
-		resourceCreateParam.BundleServices = new LocalBundleServices();
+		resourceCreateParam.BundleServices = bundleServices;
 		resourceCreateParam.DecryptServices = null;
 		resourceCreateParam.AutoReleaseInterval = 10f;
 		MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);

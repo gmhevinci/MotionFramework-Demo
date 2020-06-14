@@ -18,4 +18,4 @@ MonoBehaviour:
     LabelRule: 1
   - FolderPath: Assets/GameArt/Panel/Sprite
     PackRule: 0
-    LabelRule: 3
+    LabelRule: 2
