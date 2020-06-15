@@ -271,16 +271,7 @@ namespace UnityEngine.UI
 			string[] splits = temp.Split('/');
 			string folderName = splits[1];
 
-			// 检测是否为艺术字图集
-			if (Path.HasExtension(folderName))
-			{
-				string altasName = Path.GetFileNameWithoutExtension(folderName);
-				return $"{UIDefine.StrMyUIAtlasFolderPath}/{folderName}/{altasName}.spriteatlas";
-			}
-			else
-			{
-				return $"{UIDefine.StrMyUIAtlasFolderPath}/{folderName}.spriteatlas";
-			}
+			return $"{UIDefine.StrMyUIAtlasFolderPath}/{folderName}.spriteatlas";
 		}
 #endif
 	}
