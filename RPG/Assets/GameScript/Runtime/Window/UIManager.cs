@@ -3,18 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MotionFramework;
-using MotionFramework.Resource;
 
 public class UIManager : ModuleSingleton<UIManager>, IModule
 {
 	private readonly Dictionary<EWindowType, Type> _types = new Dictionary<EWindowType, Type>();
 	private readonly List<UIWindow> _stack = new List<UIWindow>(100);
 	private readonly UIRoot _root = new UIRoot();
+	private readonly WindowCreater _creater = new WindowCreater();
 
 	void IModule.OnCreate(object createParam)
 	{
-		// 收集所有窗口类型
-		CollectTypes();
+		_creater.Initialize(MotionFramework.Utility.AssemblyUtility.UnityDefaultAssemblyName);
 	}
 	void IModule.OnUpdate()
 	{
@@ -74,7 +73,7 @@ public class UIManager : ModuleSingleton<UIManager>, IModule
 			return null;
 
 		GameLogger.Log($"Preload window {type}");
-		UIWindow window = CreateWindowClass(type);
+		UIWindow window = _creater.CreateInstance(type);
 		Push(window);
 		window.InternalClose();
 		window.InternalLoad(OnWindowPrepare);	
@@ -113,7 +112,7 @@ public class UIManager : ModuleSingleton<UIManager>, IModule
 		else
 		{
 			// 创建窗口类
-			window = CreateWindowClass(type);
+			window = _creater.CreateInstance(type);
 		}
 
 		Push(window);
@@ -278,38 +277,5 @@ public class UIManager : ModuleSingleton<UIManager>, IModule
 	{
 		// 从堆栈里移除
 		_stack.Remove(window);
-	}
-
-	private void CollectTypes()
-	{
-		List<Type> types = MotionFramework.Utility.AssemblyUtility.GetAttributeTypes(typeof(WindowAttribute));
-		for (int i = 0; i < types.Count; i++)
-		{
-			System.Type type = types[i];
-			WindowAttribute attribute = Attribute.GetCustomAttribute(type, typeof(WindowAttribute)) as WindowAttribute;
-
-			// 判断是否重复
-			if (_types.ContainsKey(attribute.WindowType))
-				throw new Exception($"Window type {attribute.WindowType} already exist.");
-
-			// 添加到集合
-			_types.Add(attribute.WindowType, type);
-		}
-	}
-	private UIWindow CreateWindowClass(EWindowType windowType)
-	{
-		UIWindow window = null;
-		Type type;
-		if (_types.TryGetValue(windowType, out type))
-		{
-			WindowAttribute attribute = Attribute.GetCustomAttribute(type, typeof(WindowAttribute)) as WindowAttribute;
-			window = (UIWindow)Activator.CreateInstance(type);
-			window.Init(attribute.WindowType, attribute.WindowLayer);
-		}
-
-		if (window == null)
-			throw new KeyNotFoundException($"{nameof(UIWindow)} {windowType} is not define.");
-
-		return window;
 	}
 }
