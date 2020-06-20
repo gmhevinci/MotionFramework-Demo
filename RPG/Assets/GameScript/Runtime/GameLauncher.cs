@@ -12,6 +12,7 @@ using MotionFramework.Network;
 using MotionFramework.Patch;
 using MotionFramework.Scene;
 using MotionFramework.Pool;
+using MotionFramework.Window;
 
 public class GameLauncher : MonoBehaviour
 {

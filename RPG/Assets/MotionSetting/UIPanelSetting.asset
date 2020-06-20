@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc54f0173b27fb40aee29e7eb3364da, type: 3}
-  m_Name: CollectionSetting
+  m_Script: {fileID: 11500000, guid: 62fd1df836484fe499fb9363d9d0ac7d, type: 3}
+  m_Name: UIPanelSetting
   m_EditorClassIdentifier: 
-  Elements:
-  - FolderPath: Assets/GameRes
-    PackRule: 0
-    LabelRule: 1
-  - FolderPath: Assets/GameArt/Panel/Sprite
-    PackRule: 0
-    LabelRule: 2
+  UISpriteDirectory: Assets/GameArt/Panel/Sprite
+  UIAtlasDirectory: Assets/GameRes/UIAtlas

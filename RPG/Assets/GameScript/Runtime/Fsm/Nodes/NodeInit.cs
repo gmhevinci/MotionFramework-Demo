@@ -4,6 +4,7 @@ using MotionFramework;
 using System;
 using System.Collections.Generic;
 using System.Collections;
+using MotionFramework.Window;
 
 public class NodeInit : IFsmNode
 {
@@ -33,10 +34,10 @@ public class NodeInit : IFsmNode
 	private IEnumerator Init()
 	{
 		// 加载UIRoot
-		yield return UIManager.Instance.CreateUIRoot("UIPanel/UIRoot");
+		yield return UIManager.Instance.CreateUIRoot<CanvasRoot>("UIPanel/UIRoot");
 
 		// 加载常驻面板
-		var loadingWindow = UIManager.Instance.PreloadWindow(EWindowType.UILoading);
+		var loadingWindow = UITools.PreloadWindow<UILoading>();
 		yield return loadingWindow;
 
 		// 进入到登录流程

@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MotionFramework.Window;
 
 /*
-[Window(EWindowType.UIXXX, EWindowLayer.Panel)]
-public class UIXXX : UIWindow
+[Window(EWindowLayer.Panel)]
+sealed class UIXXX : CanvasWindow
 {
 	public override void OnCreate()
 	{

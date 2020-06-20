@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MotionFramework.Event;
+using MotionFramework.Window;
 
-[Window(EWindowType.UILogin, EWindowLayer.Panel)]
-public class UILogin : UIWindow
+[Window((int)EWindowLayer.Panel, false, true)]
+sealed class UILogin : CanvasWindow
 {
 	private UISprite _loginSprite;
 	private InputField _account;

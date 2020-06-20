@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MotionFramework.Event;
+using MotionFramework.Window;
 
-[Window(EWindowType.UIMain, EWindowLayer.Panel)]
-public class UIMain : UIWindow
+[Window((int)EWindowLayer.Panel, false, false)]
+sealed class UIMain : CanvasWindow
 {
-
 	public override void OnCreate()
 	{
 		AddButtonListener("UIMain/Meum/Button (Settings)", OnClickSetting);
@@ -36,7 +36,7 @@ public class UIMain : UIWindow
 
 	private void OnClickSetting()
 	{
-		UIManager.Instance.OpenWindow(EWindowType.UISetting);
+		UITools.OpenWindow<UISetting>();
 	}
 	private void OnClickSkill1()
 	{

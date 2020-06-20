@@ -13,14 +13,14 @@ public class NodeLogin : IFsmNode
 	}
 	void IFsmNode.OnEnter()
 	{
-		UIManager.Instance.OpenWindow(EWindowType.UILogin);
+		UITools.OpenWindow<UILogin>();
 	}
 	void IFsmNode.OnUpdate()
 	{
 	}
 	void IFsmNode.OnExit()
 	{
-		UIManager.Instance.CloseWindow(EWindowType.UILogin);
+		UITools.CloseWindow<UILogin>();
 	}
 	void IFsmNode.OnHandleMessage(object msg)
 	{

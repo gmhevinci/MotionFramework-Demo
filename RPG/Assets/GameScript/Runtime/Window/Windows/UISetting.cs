@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MotionFramework.Audio;
+using MotionFramework.Window;
 
-[Window(EWindowType.UISetting, EWindowLayer.Panel)]
-public class UISetting : UIWindow
+[Window((int)EWindowLayer.Panel, false, false)]
+sealed class UISetting : CanvasWindow
 {
 	private Slider _volumeSlider;
 	private Toggle _musicToggle;
@@ -39,7 +40,7 @@ public class UISetting : UIWindow
 
 	private void OnClickClose()
 	{
-		UIManager.Instance.CloseWindow(EWindowType.UISetting);
+		UITools.CloseWindow<UISetting>();
 	}
 	private void OnSliderValueChange(float value)
 	{

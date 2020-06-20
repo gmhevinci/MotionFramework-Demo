@@ -5,9 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using MotionFramework.Scene;
 using MotionFramework.Utility;
+using MotionFramework.Window;
 
-[Window(EWindowType.UILoading, EWindowLayer.Loading)]
-public class UILoading : UIWindow
+[Window((int)EWindowLayer.Loading, true, true)]
+sealed class UILoading : CanvasWindow
 {
 	private UISprite _progress;
 	private Text _loadingTxt;
@@ -17,12 +18,6 @@ public class UILoading : UIWindow
 	private RepeatTimer _repeater = new RepeatTimer(0, 0.1f);
 	private int _count = 0;
 
-
-	public UILoading()
-	{
-		FullScreen = true;
-		DontDestroy = true;
-	}
 	public override void OnCreate()
 	{
 		_progress = GetUIComponent<UISprite>("UILoading/Loading/Fill");
@@ -42,6 +37,9 @@ public class UILoading : UIWindow
 	}
 	public override void OnUpdate()
 	{
+		if (string.IsNullOrEmpty(_sceneName))
+			return;
+
 		if (_repeater.Update(Time.deltaTime))
 		{
 			int progress = SceneManager.Instance.GetSceneLoadProgress(_sceneName);
@@ -57,7 +55,7 @@ public class UILoading : UIWindow
 		{
 			// 延迟关闭加载窗口
 			if (_hideTimer.Update(Time.deltaTime))
-				UIManager.Instance.CloseWindow(EWindowType.UILoading);
+				UITools.CloseWindow<UILoading>();
 		}
 	}
 

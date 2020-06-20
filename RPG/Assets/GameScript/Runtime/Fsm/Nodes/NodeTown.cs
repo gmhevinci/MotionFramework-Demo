@@ -20,8 +20,8 @@ public class NodeTown : IFsmNode
 	{
 		string sceneName = "Scene/Town";
 		SceneManager.Instance.ChangeMainScene(sceneName, true, OnSceneLoad);
-		UIManager.Instance.OpenWindow(EWindowType.UILoading, sceneName);
-		UIManager.Instance.OpenWindow(EWindowType.UIMain);
+		UITools.OpenWindow<UILoading>(sceneName);
+		UITools.OpenWindow<UIMain>();
 		AudioManager.Instance.PlayMusic("Audio/Music/town", true);
 	}
 	void IFsmNode.OnUpdate()

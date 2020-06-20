@@ -1,8 +1,0 @@
-﻿
-	public enum EWindowType
-	{
-		UILoading,
-		UILogin,
-		UIMain,
-		UISetting,
-	}
