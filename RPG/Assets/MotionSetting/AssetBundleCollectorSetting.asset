@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc54f0173b27fb40aee29e7eb3364da, type: 3}
   m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
-  Elements: []
+  Elements:
+  - FolderPath: Assets/GameRes
+    PackRule: 0
+    LabelRule: 1
+  - FolderPath: Assets/GameArt/Panel/Sprite
+    PackRule: 0
+    LabelRule: 2
