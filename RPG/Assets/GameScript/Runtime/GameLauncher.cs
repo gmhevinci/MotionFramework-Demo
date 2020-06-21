@@ -126,7 +126,7 @@ public class GameLauncher : MonoBehaviour
 
 		// 最后创建游戏业务逻辑模块
 		MotionEngine.CreateModule<DataManager>();
-		MotionEngine.CreateModule<UIManager>();
+		MotionEngine.CreateModule<WindowManager>();
 		MotionEngine.CreateModule<FsmManager>();
 
 		// 开始游戏逻辑

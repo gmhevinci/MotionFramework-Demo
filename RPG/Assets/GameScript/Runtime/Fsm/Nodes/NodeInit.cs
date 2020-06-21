@@ -1,9 +1,8 @@
-﻿using MotionFramework.AI;
-using MotionFramework.Config;
-using MotionFramework;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using MotionFramework;
+using MotionFramework.AI;
 using MotionFramework.Window;
 
 public class NodeInit : IFsmNode
@@ -34,7 +33,8 @@ public class NodeInit : IFsmNode
 	private IEnumerator Init()
 	{
 		// 加载UIRoot
-		yield return UIManager.Instance.CreateUIRoot<CanvasRoot>("UIPanel/UIRoot");
+		var uiRoot = WindowManager.Instance.CreateUIRoot<CanvasRoot>("UIPanel/UIRoot");
+		yield return uiRoot;
 
 		// 加载常驻面板
 		var loadingWindow = UITools.PreloadWindow<UILoading>();

@@ -11,7 +11,7 @@ public static class UITools
 	public static UIWindow PreloadWindow<T>() where T : UIWindow
 	{
 		string location = $"UIPanel/{typeof(T).Name}";
-		return UIManager.Instance.PreloadWindow<T>(location);
+		return WindowManager.Instance.PreloadWindow<T>(location);
 	}
 
 	/// <summary>
@@ -20,7 +20,7 @@ public static class UITools
 	public static void OpenWindow<T>(object userData = null) where T : UIWindow
 	{
 		string location = $"UIPanel/{typeof(T).Name}";
-		UIManager.Instance.OpenWindow<T>(location, userData);
+		WindowManager.Instance.OpenWindow<T>(location, userData);
 	}
 
 	/// <summary>
@@ -28,6 +28,6 @@ public static class UITools
 	/// </summary>
 	public static void CloseWindow<T>() where T : UIWindow
 	{
-		UIManager.Instance.CloseWindow<T>();
+		WindowManager.Instance.CloseWindow<T>();
 	}
 }
