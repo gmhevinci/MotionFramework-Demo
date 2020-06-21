@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7026438568991750552}
   - component: {fileID: 239135461057832718}
   - component: {fileID: 2818151954051284103}
-  - component: {fileID: 6017764817525136591}
+  - component: {fileID: 2069986911244022836}
   m_Layer: 5
   m_Name: _UIXXX
   m_TagString: Untagged
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5875459767516237110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6017764817525136591
+--- !u!114 &2069986911244022836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,12 +85,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5875459767516237110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e0368782857b6448416c394736646c, type: 3}
+  m_Script: {fileID: 11500000, guid: 78f8c51d1eac4a548a5306a755aac78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _elementPath:
+  CacheAtlasTags: []
+  ElementPath:
   - _UIXXX
-  _elementTrans:
+  ElementTrans:
   - {fileID: 7026438568991750552}
-  _cacheAtlasTags: []
-  AttachPrefabs: []
