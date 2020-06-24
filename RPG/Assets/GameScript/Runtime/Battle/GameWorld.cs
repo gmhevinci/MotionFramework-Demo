@@ -29,6 +29,10 @@ public class GameWorld
 		if (monster3 != null)
 			_entitys.Add(monster3);
 
+		EntityMonster monster4 = CreateMonster(3, new Vector3(0, 0, 0), Vector3.zero);
+		if (monster4 != null)
+			_entitys.Add(monster4);
+
 		_eventGroup.AddListener<BattleEvent.CharacterDead>(OnHandleBattleEvent);
 		_eventGroup.AddListener<BattleEvent.DamageHurt>(OnHandleBattleEvent);
 		_eventGroup.AddListener<BattleEvent.PlayerSpell>(OnHandleBattleEvent);

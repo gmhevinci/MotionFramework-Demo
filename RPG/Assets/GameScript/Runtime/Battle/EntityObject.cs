@@ -30,14 +30,14 @@ public abstract class EntityObject
 
 		World = world;
 
-		// 创建Avatar
-		Avatar = new EntityAvatar(this, avatarID);
-		Avatar.Create(OnAvatarLoad);
-
 		// 创建游戏对象
 		Root = new GameObject($"Entity{EntityID}");
 		Root.transform.position = pos;
 		Root.transform.rotation = Quaternion.Euler(rot);
+
+		// 创建Avatar
+		Avatar = new EntityAvatar(this, avatarID);
+		Avatar.Create(OnAvatarLoad);
 
 		OnCreate();
 	}
