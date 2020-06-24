@@ -6,10 +6,8 @@
 
 **配置表**  
 导表工具使用的是[闪电导表工具](https://github.com/gmhevinci/FlashExcel)  
-![image](https://github.com/gmhevinci/Demo1/raw/master/Docs/Image/img3.png)
 
 **游戏截图**  
-![image](https://github.com/gmhevinci/Demo1/raw/master/Docs/Image/img1.png)
 ![image](https://github.com/gmhevinci/Demo1/raw/master/Docs/Image/img2.png)
 
 **声明**  
