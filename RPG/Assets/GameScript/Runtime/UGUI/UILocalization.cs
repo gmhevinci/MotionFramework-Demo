@@ -13,7 +13,7 @@ public static class UILocalization
 		}
 		else
 		{
-			GameLogger.Warning($"Not found UILanguage {key}");
+			GameLog.Warning($"Not found UILanguage {key}");
 			return key;
 		}
 	}

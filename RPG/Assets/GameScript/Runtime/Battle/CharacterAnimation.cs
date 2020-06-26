@@ -23,7 +23,7 @@ public class CharacterAnimation
 	{
 		if (anim == null)
 		{
-			GameLogger.Warning("Animation is null.");
+			GameLog.Warning("Animation is null.");
 			return;
 		}
 		_animation = anim;

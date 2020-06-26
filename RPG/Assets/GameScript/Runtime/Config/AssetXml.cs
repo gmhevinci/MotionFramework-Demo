@@ -60,7 +60,7 @@ public abstract class AssetXml
 			}
 			catch (Exception ex)
 			{
-				GameLogger.Error($"Failed to parse xml {Location}. Exception : {ex.ToString()}");
+				GameLog.Error($"Failed to parse xml {Location}. Exception : {ex.ToString()}");
 			}
 		}
 

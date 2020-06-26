@@ -24,7 +24,7 @@ public abstract class EntityObject
 	{
 		if (Root != null)
 		{
-			GameLogger.Error("EntityObject is create yet.");
+			GameLog.Error("EntityObject is create yet.");
 			return;
 		}
 

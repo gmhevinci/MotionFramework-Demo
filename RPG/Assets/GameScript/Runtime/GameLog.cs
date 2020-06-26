@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-public static class GameLogger
+public static class GameLog
 {
 	[Conditional("DEBUG")]
 	public static void Log(string content)

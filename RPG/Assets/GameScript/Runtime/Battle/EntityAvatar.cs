@@ -31,7 +31,7 @@ public class EntityAvatar
 	{
 		if (_spawnGo != null)
 		{
-			GameLogger.Error($"Avatar is create yet : {_avatarTable.Id}");
+			GameLog.Error($"Avatar is create yet : {_avatarTable.Id}");
 			return;
 		}
 

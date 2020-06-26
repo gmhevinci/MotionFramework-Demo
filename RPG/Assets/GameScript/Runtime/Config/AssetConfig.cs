@@ -25,7 +25,7 @@ public abstract class AssetConfig
 	{
 		if (_tables.ContainsKey(key))
 		{
-			GameLogger.Warning($"{this.GetType().Name} Element is already exsit, Key is {key}");
+			GameLog.Warning($"{this.GetType().Name} Element is already exsit, Key is {key}");
 			return;
 		}
 
@@ -43,7 +43,7 @@ public abstract class AssetConfig
 		}
 		else
 		{
-			GameLogger.Warning($"Faild to get tab. File is {this.GetType().Name}, key is {key}");
+			GameLog.Warning($"Faild to get tab. File is {this.GetType().Name}, key is {key}");
 			return null;
 		}
 	}
