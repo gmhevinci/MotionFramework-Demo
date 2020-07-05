@@ -6,7 +6,7 @@ using MotionFramework.Event;
 public class CharacterData
 {
 	private readonly EntityCharacter _owner;
-	private readonly RepeatTimer _tickTimer = new RepeatTimer(0, 3f);
+	private readonly Timer _tickTimer = Timer.CreatePepeatTimer(0, 3f);
 	private double MaxHP;
 	private double MaxMP;
 

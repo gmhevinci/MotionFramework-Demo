@@ -7,15 +7,15 @@ using MotionFramework.Scene;
 using MotionFramework.Utility;
 using MotionFramework.Window;
 
-[Window((int)EWindowLayer.Loading, true, true)]
+[Window((int)EWindowLayer.Loading, true)]
 sealed class UILoading : CanvasWindow
 {
 	private UISprite _progress;
 	private Text _loadingTxt;
 
 	private string _sceneName = string.Empty;
-	private OnceTimer _hideTimer = new OnceTimer(0.5f);
-	private RepeatTimer _repeater = new RepeatTimer(0, 0.1f);
+	private Timer _hideTimer = Timer.CreateOnceTimer(0.5f);
+	private Timer _repeater = Timer.CreatePepeatTimer(0, 0.1f);
 	private int _count = 0;
 
 	public override void OnCreate()

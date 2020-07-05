@@ -1536,7 +1536,7 @@ GameObject:
   - component: {fileID: 4866243838114236661}
   - component: {fileID: 3958016621629117195}
   - component: {fileID: 1924524859553224362}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1611,7 +1611,7 @@ GameObject:
   - component: {fileID: 8950560582781565796}
   - component: {fileID: 2727658871667996023}
   - component: {fileID: 6715027443766382233}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UILogin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

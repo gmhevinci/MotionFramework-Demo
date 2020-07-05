@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using MotionFramework.Event;
 using MotionFramework.Window;
 
-[Window((int)EWindowLayer.Panel, false, true)]
+[Window((int)EWindowLayer.Panel, true)]
 sealed class UILogin : CanvasWindow
 {
 	private UISprite _loginSprite;

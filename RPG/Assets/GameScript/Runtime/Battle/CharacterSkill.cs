@@ -12,7 +12,7 @@ public class CharacterSkill
 		private readonly EntityCharacter _owner;
 		private readonly CfgSkillTable _skillTable;
 		private readonly CfgAnimationTable _animTable;
-		private readonly OnceTimer _delayTimer;
+		private readonly Timer _delayTimer;
 		private bool _isSpelling = false;
 		private float _lifeTimer = 0;
 		private float _cdTimer = 0;
@@ -29,7 +29,7 @@ public class CharacterSkill
 		{
 			_owner = owner;
 			_skillTable = CfgSkill.Instance.GetConfigTable(skillID);
-			_delayTimer = new OnceTimer(_skillTable.Delay);
+			_delayTimer = Timer.CreateOnceTimer(_skillTable.Delay);
 
 			// 初始化技能动画
 			if (_skillTable.AnimationID > 0)
