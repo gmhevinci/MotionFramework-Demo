@@ -14,13 +14,13 @@ sealed class UISetting : CanvasWindow
 	private Slider _volumeSlider;
 	private Toggle _musicToggle;
 	private Toggle _soundToggle;
-
 	private Transform _animTrans;
-	private float _animTimer = 0;
+	private CanvasGroup _canvasGroup;
+	private bool _isPlayOpenAnimation = false;
 
 	public override void OnCreate()
 	{
-		WindowOpenAnimationTime = 0.25f;
+		WindowOpenAnimationTime = 0.5f;
 
 		AddButtonListener("UISetting/Mask", OnClickClose);
 		AddButtonListener("UISetting/Window/Button (Save)", OnClickClose);
@@ -31,6 +31,7 @@ sealed class UISetting : CanvasWindow
 		_musicToggle.onValueChanged.AddListener(OnMusicToggleValueChange);
 		_soundToggle = GetUIComponent<Toggle>("UISetting/Window/Content/Control Area (Toggles)/Toggle 2");
 		_soundToggle.onValueChanged.AddListener(OnSoundToggleValueChange);
+		_canvasGroup = GetUIComponent<CanvasGroup>("UISetting/Window");
 
 		_animTrans = GetUIElement("UISetting/Window");
 		_animTrans.transform.localScale = Vector3.zero;
@@ -45,23 +46,26 @@ sealed class UISetting : CanvasWindow
 		_soundToggle.isOn = !AudioPlayerSetting.SoundMute;
 
 		// 窗口打开动画
-		if(_animTimer < 0.01f)
+		if(_isPlayOpenAnimation == false)
 		{
-			IFlowNode rootNode = TimerNode.AllocateDuration(0, 0.25f, () => { _animTrans.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, _animTimer / 0.25f); });
+			_isPlayOpenAnimation = true;
+			IFlowNode rootNode = ParallelNode.Allocate(
+				_canvasGroup.TweenAlpha(0.4f, 0f, 1f),
+				_animTrans.TweenScaleTo(0.8f, Vector3.one).SetEase(TweenEase.Bounce.EaseOut),
+				_animTrans.TweenAnglesTo(0.4f, new Vector3(0, 0, 720))
+				);
 			FlowGrouper.AddNode(rootNode);
 		}
 	}
 	public override void OnUpdate()
 	{
-		_animTimer += Time.deltaTime;
 	}
 
 	private void OnClickClose()
 	{
 		// 窗口关闭动画
-		_animTimer = 0;
 		IFlowNode rootNode = SequenceNode.Allocate(
-			TimerNode.AllocateDuration(0, 0.25f, () => { _animTrans.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, _animTimer / 0.25f); }),
+			_animTrans.TweenScaleTo(0.5f, Vector3.zero).SetEase(TweenEase.Bounce.EaseOut),
 			ExecuteNode.Allocate(() => { UITools.CloseWindow<UISetting>(); })
 			);
 		FlowGrouper.AddNode(rootNode);
