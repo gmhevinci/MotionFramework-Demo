@@ -5,6 +5,7 @@ using MotionFramework;
 using MotionFramework.AI;
 using MotionFramework.Window;
 using MotionFramework.Pool;
+using UnityEngine;
 
 public class NodeInit : IFsmNode
 {
@@ -38,7 +39,7 @@ public class NodeInit : IFsmNode
 		yield return uiRoot;
 
 		// 加载常驻面板
-		GameObjectPoolManager.Instance.CreatePool("UIPanel/UILoading");
+		yield return GameObjectPoolManager.Instance.CreatePool("UIPanel/UILoading");
 
 		// 进入到登录流程
 		FsmManager.Instance.Transition(nameof(NodeLogin));
