@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using MotionFramework.Audio;
 using MotionFramework.Window;
 using MotionFramework.Utility;
-using MotionFramework.Flow;
+using MotionFramework.Tween;
 
 [Window((int)EWindowLayer.Panel, true)]
 sealed class UISetting : CanvasWindow
@@ -49,12 +49,12 @@ sealed class UISetting : CanvasWindow
 		if(_isPlayOpenAnimation == false)
 		{
 			_isPlayOpenAnimation = true;
-			IFlowNode rootNode = ParallelNode.Allocate(
+			ITweenNode rootNode = ParallelNode.Allocate(
 				_canvasGroup.TweenAlpha(0.4f, 0f, 1f),
 				_animTrans.TweenScaleTo(0.8f, Vector3.one).SetEase(TweenEase.Bounce.EaseOut),
 				_animTrans.TweenAnglesTo(0.4f, new Vector3(0, 0, 720))
 				);
-			FlowGrouper.AddNode(rootNode);
+			TweenGrouper.AddNode(rootNode);
 		}
 	}
 	public override void OnUpdate()
@@ -64,11 +64,11 @@ sealed class UISetting : CanvasWindow
 	private void OnClickClose()
 	{
 		// 窗口关闭动画
-		IFlowNode rootNode = SequenceNode.Allocate(
+		ITweenNode rootNode = SequenceNode.Allocate(
 			_animTrans.TweenScaleTo(0.5f, Vector3.zero).SetEase(TweenEase.Bounce.EaseOut),
 			ExecuteNode.Allocate(() => { UITools.CloseWindow<UISetting>(); })
 			);
-		FlowGrouper.AddNode(rootNode);
+		TweenGrouper.AddNode(rootNode);
 	}
 	private void OnSliderValueChange(float value)
 	{

@@ -13,7 +13,7 @@ using MotionFramework.Patch;
 using MotionFramework.Scene;
 using MotionFramework.Pool;
 using MotionFramework.Window;
-using MotionFramework.Flow;
+using MotionFramework.Tween;
 
 public class GameLauncher : MonoBehaviour
 {
@@ -104,7 +104,7 @@ public class GameLauncher : MonoBehaviour
 		MotionEngine.CreateModule<EventManager>();
 
 		// 创建流程管理器
-		MotionEngine.CreateModule<FlowManager>();
+		MotionEngine.CreateModule<TweenManager>();
 
 		// 本地资源服务接口
 		LocalBundleServices bundleServices = new LocalBundleServices();
