@@ -15,6 +15,7 @@ sealed class UISetting : CanvasWindow
 	private Toggle _musicToggle;
 	private Toggle _soundToggle;
 	private Transform _animTrans;
+	private RectTransform _ainmRectTrans;
 	private CanvasGroup _canvasGroup;
 	private bool _isPlayOpenAnimation = false;
 
@@ -35,6 +36,7 @@ sealed class UISetting : CanvasWindow
 
 		_animTrans = GetUIElement("UISetting/Window");
 		_animTrans.transform.localScale = Vector3.zero;
+		_ainmRectTrans = _animTrans as RectTransform;
 	}
 	public override void OnDestroy()
 	{
@@ -65,6 +67,7 @@ sealed class UISetting : CanvasWindow
 	{
 		// 窗口关闭动画
 		ITweenNode rootNode = SequenceNode.Allocate(
+			_ainmRectTrans.TweenAnchoredPositionTo(0.5f, new Vector2(800, 0)).SetLerp(LerpFun), 
 			_animTrans.TweenScaleTo(0.5f, Vector3.zero).SetEase(TweenEase.Bounce.EaseOut),
 			ExecuteNode.Allocate(() => { UITools.CloseWindow<UISetting>(); })
 			);
@@ -81,5 +84,17 @@ sealed class UISetting : CanvasWindow
 	private void OnSoundToggleValueChange(bool value)
 	{
 		AudioPlayerSetting.SoundMute = !value;
+	}
+
+	// 贝塞尔路径
+	private Vector2 LerpFun(Vector2 from, Vector2 to, float progress)
+	{
+		Vector3 control1 = Vector3.one * 500;
+		Vector3 control2 = Vector3.one * -500;
+		Vector3[] nodes = new Vector3[4] { from, control1, control2, to};
+
+		float t = progress;
+		float d = 1f - t;
+		return d * d * d * nodes[0] + 3f * d * d * t * nodes[1] + 3f * d * t * t * nodes[2] + t * t * t * nodes[3];
 	}
 }

@@ -103,7 +103,7 @@ public class GameLauncher : MonoBehaviour
 		// 创建事件管理器
 		MotionEngine.CreateModule<EventManager>();
 
-		// 创建流程管理器
+		// 创建补间管理器
 		MotionEngine.CreateModule<TweenManager>();
 
 		// 本地资源服务接口
