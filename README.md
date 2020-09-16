@@ -1,4 +1,4 @@
-# Demo1
+# Demo
 演示程序是一款使用[MotionFramework](https://github.com/gmhevinci/MotionFramework)框架开发的RPG单机游戏。通过该演示程序我们可以快速学习如何使用MotionFramework框架来开发游戏。
 
 **注意事项**  
