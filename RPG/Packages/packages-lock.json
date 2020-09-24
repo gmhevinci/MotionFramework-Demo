@@ -6,6 +6,13 @@
       "source": "builtin",
       "dependencies": {}
     },
+    "com.unity.device-simulator": {
+      "version": "2.2.3-preview",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.cn"
+    },
     "com.unity.ugui": {
       "version": "1.0.0",
       "depth": 0,
