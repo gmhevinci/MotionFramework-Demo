@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using MotionFramework.AI;
+using MotionFramework.Scene;
 
 public class NodeLogin : IFsmNode
 {
@@ -14,6 +15,9 @@ public class NodeLogin : IFsmNode
 	void IFsmNode.OnEnter()
 	{
 		UITools.OpenWindow<UILogin>();
+
+		string sceneName = "Scene/Login";
+		SceneManager.Instance.ChangeMainScene(sceneName, true, null);
 	}
 	void IFsmNode.OnUpdate()
 	{

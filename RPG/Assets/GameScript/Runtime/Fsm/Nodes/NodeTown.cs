@@ -32,6 +32,7 @@ public class NodeTown : IFsmNode
 	void IFsmNode.OnExit()
 	{
 		_gameWorld.Destroy();
+		UITools.CloseWindow<UIMain>();
 	}
 	void IFsmNode.OnHandleMessage(object msg)
 	{

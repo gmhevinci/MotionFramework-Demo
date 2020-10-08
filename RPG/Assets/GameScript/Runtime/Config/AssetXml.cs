@@ -7,9 +7,9 @@ using MotionFramework;
 
 public abstract class AssetXml
 {
-	private AssetReference _assetRef;
 	private AssetOperationHandle _handle;
 	private System.Action _userCallback;
+	private bool _isLoadAsset = false;
 	protected SecurityElement _xml;
 
 	/// <summary>
@@ -32,15 +32,15 @@ public abstract class AssetXml
 	public void Init(string location)
 	{
 		Location = location;
-		_assetRef = new AssetReference(location);
 	}
 	public void Load(System.Action callback)
 	{
-		if (_userCallback != null)
+		if (_isLoadAsset)
 			return;
 
+		_isLoadAsset = true;
 		_userCallback = callback;
-		_handle = _assetRef.LoadAssetAsync<TextAsset>();
+		_handle = ResourceManager.Instance.LoadAssetAsync<TextAsset>(Location);
 		_handle.Completed += Handle_Completed;
 	}
 	private void Handle_Completed(AssetOperationHandle obj)
@@ -65,11 +65,7 @@ public abstract class AssetXml
 		}
 
 		// 注意：为了节省内存这里立即释放了资源
-		if (_assetRef != null)
-		{
-			_assetRef.Release();
-			_assetRef = null;
-		}
+		_handle.Release();
 
 		_userCallback?.Invoke();
 	}

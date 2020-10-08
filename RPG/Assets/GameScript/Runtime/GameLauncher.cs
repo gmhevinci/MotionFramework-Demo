@@ -116,7 +116,7 @@ public class GameLauncher : MonoBehaviour
 		resourceCreateParam.SimulationOnEditor = SimulationOnEditor;
 		resourceCreateParam.BundleServices = bundleServices;
 		resourceCreateParam.DecryptServices = null;
-		resourceCreateParam.AutoReleaseInterval = 10f;
+		resourceCreateParam.AutoReleaseInterval = 1f;
 		MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
 
 		// 创建音频管理器

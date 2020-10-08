@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MotionFramework.Event;
+using MotionFramework.Pool;
 
 public class GameWorld
 {
@@ -47,12 +48,18 @@ public class GameWorld
 	}
 	public void Destroy()
 	{
+		// 移除所有事件
 		_eventGroup.RemoveAllListener();
+
+		// 销毁所有实体对象
 		for (int i = 0; i < _entitys.Count; i++)
 		{
 			_entitys[i].Destroy();
 		}
 		_entitys.Clear();
+
+		// 清空对象池
+		GameObjectPoolManager.Instance.DestroyAll();
 	}
 	public void OnHandleBattleEvent(IEventMessage msg)
 	{

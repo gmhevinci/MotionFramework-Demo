@@ -11,7 +11,7 @@ public static class UITools
 	public static void OpenWindow<T>(object userData = null) where T : UIWindow
 	{
 		string location = $"UIPanel/{typeof(T).Name}";
-		GameLog.Log($"Open : {typeof(T).Name}");
+		//GameLog.Log($"Open : {typeof(T).Name}");
 		WindowManager.Instance.OpenWindow<T>(location, userData);
 	}
 
@@ -20,7 +20,7 @@ public static class UITools
 	/// </summary>
 	public static void CloseWindow<T>() where T : UIWindow
 	{
-		GameLog.Log($"Close : {typeof(T).Name}");
+		//GameLog.Log($"Close : {typeof(T).Name}");
 		WindowManager.Instance.CloseWindow<T>();
 	}
 }

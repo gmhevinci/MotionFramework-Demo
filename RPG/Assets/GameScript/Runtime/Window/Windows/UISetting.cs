@@ -16,7 +16,8 @@ sealed class UISetting : CanvasWindow
 	public override void OnCreate()
 	{
 		AddButtonListener("UISetting/Mask", OnClickClose);
-		AddButtonListener("UISetting/Window/Button (Save)", OnClickClose);
+		AddButtonListener("UISetting/Window/ButtonOK", OnClickClose);
+		AddButtonListener("UISetting/Window/ButtonHome", OnClickHome);
 
 		_volumeSlider = GetUIComponent<Slider>("UISetting/Window/Content/Control Area (Slider)/Slider");
 		_volumeSlider.onValueChanged.AddListener(OnSliderValueChange);
@@ -40,6 +41,11 @@ sealed class UISetting : CanvasWindow
 
 	private void OnClickClose()
 	{
+		UITools.CloseWindow<UISetting>();
+	}
+	private void OnClickHome()
+	{
+		FsmManager.Instance.Transition(nameof(NodeLogin));
 		UITools.CloseWindow<UISetting>();
 	}
 	private void OnSliderValueChange(float value)
