@@ -912,6 +912,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -923,6 +924,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1215,7 +1217,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 472902}
-  - component: {fileID: 4042062330900306718}
   m_Layer: 0
   m_Name: footman_Blue
   m_TagString: Untagged
@@ -1239,34 +1240,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &4042062330900306718
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185934}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 22de3beb5b2b58745b1f2da501839c7c, type: 3}
-  m_Animations:
-  - {fileID: 7400000, guid: 22de3beb5b2b58745b1f2da501839c7c, type: 3}
-  - {fileID: 7400000, guid: 5d8083dd9890a6742bc2f4adb94843e4, type: 3}
-  - {fileID: 7400000, guid: f01a4708b87a3eb4bb5688be5bae28d9, type: 3}
-  - {fileID: 7400000, guid: 67fa0069e75d5734fbeb60b68392703b, type: 3}
-  - {fileID: 7400000, guid: fcee99192f6330a45ac7a1b296ccc25f, type: 3}
-  - {fileID: 7400000, guid: 85976eb3875396842b072cd5428a3bb9, type: 3}
-  - {fileID: 7400000, guid: 215f12aa4e7512d4f97cbf44db79ac76, type: 3}
-  - {fileID: 7400000, guid: 2e48304a01f069445a83cd957ef136cb, type: 3}
-  - {fileID: 7400000, guid: a03a291a3d7c11240a2547f3836d516c, type: 3}
-  - {fileID: 7400000, guid: 8f1e742e833054b4cbb7d5b36be93b65, type: 3}
-  - {fileID: 7400000, guid: 8dd67b4363343e2489684b85e4d11435, type: 3}
-  - {fileID: 7400000, guid: bead32de6aeb58f46bb6e668d346896a, type: 3}
-  - {fileID: 7400000, guid: 368c60e559c33a1459d4ff28ff88e96a, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &189094
 GameObject:
   m_ObjectHideFlags: 0

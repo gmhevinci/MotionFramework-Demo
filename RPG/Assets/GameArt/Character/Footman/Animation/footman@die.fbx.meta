@@ -1,100 +1,278 @@
 fileFormatVersion: 2
 guid: 2e48304a01f069445a83cd957ef136cb
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Chest
-    100002: COB_CTRL
-    100004: Foot_Left
-    100006: Foot_Right
-    100008: //RootNode
-    100010: Footman_Mesh
-    100012: Hand_Left
-    100014: Hand_Right
-    100016: Head
-    100018: Hips
-    100020: Index_Intermediate_Left
-    100022: Index_Intermediate_Right
-    100024: Index_Proximal_Left
-    100026: Index_Proximal_Right
-    100028: J_Tip
-    100030: Jaw
-    100032: LowerArm_Left
-    100034: LowerArm_Right
-    100036: LowerLeg_Left
-    100038: LowerLeg_Right
-    100040: Neck
-    100042: RestOfFingers_Intermediate_Left
-    100044: RestOfFingers_Intermediate_Right
-    100046: RestOfFingers_Proximal_Left
-    100048: RestOfFingers_Proximal_Right
-    100050: Shield
-    100052: Shoulder_Left
-    100054: Shoulder_Right
-    100056: Spine
-    100058: Sword
-    100060: Thumb_Intermediate_Left
-    100062: Thumb_Intermediate_Right
-    100064: Thumb_Proximal_Left
-    100066: Thumb_Proximal_Right
-    100068: Toe_Left
-    100070: Toe_Right
-    100072: Toetip_Left
-    100074: Toetip_Right
-    100076: UpperArm_Left
-    100078: UpperArm_Right
-    100080: UpperLeg_Left
-    100082: UpperLeg_Right
-    400000: Chest
-    400002: COB_CTRL
-    400004: Foot_Left
-    400006: Foot_Right
-    400008: //RootNode
-    400010: Footman_Mesh
-    400012: Hand_Left
-    400014: Hand_Right
-    400016: Head
-    400018: Hips
-    400020: Index_Intermediate_Left
-    400022: Index_Intermediate_Right
-    400024: Index_Proximal_Left
-    400026: Index_Proximal_Right
-    400028: J_Tip
-    400030: Jaw
-    400032: LowerArm_Left
-    400034: LowerArm_Right
-    400036: LowerLeg_Left
-    400038: LowerLeg_Right
-    400040: Neck
-    400042: RestOfFingers_Intermediate_Left
-    400044: RestOfFingers_Intermediate_Right
-    400046: RestOfFingers_Proximal_Left
-    400048: RestOfFingers_Proximal_Right
-    400050: Shield
-    400052: Shoulder_Left
-    400054: Shoulder_Right
-    400056: Spine
-    400058: Sword
-    400060: Thumb_Intermediate_Left
-    400062: Thumb_Intermediate_Right
-    400064: Thumb_Proximal_Left
-    400066: Thumb_Proximal_Right
-    400068: Toe_Left
-    400070: Toe_Right
-    400072: Toetip_Left
-    400074: Toetip_Right
-    400076: UpperArm_Left
-    400078: UpperArm_Right
-    400080: UpperLeg_Left
-    400082: UpperLeg_Right
-    4300000: Footman_Mesh
-    7400000: die
-    9500000: //RootNode
-    11100000: //RootNode
-    13700000: Footman_Mesh
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Chest
+  - first:
+      1: 100002
+    second: COB_CTRL
+  - first:
+      1: 100004
+    second: Foot_Left
+  - first:
+      1: 100006
+    second: Foot_Right
+  - first:
+      1: 100008
+    second: //RootNode
+  - first:
+      1: 100010
+    second: Footman_Mesh
+  - first:
+      1: 100012
+    second: Hand_Left
+  - first:
+      1: 100014
+    second: Hand_Right
+  - first:
+      1: 100016
+    second: Head
+  - first:
+      1: 100018
+    second: Hips
+  - first:
+      1: 100020
+    second: Index_Intermediate_Left
+  - first:
+      1: 100022
+    second: Index_Intermediate_Right
+  - first:
+      1: 100024
+    second: Index_Proximal_Left
+  - first:
+      1: 100026
+    second: Index_Proximal_Right
+  - first:
+      1: 100028
+    second: J_Tip
+  - first:
+      1: 100030
+    second: Jaw
+  - first:
+      1: 100032
+    second: LowerArm_Left
+  - first:
+      1: 100034
+    second: LowerArm_Right
+  - first:
+      1: 100036
+    second: LowerLeg_Left
+  - first:
+      1: 100038
+    second: LowerLeg_Right
+  - first:
+      1: 100040
+    second: Neck
+  - first:
+      1: 100042
+    second: RestOfFingers_Intermediate_Left
+  - first:
+      1: 100044
+    second: RestOfFingers_Intermediate_Right
+  - first:
+      1: 100046
+    second: RestOfFingers_Proximal_Left
+  - first:
+      1: 100048
+    second: RestOfFingers_Proximal_Right
+  - first:
+      1: 100050
+    second: Shield
+  - first:
+      1: 100052
+    second: Shoulder_Left
+  - first:
+      1: 100054
+    second: Shoulder_Right
+  - first:
+      1: 100056
+    second: Spine
+  - first:
+      1: 100058
+    second: Sword
+  - first:
+      1: 100060
+    second: Thumb_Intermediate_Left
+  - first:
+      1: 100062
+    second: Thumb_Intermediate_Right
+  - first:
+      1: 100064
+    second: Thumb_Proximal_Left
+  - first:
+      1: 100066
+    second: Thumb_Proximal_Right
+  - first:
+      1: 100068
+    second: Toe_Left
+  - first:
+      1: 100070
+    second: Toe_Right
+  - first:
+      1: 100072
+    second: Toetip_Left
+  - first:
+      1: 100074
+    second: Toetip_Right
+  - first:
+      1: 100076
+    second: UpperArm_Left
+  - first:
+      1: 100078
+    second: UpperArm_Right
+  - first:
+      1: 100080
+    second: UpperLeg_Left
+  - first:
+      1: 100082
+    second: UpperLeg_Right
+  - first:
+      4: 400000
+    second: Chest
+  - first:
+      4: 400002
+    second: COB_CTRL
+  - first:
+      4: 400004
+    second: Foot_Left
+  - first:
+      4: 400006
+    second: Foot_Right
+  - first:
+      4: 400008
+    second: //RootNode
+  - first:
+      4: 400010
+    second: Footman_Mesh
+  - first:
+      4: 400012
+    second: Hand_Left
+  - first:
+      4: 400014
+    second: Hand_Right
+  - first:
+      4: 400016
+    second: Head
+  - first:
+      4: 400018
+    second: Hips
+  - first:
+      4: 400020
+    second: Index_Intermediate_Left
+  - first:
+      4: 400022
+    second: Index_Intermediate_Right
+  - first:
+      4: 400024
+    second: Index_Proximal_Left
+  - first:
+      4: 400026
+    second: Index_Proximal_Right
+  - first:
+      4: 400028
+    second: J_Tip
+  - first:
+      4: 400030
+    second: Jaw
+  - first:
+      4: 400032
+    second: LowerArm_Left
+  - first:
+      4: 400034
+    second: LowerArm_Right
+  - first:
+      4: 400036
+    second: LowerLeg_Left
+  - first:
+      4: 400038
+    second: LowerLeg_Right
+  - first:
+      4: 400040
+    second: Neck
+  - first:
+      4: 400042
+    second: RestOfFingers_Intermediate_Left
+  - first:
+      4: 400044
+    second: RestOfFingers_Intermediate_Right
+  - first:
+      4: 400046
+    second: RestOfFingers_Proximal_Left
+  - first:
+      4: 400048
+    second: RestOfFingers_Proximal_Right
+  - first:
+      4: 400050
+    second: Shield
+  - first:
+      4: 400052
+    second: Shoulder_Left
+  - first:
+      4: 400054
+    second: Shoulder_Right
+  - first:
+      4: 400056
+    second: Spine
+  - first:
+      4: 400058
+    second: Sword
+  - first:
+      4: 400060
+    second: Thumb_Intermediate_Left
+  - first:
+      4: 400062
+    second: Thumb_Intermediate_Right
+  - first:
+      4: 400064
+    second: Thumb_Proximal_Left
+  - first:
+      4: 400066
+    second: Thumb_Proximal_Right
+  - first:
+      4: 400068
+    second: Toe_Left
+  - first:
+      4: 400070
+    second: Toe_Right
+  - first:
+      4: 400072
+    second: Toetip_Left
+  - first:
+      4: 400074
+    second: Toetip_Right
+  - first:
+      4: 400076
+    second: UpperArm_Left
+  - first:
+      4: 400078
+    second: UpperArm_Right
+  - first:
+      4: 400080
+    second: UpperLeg_Left
+  - first:
+      4: 400082
+    second: UpperLeg_Right
+  - first:
+      43: 4300000
+    second: Footman_Mesh
+  - first:
+      74: 7400000
+    second: die
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      111: 11100000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Footman_Mesh
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -112,7 +290,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -123,6 +301,7 @@ ModelImporter:
     - serializedVersion: 16
       name: die
       takeName: Take 001
+      internalID: 0
       firstFrame: 1
       lastFrame: 23
       wrapMode: 8
@@ -239,25 +418,28 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -266,10 +448,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton:
     - name: footman_die(Clone)
@@ -489,13 +671,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
