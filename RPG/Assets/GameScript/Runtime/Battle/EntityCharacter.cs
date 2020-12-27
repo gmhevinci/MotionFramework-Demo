@@ -32,12 +32,8 @@ public abstract class EntityCharacter : EntityObject
 	protected override void OnPrepareAvatar()
 	{
 		// 创建角色动画模块
-		var anim = Avatar.GameObj.GetComponent<Animation>();
+		var anim = Avatar.GameObj.GetComponent<AnimBehaviour>();
 		CharAnim = new CharacterAnimation(anim);
-		CharAnim.InitAnimState("idle", CharacterAnimation.EAnimationLayer.DefaultLayer, WrapMode.Loop);
-		CharAnim.InitAnimState("run", CharacterAnimation.EAnimationLayer.DefaultLayer, WrapMode.Loop);
-		CharAnim.InitAnimState("getHit", CharacterAnimation.EAnimationLayer.DefaultLayer, WrapMode.Once);
-		CharAnim.InitAnimState("die", CharacterAnimation.EAnimationLayer.DeadLayer, WrapMode.ClampForever);
 	}
 	protected override void OnUpdateAvatar(float deltaTime)
 	{
@@ -49,12 +45,12 @@ public abstract class EntityCharacter : EntityObject
 			float animSpeed = CharData.MoveSpeed / Avatar.GetRunAnimationSpeed();
 			CharAnim.SetSpeed(CharData.CurrentRunAnimName, animSpeed);
 			if (CharAnim.IsPlaying(CharData.CurrentRunAnimName) == false)
-				CharAnim.PlayAnim(CharData.CurrentRunAnimName, 0.15f);
+				CharAnim.Play(CharData.CurrentRunAnimName, 0.15f);
 		}
 		else
 		{
 			if (CharAnim.IsPlaying(CharData.CurrentIdleAnimName) == false)
-				CharAnim.PlayAnim(CharData.CurrentIdleAnimName, 0.15f);
+				CharAnim.Play(CharData.CurrentIdleAnimName, 0.15f);
 		}
 	}
 	protected override void OnHandleEvent(IEventMessage msg)
@@ -65,7 +61,7 @@ public abstract class EntityCharacter : EntityObject
 			{
 				BattleEvent.DamageHurt message = msg as BattleEvent.DamageHurt;
 				CharData.DamageHurt(message.Damage);
-				CharAnim.PlayAnim("getHit");
+				CharAnim.Play("getHit");
 
 				// 随机播放角色受击音效
 				string soundName = Avatar.GetRandomGetHitSound();
@@ -76,7 +72,7 @@ public abstract class EntityCharacter : EntityObject
 		else if (msg is BattleEvent.CharacterDead)
 		{
 			CharSkill.ForbidAll();
-			CharAnim.PlayAnim("die");
+			CharAnim.Play("die");
 
 			// 播放角色死亡音效
 			string soundName = Avatar.GetDeadSound();

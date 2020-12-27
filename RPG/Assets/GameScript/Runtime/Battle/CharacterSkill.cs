@@ -35,7 +35,7 @@ public class CharacterSkill
 			if (_skillTable.AnimationID > 0)
 			{
 				_animTable = CfgAnimation.Instance.GetConfigTable(_skillTable.AnimationID);
-				_owner.CharAnim.InitAnimState(_animTable.AnimName, CharacterAnimation.EAnimationLayer.SkillLayer, (WrapMode)_animTable.AnimMode);
+				//(_animTable.AnimName, CharacterAnimation.EAnimationLayer.SkillLayer, (WrapMode)_animTable.AnimMode);
 			}
 		}
 		public void Update(float deltaTime)
@@ -69,7 +69,7 @@ public class CharacterSkill
 
 			// 播放技能动画
 			if (_animTable != null)
-				_owner.CharAnim.PlayAnim(_animTable.AnimName, _animTable.IdleToAnim);
+				_owner.CharAnim.Play(_animTable.AnimName, _animTable.IdleToAnim);
 		}
 		public void Forbid()
 		{
@@ -81,9 +81,9 @@ public class CharacterSkill
 			if (_animTable != null)
 			{
 				if (_owner.CharMove.IsMoving)
-					_owner.CharAnim.PlayAnim(_owner.CharData.CurrentRunAnimName, _animTable.AnimToIdle);
+					_owner.CharAnim.Play(_owner.CharData.CurrentRunAnimName, _animTable.AnimToIdle);
 				else
-					_owner.CharAnim.PlayAnim(_owner.CharData.CurrentIdleAnimName, _animTable.AnimToIdle);
+					_owner.CharAnim.Play(_owner.CharData.CurrentIdleAnimName, _animTable.AnimToIdle);
 			}
 		}
 		public bool CheckCD()

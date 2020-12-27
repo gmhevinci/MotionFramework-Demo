@@ -166,7 +166,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489874}
-  - component: {fileID: 4611139029391452833}
+  - component: {fileID: 1805425104812049513}
+  - component: {fileID: 8508933400984292140}
   m_Layer: 0
   m_Name: footman_Green
   m_TagString: Untagged
@@ -190,34 +191,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &4611139029391452833
-Animation:
+--- !u!95 &1805425104812049513
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109968}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 22de3beb5b2b58745b1f2da501839c7c, type: 3}
-  m_Animations:
-  - {fileID: 7400000, guid: 22de3beb5b2b58745b1f2da501839c7c, type: 3}
-  - {fileID: 7400000, guid: 5d8083dd9890a6742bc2f4adb94843e4, type: 3}
-  - {fileID: 7400000, guid: f01a4708b87a3eb4bb5688be5bae28d9, type: 3}
-  - {fileID: 7400000, guid: 67fa0069e75d5734fbeb60b68392703b, type: 3}
-  - {fileID: 7400000, guid: fcee99192f6330a45ac7a1b296ccc25f, type: 3}
-  - {fileID: 7400000, guid: 85976eb3875396842b072cd5428a3bb9, type: 3}
-  - {fileID: 7400000, guid: 215f12aa4e7512d4f97cbf44db79ac76, type: 3}
-  - {fileID: 7400000, guid: 2e48304a01f069445a83cd957ef136cb, type: 3}
-  - {fileID: 7400000, guid: a03a291a3d7c11240a2547f3836d516c, type: 3}
-  - {fileID: 7400000, guid: 8f1e742e833054b4cbb7d5b36be93b65, type: 3}
-  - {fileID: 7400000, guid: 8dd67b4363343e2489684b85e4d11435, type: 3}
-  - {fileID: 7400000, guid: bead32de6aeb58f46bb6e668d346896a, type: 3}
-  - {fileID: 7400000, guid: 368c60e559c33a1459d4ff28ff88e96a, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8508933400984292140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef52174816df6104587b15c5b250201a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animations:
+  - Layer: 0
+    Mode: 2
+    Clip: {fileID: 7400000, guid: 22de3beb5b2b58745b1f2da501839c7c, type: 3}
+  - Layer: 0
+    Mode: 2
+    Clip: {fileID: 7400000, guid: 8dd67b4363343e2489684b85e4d11435, type: 3}
+  - Layer: 0
+    Mode: 2
+    Clip: {fileID: 7400000, guid: 368c60e559c33a1459d4ff28ff88e96a, type: 3}
+  - Layer: 9
+    Mode: 8
+    Clip: {fileID: 7400000, guid: 2e48304a01f069445a83cd957ef136cb, type: 3}
+  - Layer: 3
+    Mode: 1
+    Clip: {fileID: 7400000, guid: a03a291a3d7c11240a2547f3836d516c, type: 3}
+  - Layer: 2
+    Mode: 1
+    Clip: {fileID: 7400000, guid: 67fa0069e75d5734fbeb60b68392703b, type: 3}
+  - Layer: 2
+    Mode: 1
+    Clip: {fileID: 7400000, guid: 215f12aa4e7512d4f97cbf44db79ac76, type: 3}
+  - Layer: 2
+    Mode: 1
+    Clip: {fileID: 7400000, guid: bead32de6aeb58f46bb6e668d346896a, type: 3}
+  - Layer: 2
+    Mode: 1
+    Clip: {fileID: 7400000, guid: 8f1e742e833054b4cbb7d5b36be93b65, type: 3}
+  - Layer: 2
+    Mode: 1
+    Clip: {fileID: 7400000, guid: fcee99192f6330a45ac7a1b296ccc25f, type: 3}
+  - Layer: 2
+    Mode: 1
+    Clip: {fileID: 7400000, guid: 85976eb3875396842b072cd5428a3bb9, type: 3}
+  _playAutomatically: 1
+  _animatePhysics: 0
 --- !u!1 &112538
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +554,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -525,6 +566,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

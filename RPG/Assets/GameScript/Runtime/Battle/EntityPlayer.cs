@@ -53,10 +53,6 @@ public class EntityPlayer : EntityCharacter
 	protected override void OnPrepareAvatar()
 	{
 		base.OnPrepareAvatar();
-
-		CharAnim.InitAnimState("idle02", CharacterAnimation.EAnimationLayer.DefaultLayer, WrapMode.Loop);
-		CharAnim.InitAnimState("idle03", CharacterAnimation.EAnimationLayer.DefaultLayer, WrapMode.Loop);
-		CharAnim.InitAnimState("walk", CharacterAnimation.EAnimationLayer.DefaultLayer, WrapMode.Loop);
 	}
 	protected override void OnHandleEvent(IEventMessage msg)
 	{
