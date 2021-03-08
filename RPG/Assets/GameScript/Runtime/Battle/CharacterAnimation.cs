@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using MotionFramework.Animation;
+using MotionFramework.Experimental.Animation;
 
 public class CharacterAnimation
 {
