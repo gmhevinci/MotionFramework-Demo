@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
   Collectors:
-  - CollectDirectory: Assets/GameRes
-    CollectRule: 0
-    CollectorName: LabelByFilePath
-  - CollectDirectory: Assets/GameArt/Panel/Sprite
-    CollectRule: 0
-    CollectorName: LabelByFolderPath
+  - CollectDirectory: Assets/GameRes/
+    LabelClassName: LabelByFilePath
+    FilterClassName: SearchAll
+  - CollectDirectory: Assets/GameArt/Panel/Sprite/
+    LabelClassName: LabelByFolderPath
+    FilterClassName: SearchSprite
   DLCFiles: []
