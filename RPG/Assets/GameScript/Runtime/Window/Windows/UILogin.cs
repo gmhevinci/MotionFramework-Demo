@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MotionFramework.Event;
 using MotionFramework.Window;
+using MotionFramework.Resource;
 
 [Window((int)EWindowLayer.Panel, true)]
 sealed class UILogin : CanvasWindow
@@ -21,6 +22,11 @@ sealed class UILogin : CanvasWindow
 
 		// 监听按钮点击事件
 		AddButtonListener("UILogin/Window/Button (Login)", OnClickLogin);
+
+		// 替换背景图片
+		var bgImage = GetUIComponent<Image>("UILogin/Background");
+		var handle = ResourceManager.Instance.LoadAssetSync<Sprite>("UITexture/bg1.png");
+		bgImage.sprite = handle.AssetObject as Sprite;
 	}
 	public override void OnDestroy()
 	{
