@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc54f0173b27fb40aee29e7eb3364da, type: 3}
   m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
+  IsCollectAllShaders: 0
+  ShadersBundleName: shaders
   Collectors:
   - CollectDirectory: Assets/GameRes/
-    LabelClassName: LabelByFilePath
-    FilterClassName: SearchAll
+    BundleLabelClassName: LabelByFilePath
+    SearchFilterClassName: SearchAll
   - CollectDirectory: Assets/GameArt/Panel/Sprite/
-    LabelClassName: LabelByFolderPath
-    FilterClassName: SearchSprite
+    BundleLabelClassName: LabelByFolderPath
+    SearchFilterClassName: SearchAll
   DLCFiles: []
