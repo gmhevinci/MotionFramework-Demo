@@ -16,11 +16,12 @@ MonoBehaviour:
   ShadersBundleName: shaders
   Collectors:
   - CollectDirectory: Assets/GameRes/
-    PackRuleClassName: PackExplicit
-    FilterRuleClassName: CollectAll
+    PackRuleName: PackExplicit
+    FilterRuleName: CollectAll
     DontWriteAssetPath: 0
+    AssetTags: 
   - CollectDirectory: Assets/GameArt/Panel/Sprite/
-    PackRuleClassName: PackDirectory
-    FilterRuleClassName: CollectAll
+    PackRuleName: PackDirectory
+    FilterRuleName: CollectAll
     DontWriteAssetPath: 1
-  DLCFiles: []
+    AssetTags: 
