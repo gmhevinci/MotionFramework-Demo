@@ -59,7 +59,7 @@ public class GameWorld
 		_entitys.Clear();
 
 		// 清空对象池
-		GameObjectPoolManager.Instance.DestroyAll();
+		//GameObjectPoolManager.Instance.DestroyAll();
 	}
 	public void OnHandleBattleEvent(IEventMessage msg)
 	{

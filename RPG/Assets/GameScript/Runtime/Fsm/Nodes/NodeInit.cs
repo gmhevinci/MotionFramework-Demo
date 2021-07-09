@@ -39,7 +39,7 @@ public class NodeInit : IFsmNode
 		yield return uiRoot;
 
 		// 加载常驻面板
-		yield return GameObjectPoolManager.Instance.CreatePool("UIPanel/UILoading", 0, true);
+		yield return GameObjectPoolManager.Instance.CreatePool("UIPanel/UILoading", true);
 
 		// 进入到登录流程
 		FsmManager.Instance.Transition(nameof(NodeLogin));

@@ -126,7 +126,9 @@ public class GameLauncher : MonoBehaviour
 		MotionEngine.CreateModule<SceneManager>();
 
 		// 创建对象池管理器
-		MotionEngine.CreateModule<GameObjectPoolManager>();
+		var poolCreateParam = new GameObjectPoolManager.CreateParameters();
+		poolCreateParam.DefaultDestroyTime = 5f;
+		MotionEngine.CreateModule<GameObjectPoolManager>(poolCreateParam);
 
 		// 最后创建游戏业务逻辑模块
 		MotionEngine.CreateModule<DataManager>();

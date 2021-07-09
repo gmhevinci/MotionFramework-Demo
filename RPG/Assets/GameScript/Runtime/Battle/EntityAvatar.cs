@@ -51,8 +51,9 @@ public class EntityAvatar
 		}
 	}
 
-	private void SpawnGo_Completed(GameObject go)
+	private void SpawnGo_Completed(SpawnGameObject spawn)
 	{
+		var go = spawn.Go;
 		go.transform.SetParent(_owner.Root.transform, false);
 		go.transform.localPosition = Vector3.zero;
 		go.transform.localRotation = Quaternion.identity;
