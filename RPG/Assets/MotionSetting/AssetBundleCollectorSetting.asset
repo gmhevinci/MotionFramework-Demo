@@ -15,13 +15,33 @@ MonoBehaviour:
   IsCollectAllShaders: 0
   ShadersBundleName: shaders
   Collectors:
-  - CollectDirectory: Assets/GameRes/
+  - CollectDirectory: Assets/GameRes/Audio/
     PackRuleName: PackExplicit
     FilterRuleName: CollectAll
     DontWriteAssetPath: 0
     AssetTags: 
-  - CollectDirectory: Assets/GameArt/Panel/Sprite/
-    PackRuleName: PackDirectory
+  - CollectDirectory: Assets/GameRes/Entity/
+    PackRuleName: PackExplicit
     FilterRuleName: CollectAll
-    DontWriteAssetPath: 1
+    DontWriteAssetPath: 0
+    AssetTags: 
+  - CollectDirectory: Assets/GameRes/Scene/
+    PackRuleName: PackExplicit
+    FilterRuleName: CollectScene
+    DontWriteAssetPath: 0
+    AssetTags: 
+  - CollectDirectory: Assets/GameRes/UIAtlas/
+    PackRuleName: PackExplicit
+    FilterRuleName: CollectAll
+    DontWriteAssetPath: 0
+    AssetTags: 
+  - CollectDirectory: Assets/GameRes/UIPanel/
+    PackRuleName: PackExplicit
+    FilterRuleName: CollectAll
+    DontWriteAssetPath: 0
+    AssetTags: 
+  - CollectDirectory: Assets/GameRes/UITexture/
+    PackRuleName: PackExplicit
+    FilterRuleName: CollectAll
+    DontWriteAssetPath: 0
     AssetTags: 
