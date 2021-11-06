@@ -17,7 +17,7 @@ public class NodeLogin : IFsmNode
 		UITools.OpenWindow<UILogin>();
 
 		string sceneName = "Scene/Login";
-		SceneManager.Instance.ChangeMainScene(sceneName, true, null);
+		SceneManager.Instance.ChangeMainScene(sceneName, null);
 	}
 	void IFsmNode.OnUpdate()
 	{
