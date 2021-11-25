@@ -9,7 +9,6 @@ using MotionFramework.Event;
 using MotionFramework.Config;
 using MotionFramework.Audio;
 using MotionFramework.Network;
-using MotionFramework.Patch;
 using MotionFramework.Scene;
 using MotionFramework.Pool;
 using MotionFramework.Window;
@@ -106,15 +105,17 @@ public class GameLauncher : MonoBehaviour
 		// 创建补间管理器
 		MotionEngine.CreateModule<TweenManager>();
 
-		// 本地资源服务接口
-		LocalBundleServices bundleServices = new LocalBundleServices();
-		yield return bundleServices.InitializeAsync(SimulationOnEditor);
+		// 创建补丁管理器
+		PatchManager.OfflinePlayModeParameters patchCreateParam = new PatchManager.OfflinePlayModeParameters();
+		patchCreateParam.SimulationOnEditor = SimulationOnEditor;
+		MotionEngine.CreateModule<PatchManager>(patchCreateParam);
+		yield return PatchManager.Instance.InitializeAsync();
 
 		// 创建资源管理器
 		var resourceCreateParam = new ResourceManager.CreateParameters();
 		resourceCreateParam.LocationRoot = GameDefine.AssetRootPath;
 		resourceCreateParam.SimulationOnEditor = SimulationOnEditor;
-		resourceCreateParam.BundleServices = bundleServices;
+		resourceCreateParam.BundleServices = PatchManager.Instance.BundleServices;
 		resourceCreateParam.DecryptServices = null;
 		resourceCreateParam.AutoReleaseInterval = 1f;
 		MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
