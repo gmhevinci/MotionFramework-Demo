@@ -109,7 +109,8 @@ public class GameLauncher : MonoBehaviour
 		PatchManager.OfflinePlayModeParameters patchCreateParam = new PatchManager.OfflinePlayModeParameters();
 		patchCreateParam.SimulationOnEditor = SimulationOnEditor;
 		MotionEngine.CreateModule<PatchManager>(patchCreateParam);
-		yield return PatchManager.Instance.InitializeAsync();
+		var operation = PatchManager.Instance.InitializeAsync();
+		yield return operation;
 
 		// 创建资源管理器
 		var resourceCreateParam = new ResourceManager.CreateParameters();
