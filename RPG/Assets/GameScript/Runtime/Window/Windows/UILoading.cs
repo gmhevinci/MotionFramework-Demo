@@ -15,7 +15,7 @@ sealed class UILoading : CanvasWindow
 
 	private string _sceneName = string.Empty;
 	private Timer _hideTimer = Timer.CreateOnceTimer(0.5f);
-	private Timer _repeater = Timer.CreatePepeatTimer(0, 0.1f);
+	private Timer _repeater = Timer.CreatePepeatTimer(0, 0.2f);
 	private int _count = 0;
 
 	public override void OnCreate()
@@ -40,11 +40,11 @@ sealed class UILoading : CanvasWindow
 		if (string.IsNullOrEmpty(_sceneName))
 			return;
 
+		int progress = SceneManager.Instance.GetSceneLoadProgress(_sceneName);
+		UpdateProgressSprite(progress);
+
 		if (_repeater.Update(Time.deltaTime))
 		{
-			int progress = SceneManager.Instance.GetSceneLoadProgress(_sceneName);
-			UpdateProgressSprite(progress);
-
 			_count++;
 			if (_count > 3)
 				_count = 0;
