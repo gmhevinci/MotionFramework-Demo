@@ -14,11 +14,18 @@ public class NodeLogin : IFsmNode
 	}
 	void IFsmNode.OnEnter()
 	{
-		UITools.OpenWindow<UILogin>();
+		var uiwindow = UITools.OpenWindow<UILogin>();
+		uiwindow.Completed += Uiwindow_Completed;
 
 		string sceneName = "Scene/Login";
 		SceneManager.Instance.ChangeMainScene(sceneName, null);
 	}
+
+	private void Uiwindow_Completed(MotionFramework.Window.UIWindow obj)
+	{
+		UnityEngine.Debug.Log("Login window load complete.");
+	}
+
 	void IFsmNode.OnUpdate()
 	{
 	}
