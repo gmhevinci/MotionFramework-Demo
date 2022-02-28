@@ -5,6 +5,7 @@ using MotionFramework.Scene;
 using MotionFramework.Audio;
 using MotionFramework.Resource;
 using MotionFramework.AI;
+using YooAsset;
 
 public class NodeTown : IFsmNode
 {

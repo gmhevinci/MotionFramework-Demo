@@ -13,6 +13,7 @@ using MotionFramework.Scene;
 using MotionFramework.Pool;
 using MotionFramework.Window;
 using MotionFramework.Tween;
+using YooAsset;
 
 public class GameLauncher : MonoBehaviour
 {
@@ -105,21 +106,23 @@ public class GameLauncher : MonoBehaviour
 		// 创建补间管理器
 		MotionEngine.CreateModule<TweenManager>();
 
-		// 创建补丁管理器
-		PatchManager.OfflinePlayModeParameters patchCreateParam = new PatchManager.OfflinePlayModeParameters();
-		patchCreateParam.SimulationOnEditor = SimulationOnEditor;
-		MotionEngine.CreateModule<PatchManager>(patchCreateParam);
-		var operation = PatchManager.Instance.InitializeAsync();
-		yield return operation;
-
 		// 创建资源管理器
-		var resourceCreateParam = new ResourceManager.CreateParameters();
-		resourceCreateParam.LocationRoot = GameDefine.AssetRootPath;
-		resourceCreateParam.SimulationOnEditor = SimulationOnEditor;
-		resourceCreateParam.BundleServices = PatchManager.Instance.BundleServices;
-		resourceCreateParam.DecryptServices = null;
-		resourceCreateParam.AutoReleaseInterval = 1f;
-		MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
+		if(SimulationOnEditor)
+		{
+			var resourceCreateParam = new YooAssets.EditorPlayModeParameters();
+			resourceCreateParam.LocationRoot = GameDefine.AssetRootPath;
+			MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
+			var operation = ResourceManager.Instance.InitializeAsync();
+			yield return operation;
+		}
+		else
+		{
+			var resourceCreateParam = new YooAssets.OfflinePlayModeParameters();
+			resourceCreateParam.LocationRoot = GameDefine.AssetRootPath;
+			MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
+			var operation = ResourceManager.Instance.InitializeAsync();
+			yield return operation;
+		}
 
 		// 创建音频管理器
 		MotionEngine.CreateModule<AudioManager>();

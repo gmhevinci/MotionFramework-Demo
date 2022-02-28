@@ -4,6 +4,7 @@ using UnityEngine;
 using Mono.Xml;
 using MotionFramework.Resource;
 using MotionFramework;
+using YooAsset;
 
 public abstract class AssetXml
 {
