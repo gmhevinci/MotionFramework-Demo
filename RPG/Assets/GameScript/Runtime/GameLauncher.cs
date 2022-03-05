@@ -119,6 +119,7 @@ public class GameLauncher : MonoBehaviour
 		{
 			var resourceCreateParam = new YooAssets.OfflinePlayModeParameters();
 			resourceCreateParam.LocationRoot = GameDefine.AssetRootPath;
+			resourceCreateParam.AutoReleaseInterval = 5f;
 			MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
 			var operation = ResourceManager.Instance.InitializeAsync();
 			yield return operation;
