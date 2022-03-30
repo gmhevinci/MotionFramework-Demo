@@ -30,6 +30,9 @@ public class NodeTown : IFsmNode
 		if (_initWorld)
 			_gameWorld.Update();
 	}
+	void IFsmNode.OnFixedUpdate()
+	{
+	}
 	void IFsmNode.OnExit()
 	{
 		_gameWorld.Destroy();
@@ -39,9 +42,9 @@ public class NodeTown : IFsmNode
 	{
 	}
 
-	private void OnSceneLoad(SceneInstance instance)
+	private void OnSceneLoad(SceneOperationHandle handle)
 	{
-		if (instance == null)
+		if (handle.Status != EOperationStatus.Succeed)
 			return;
 
 		_initWorld = true;

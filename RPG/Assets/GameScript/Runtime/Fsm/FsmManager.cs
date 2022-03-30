@@ -22,6 +22,11 @@ public class FsmManager : ModuleSingleton<FsmManager>, IModule
 	{
 	}
 
+	public void FixedUpdate()
+	{
+		_fsm.FixedUpdate();
+	}
+
 	public void StartGame()
 	{
 		_fsm.Run(nameof(NodeInit));

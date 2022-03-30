@@ -25,6 +25,9 @@ public class NodeInit : IFsmNode
 	void IFsmNode.OnUpdate()
 	{
 	}
+	void IFsmNode.OnFixedUpdate()
+	{
+	}
 	void IFsmNode.OnExit()
 	{
 	}

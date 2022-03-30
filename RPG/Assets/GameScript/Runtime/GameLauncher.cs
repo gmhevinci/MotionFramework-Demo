@@ -46,6 +46,11 @@ public class GameLauncher : MonoBehaviour
 		// 更新框架
 		MotionEngine.Update();
 	}
+	void FixedUpdate()
+	{
+		if (MotionEngine.Contains<FsmManager>())
+			FsmManager.Instance.FixedUpdate();
+	}
 	void OnGUI()
 	{
 		// 绘制控制台

@@ -29,6 +29,9 @@ public class NodeLogin : IFsmNode
 	void IFsmNode.OnUpdate()
 	{
 	}
+	void IFsmNode.OnFixedUpdate()
+	{
+	}
 	void IFsmNode.OnExit()
 	{
 		UITools.CloseWindow<UILogin>();
