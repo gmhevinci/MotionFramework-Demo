@@ -12,6 +12,7 @@ sealed class UIMain : CanvasWindow
 	public override void OnCreate()
 	{
 		AddButtonListener("UIMain/Meum/Button (Settings)", OnClickSetting);
+		AddButtonListener("UIMain/Meum/Button (Shop)", OnClikShop);
 		AddButtonListener("UIMain/Spell/Button (Attack)", OnClickSkill1);
 		AddButtonListener("UIMain/Spell/Button (Shield)", OnClickSkill2);
 		AddButtonListener("UIMain/Spell/Button (Swords)", OnClickSkill3);
@@ -37,6 +38,10 @@ sealed class UIMain : CanvasWindow
 	private void OnClickSetting()
 	{
 		UITools.OpenWindow<UISetting>();
+	}
+	private void OnClikShop()
+	{
+		UITools.OpenWindow<UIShop>();
 	}
 	private void OnClickSkill1()
 	{

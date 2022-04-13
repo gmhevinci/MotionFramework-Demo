@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using MotionFramework.Window;
 
 /*
-[Window(EWindowLayer.Panel)]
+[Window((int)EWindowLayer.Panel)]
 sealed class UIXXX : CanvasWindow
 {
 	public override void OnCreate()

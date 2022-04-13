@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using MotionFramework.Audio;
 using MotionFramework.Window;
 
-[Window((int)EWindowLayer.Panel, false)]
+[Window((int)EWindowLayer.Tips, false)]
 sealed class UISetting : CanvasWindow
 {
 	private Slider _volumeSlider;
