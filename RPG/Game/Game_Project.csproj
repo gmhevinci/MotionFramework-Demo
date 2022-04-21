@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6F32EB1-2463-48D6-AFA6-BBDB9AB4B75A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Game_Project</RootNamespace>
+    <AssemblyName>Game_Project</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Output\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Output\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MotionFramework, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\ScriptAssemblies\MotionFramework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>UnityDlls\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>UnityDlls\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>UnityDlls\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>UnityDlls\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="YooAsset">
+      <HintPath>..\Library\ScriptAssemblies\YooAsset.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scrpits\Audio\AudioPlayerSetting.cs" />
+    <Compile Include="Scrpits\Battle\BattleDefine.cs" />
+    <Compile Include="Scrpits\Battle\CharacterAnimation.cs" />
+    <Compile Include="Scrpits\Battle\CharacterData.cs" />
+    <Compile Include="Scrpits\Battle\CharacterMove.cs" />
+    <Compile Include="Scrpits\Battle\CharacterSkill.cs" />
+    <Compile Include="Scrpits\Battle\EntityAvatar.cs" />
+    <Compile Include="Scrpits\Battle\EntityCharacter.cs" />
+    <Compile Include="Scrpits\Battle\EntityMonster.cs" />
+    <Compile Include="Scrpits\Battle\EntityObject.cs" />
+    <Compile Include="Scrpits\Battle\EntityPlayer.cs" />
+    <Compile Include="Scrpits\Battle\GameWorld.cs" />
+    <Compile Include="Scrpits\Config\AssetConfig.cs" />
+    <Compile Include="Scrpits\Config\AssetXml.cs" />
+    <Compile Include="Scrpits\Config\AutoGenerateConfig\CfgAnimation.cs" />
+    <Compile Include="Scrpits\Config\AutoGenerateConfig\CfgAutoGenerateLanguage.cs" />
+    <Compile Include="Scrpits\Config\AutoGenerateConfig\CfgAvatar.cs" />
+    <Compile Include="Scrpits\Config\AutoGenerateConfig\CfgMonster.cs" />
+    <Compile Include="Scrpits\Config\AutoGenerateConfig\CfgPlayer.cs" />
+    <Compile Include="Scrpits\Config\AutoGenerateConfig\CfgSkill.cs" />
+    <Compile Include="Scrpits\Config\AutoGenerateConfig\CfgUILanguage.cs" />
+    <Compile Include="Scrpits\Config\LANG.cs" />
+    <Compile Include="Scrpits\Data\DataBase.cs" />
+    <Compile Include="Scrpits\Data\DataManager.cs" />
+    <Compile Include="Scrpits\Data\Datas\DataLogin.cs" />
+    <Compile Include="Scrpits\Data\Datas\DataPlayer.cs" />
+    <Compile Include="Scrpits\Data\EDataType.cs" />
+    <Compile Include="Scrpits\Event\GameEventDefine.cs" />
+    <Compile Include="Scrpits\Event\GameEventManager.cs" />
+    <Compile Include="Scrpits\Fsm\FsmManager.cs" />
+    <Compile Include="Scrpits\Fsm\Nodes\NodeInit.cs" />
+    <Compile Include="Scrpits\Fsm\Nodes\NodeLogin.cs" />
+    <Compile Include="Scrpits\Fsm\Nodes\NodeTown.cs" />
+    <Compile Include="Scrpits\GameEvent.cs" />
+    <Compile Include="Scrpits\GameLog.cs" />
+    <Compile Include="Scrpits\Utility\TypeHelper.cs" />
+    <Compile Include="Scrpits\Main.cs" />
+    <Compile Include="Scrpits\Window\EWindowLayer.cs" />
+    <Compile Include="Scrpits\Window\UITools.cs" />
+    <Compile Include="Scrpits\Window\Windows\UILoading.cs" />
+    <Compile Include="Scrpits\Window\Windows\UILogin.cs" />
+    <Compile Include="Scrpits\Window\Windows\UIMain.cs" />
+    <Compile Include="Scrpits\Window\Windows\UISetting.cs" />
+    <Compile Include="Scrpits\Window\Windows\_UIXXX.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "Game_Project.dll" "..\..\Assets\GameRes\Assembly\GameDLL.bytes"
+copy /Y "Game_Project.pdb" "..\..\Assets\GameRes\Assembly\GamePDB.bytes"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

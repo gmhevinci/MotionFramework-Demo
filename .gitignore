@@ -1,6 +1,4 @@
-*.sln
 *.suo
-*.csproj
 .vs/
 
 RPG/Assets/MotionFramework
