@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: footmanPBRYellow
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
+  m_Shader: {fileID: 4800000, guid: ba67c8b1d5e59dc428ad9fc9270f8353, type: 3}
+  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _STREAMERCHANNEL_UVPOS
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -23,7 +23,15 @@ Material:
         m_Texture: {fileID: 2800000, guid: 453b651aa2e2bea4c99026d429af152c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _CubeReflectionTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -47,6 +55,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: eb25edc5be67fce46b4ccbdeaff7b1f9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 2800000, guid: 527768680a2f27d4c82aecc4d01ee95e, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -55,23 +67,104 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ReflectionTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _StreamerMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _StreamerNoise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _StreamerTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TransMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AdjustHSV: 0
+    - _AdjustHue: 0
+    - _AdjustSaturation: 1
+    - _AdjustValue: 1
+    - _Alpha: 1
+    - _AmbiencePower: 1
+    - _Brightness: 0
     - _BumpScale: 1
+    - _ColorScale: 1
+    - _ColorToggle: 0
+    - _Contrast: 1
+    - _CubeReflectionPower: 1
+    - _CubeReflections: 0
+    - _CullMode: 2
     - _Cutoff: 0.5
+    - _Detail: 0
     - _DetailNormalMapScale: 1
+    - _DetailStrength: 1
+    - _DiffusePower: 1
     - _DstBlend: 0
+    - _Emission: 0
+    - _EmissionMapChannel: 0
+    - _EmissionStrength: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _HeightFog: 0
+    - _HeightFogDensity: 1
+    - _HeightFogEnd: 10
+    - _HeightFogStart: -10
+    - _Mask: 0
     - _Metallic: 0
     - _Mode: 0
+    - _Normal: 0
+    - _NotFixSubstance: 1
+    - _OcclusionMapChannel: 0
     - _OcclusionStrength: 1
+    - _Overlay: 0
+    - _OverlayMultiple: 1
     - _Parallax: 0.02
+    - _ParallaxMapChannel: 0
+    - _Perspective: 0
+    - _Phong: 0
+    - _PlanarReflections: 0
+    - _ReflectionPower: 1
+    - _RimLight: 0
+    - _RimPower: 0.01
+    - _RimSpread: 0.01
+    - _Shadow: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SpecularPower: 1
     - _SrcBlend: 1
+    - _Streamer: 0
+    - _StreamerAlpha: 1
+    - _StreamerChannel: 0
+    - _StreamerNoiseSpeed: 1
+    - _StreamerScrollX: 1
+    - _StreamerScrollY: 0
+    - _TransAmbient: 0
+    - _TransDirect: 0.1
+    - _TransMapChannel: 0
+    - _TransScattering: 10
+    - _Translucency: 20
+    - _Translucent: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HeightFogColor: {r: 0, g: 0, b: 1, a: 1}
+    - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
+    - _PointLightColor: {r: 1, g: 1, b: 1, a: 1}
+    - _PointLightPosition: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _RimOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.8}
+    - _ShadowOffset: {r: -0.5, g: -1, b: 2, a: 0}
+    - _StreamerColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TransColor: {r: 1, g: 0, b: 0, a: 0}

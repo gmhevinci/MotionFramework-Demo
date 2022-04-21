@@ -1,0 +1,242 @@
+{
+    "ShaderCount": 0,
+    "VariantCount": 0,
+    "ShaderVariants": [
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/BlitCopy",
+            "PassType": 0,
+            "Keywords": [
+                ""
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Legacy Shaders/Transparent/Cutout/Diffuse",
+            "PassType": 4,
+            "Keywords": [
+                "BILLBOARD_FACE_CAMERA_POS",
+                "DIRECTIONAL",
+                "LIGHTPROBE_SH",
+                "SHADOWS_SCREEN",
+                "SHADOWS_SOFT",
+                "SHADOWS_SPLIT_SPHERES",
+                "_ALPHAPREMULTIPLY_ON"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Legacy Shaders/Transparent/Cutout/Diffuse",
+            "PassType": 4,
+            "Keywords": [
+                "BILLBOARD_FACE_CAMERA_POS",
+                "DIRECTIONAL",
+                "LIGHTPROBE_SH",
+                "SHADOWS_SCREEN",
+                "SHADOWS_SOFT",
+                "SHADOWS_SPLIT_SPHERES",
+                "_ALPHABLEND_ON"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Legacy Shaders/Transparent/Cutout/Diffuse",
+            "PassType": 8,
+            "Keywords": [
+                "_ALPHAPREMULTIPLY_ON"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Legacy Shaders/Transparent/Cutout/Diffuse",
+            "PassType": 8,
+            "Keywords": [
+                "SHADOWS_DEPTH",
+                "SHADOWS_SOFT",
+                "SHADOWS_SPLIT_SPHERES",
+                "_ALPHAPREMULTIPLY_ON"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Legacy Shaders/Transparent/Cutout/Diffuse",
+            "PassType": 8,
+            "Keywords": [
+                "_ALPHABLEND_ON"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Legacy Shaders/Transparent/Cutout/Diffuse",
+            "PassType": 8,
+            "Keywords": [
+                "SHADOWS_DEPTH",
+                "SHADOWS_SOFT",
+                "SHADOWS_SPLIT_SPHERES",
+                "_ALPHABLEND_ON"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Skybox/Procedural",
+            "PassType": 0,
+            "Keywords": [
+                "BILLBOARD_FACE_CAMERA_POS",
+                "_SUNDISK_SIMPLE"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITextureClip",
+            "PassType": 0,
+            "Keywords": [
+                ""
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITextureClipText",
+            "PassType": 0,
+            "Keywords": [
+                ""
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITexture",
+            "PassType": 0,
+            "Keywords": [
+                ""
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITextureBlit",
+            "PassType": 0,
+            "Keywords": [
+                ""
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUIRoundedRect",
+            "PassType": 0,
+            "Keywords": [
+                ""
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-UIRAtlasBlitCopy",
+            "PassType": 0,
+            "Keywords": [
+                ""
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUIRoundedRectWithColorPerBorder",
+            "PassType": 0,
+            "Keywords": [
+                ""
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Mobile/Diffuse",
+            "PassType": 4,
+            "Keywords": [
+                "BILLBOARD_FACE_CAMERA_POS",
+                "DIRECTIONAL",
+                "LIGHTPROBE_SH",
+                "SHADOWS_SCREEN",
+                "SHADOWS_SOFT",
+                "SHADOWS_SPLIT_SPHERES"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Mobile/Diffuse",
+            "PassType": 4,
+            "Keywords": [
+                "BILLBOARD_FACE_CAMERA_POS",
+                "DIRECTIONAL",
+                "LIGHTPROBE_SH",
+                "SHADOWS_SCREEN",
+                "SHADOWS_SOFT",
+                "SHADOWS_SPLIT_SPHERES",
+                "_EMISSION",
+                "_METALLICGLOSSMAP",
+                "_NORMALMAP"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Mobile/Diffuse",
+            "PassType": 8,
+            "Keywords": [
+                ""
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Mobile/Diffuse",
+            "PassType": 8,
+            "Keywords": [
+                "SHADOWS_DEPTH",
+                "SHADOWS_SOFT",
+                "SHADOWS_SPLIT_SPHERES"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Mobile/Diffuse",
+            "PassType": 8,
+            "Keywords": [
+                "_EMISSION",
+                "_METALLICGLOSSMAP",
+                "_NORMALMAP"
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Mobile/Diffuse",
+            "PassType": 8,
+            "Keywords": [
+                "SHADOWS_DEPTH",
+                "SHADOWS_SOFT",
+                "SHADOWS_SPLIT_SPHERES",
+                "_EMISSION",
+                "_METALLICGLOSSMAP",
+                "_NORMALMAP"
+            ]
+        },
+        {
+            "AssetPath": "Assets/GameArt/Shaders/StandardMobile.shader",
+            "ShaderName": "Mobile/Standard",
+            "PassType": 1,
+            "Keywords": [
+                ""
+            ]
+        },
+        {
+            "AssetPath": "Assets/GameArt/Shaders/StandardMobile.shader",
+            "ShaderName": "Mobile/Standard",
+            "PassType": 8,
+            "Keywords": [
+                "SHADOWS_DEPTH"
+            ]
+        },
+        {
+            "AssetPath": "Assets/GameArt/Shaders/StandardMobile.shader",
+            "ShaderName": "Mobile/Standard",
+            "PassType": 8,
+            "Keywords": [
+                "_EMISSION",
+                "_METALLICGLOSSMAP",
+                "_NORMALMAP",
+                "_STREAMERCHANNEL_UVPOS"
+            ]
+        }
+    ]
+}

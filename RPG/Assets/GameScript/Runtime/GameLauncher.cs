@@ -20,6 +20,8 @@ public class GameLauncher : MonoBehaviour
 	[Tooltip("在编辑器下模拟运行")]
 	public bool SimulationOnEditor = true;
 
+	private bool _gameStart = false;
+
 	void Awake()
 	{
 #if !UNITY_EDITOR
@@ -48,8 +50,8 @@ public class GameLauncher : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
-		if (MotionEngine.Contains<FsmManager>())
-			FsmManager.Instance.FixedUpdate();
+		if(_gameStart)
+			ILRManager.Instance.FixedUpdate();
 	}
 	void OnGUI()
 	{
@@ -115,7 +117,7 @@ public class GameLauncher : MonoBehaviour
 		if(SimulationOnEditor)
 		{
 			var resourceCreateParam = new YooAssets.EditorPlayModeParameters();
-			resourceCreateParam.LocationRoot = GameDefine.AssetRootPath;
+			resourceCreateParam.LocationServices = new DefaultLocationServices("Assets/GameRes");
 			MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
 			var operation = ResourceManager.Instance.InitializeAsync();
 			yield return operation;
@@ -123,30 +125,39 @@ public class GameLauncher : MonoBehaviour
 		else
 		{
 			var resourceCreateParam = new YooAssets.OfflinePlayModeParameters();
-			resourceCreateParam.LocationRoot = GameDefine.AssetRootPath;
+			resourceCreateParam.LocationServices = new DefaultLocationServices("Assets/GameRes");
 			resourceCreateParam.AutoReleaseInterval = 5f;
 			MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
 			var operation = ResourceManager.Instance.InitializeAsync();
 			yield return operation;
 		}
 
-		// 创建音频管理器
-		MotionEngine.CreateModule<AudioManager>();
-
-		// 创建场景管理器
-		MotionEngine.CreateModule<SceneManager>();
-
 		// 创建对象池管理器
 		var poolCreateParam = new GameObjectPoolManager.CreateParameters();
 		poolCreateParam.DefaultDestroyTime = 5f;
 		MotionEngine.CreateModule<GameObjectPoolManager>(poolCreateParam);
 
-		// 最后创建游戏业务逻辑模块
-		MotionEngine.CreateModule<DataManager>();
-		MotionEngine.CreateModule<WindowManager>();
-		MotionEngine.CreateModule<FsmManager>();
+		// 创建音频管理器
+		MotionEngine.CreateModule<AudioManager>();
 
-		// 开始游戏逻辑
-		FsmManager.Instance.StartGame();
+		// 创建配置表管理器
+		MotionEngine.CreateModule<ConfigManager>();
+
+		// 创建场景管理器
+		MotionEngine.CreateModule<SceneManager>();
+
+		// 创建窗口管理器
+		MotionEngine.CreateModule<WindowManager>();
+
+		// 创建ILRuntime管理器
+		MotionEngine.CreateModule<ILRManager>();
+
+		// 注册反射服务接口
+		ConfigManager.Instance.ActivatorServices = ILRManager.Instance;
+		WindowManager.Instance.ActivatorServices = ILRManager.Instance;
+
+		// 开始游戏
+		_gameStart = true;
+		ILRManager.Instance.StartGame();
 	}
 }

@@ -7,6 +7,7 @@ SpriteAtlas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: UISpellIcon
+  serializedVersion: 2
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -55,3 +56,4 @@ SpriteAtlas:
   - Icon_Deathkiss_128
   m_Tag: UISpellIcon
   m_IsVariant: 0
+  m_IsPlaceholder: 0

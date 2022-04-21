@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.ourpalm.ilruntime": {
+      "version": "2.0.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.cn"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

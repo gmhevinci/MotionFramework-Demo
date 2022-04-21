@@ -49,3 +49,18 @@ MonoBehaviour:
       FilterRuleName: CollectAll
       NotWriteToAssetList: 0
       AssetTags: 
+    - CollectPath: Assets/GameRes/Assembly
+      PackRuleName: PackDirectory
+      FilterRuleName: CollectAll
+      NotWriteToAssetList: 0
+      AssetTags: 
+    - CollectPath: Assets/GameArt/ShaderVariants
+      PackRuleName: PackShaderVariants
+      FilterRuleName: CollectShaderVariants
+      NotWriteToAssetList: 1
+      AssetTags: 
+    - CollectPath: Assets/GameArt/Panel/Sprite
+      PackRuleName: PackDirectory
+      FilterRuleName: CollectAll
+      NotWriteToAssetList: 1
+      AssetTags: 
