@@ -86,7 +86,6 @@
     <Compile Include="Scrpits\Battle\EntityPlayer.cs" />
     <Compile Include="Scrpits\Battle\GameWorld.cs" />
     <Compile Include="Scrpits\Config\AssetConfig.cs" />
-    <Compile Include="Scrpits\Config\AssetXml.cs" />
     <Compile Include="Scrpits\Config\AutoGenerateConfig\CfgAnimation.cs" />
     <Compile Include="Scrpits\Config\AutoGenerateConfig\CfgAutoGenerateLanguage.cs" />
     <Compile Include="Scrpits\Config\AutoGenerateConfig\CfgAvatar.cs" />

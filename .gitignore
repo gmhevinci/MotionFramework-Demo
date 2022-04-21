@@ -5,6 +5,7 @@ RPG/Assets/MotionFramework
 RPG/Assets/MotionFramework.meta
 RPG/Assets/StreamingAssets
 RPG/Assets/StreamingAssets.meta
+RPG/Assets/GameScript/Runtime/ILRBinding
 
 RPG/Bundles
 RPG/Library
@@ -12,4 +13,12 @@ RPG/Temp
 RPG/obj
 RPG/bin
 RPG/Game/obj
-Rpg/Game/Output
+RPG/Game/Output
+
+RPG/Assembly-CSharp.csproj
+RPG/Assembly-CSharp-Editor.csproj
+RPG/MotionFramework.csproj
+RPG/MotionFramework.Editor.csproj
+RPG/RPG.sln
+RPG/YooAsset.csproj
+RPG/YooAsset.Editor.csproj
