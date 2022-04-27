@@ -86,9 +86,9 @@ public static class ILRRegister
 		else
 		{
 			UnityEngine.Debug.LogWarning("ILRuntime not generated binding scripts.");
-
-			// 注册LitJson
-			LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(appdomain);
 		}
+
+		// 注册CLR重定向
+		LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(appdomain);
 	}
 }
