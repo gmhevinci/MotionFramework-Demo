@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root Version="1.0">
+  <Common AutoAddressable="False" AutoCollectShader="True" ShaderBundleName="myshaders" />
+  <Group GroupName="Default Grouper" GroupDesc="" AssetTags="">
+    <Collector CollectPath="Assets/GameRes/Audio" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" NotWriteToAssetList="False" AssetTags="" />
+    <Collector CollectPath="Assets/GameRes/Entity" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectAll" NotWriteToAssetList="False" AssetTags="" />
+    <Collector CollectPath="Assets/GameRes/Scene" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectScene" NotWriteToAssetList="False" AssetTags="" />
+    <Collector CollectPath="Assets/GameRes/UIAtlas" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectAll" NotWriteToAssetList="False" AssetTags="" />
+    <Collector CollectPath="Assets/GameRes/UIPanel" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectAll" NotWriteToAssetList="False" AssetTags="" />
+    <Collector CollectPath="Assets/GameRes/UITexture" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" NotWriteToAssetList="False" AssetTags="" />
+  </Group>
+</root>

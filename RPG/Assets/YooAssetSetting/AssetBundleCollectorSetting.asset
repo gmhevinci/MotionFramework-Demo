@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 185f6993d5150494d98da50e26cb1c25, type: 3}
-  m_Name: AssetBundleGrouperSetting
+  m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
   EnableAddressable: 0
   AutoCollectShaders: 1
   ShadersBundleName: myshaders
-  Groupers:
-  - GrouperName: Default Grouper
-    GrouperDesc: 
+  Groups:
+  - GroupName: Default Grouper
+    GroupDesc: "\u8D44\u6E90\u5206\u7EC4"
     AssetTags: 
     Collectors:
     - CollectPath: Assets/GameRes/Audio
@@ -60,17 +60,5 @@ MonoBehaviour:
       CollectorType: 0
       AddressRuleName: AddressByFileName
       PackRuleName: PackDirectory
-      FilterRuleName: CollectAll
-      AssetTags: 
-    - CollectPath: Assets/GameArt/ShaderVariants
-      CollectorType: 1
-      AddressRuleName: AddressByFileName
-      PackRuleName: PackShaderVariants
-      FilterRuleName: CollectShaderVariants
-      AssetTags: 
-    - CollectPath: Assets/GameArt/Panel/Sprite
-      CollectorType: 1
-      AddressRuleName: AddressByFileName
-      PackRuleName: PackTopDirectory
       FilterRuleName: CollectAll
       AssetTags: 
