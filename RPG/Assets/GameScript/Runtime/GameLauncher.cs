@@ -116,7 +116,7 @@ public class GameLauncher : MonoBehaviour
 		// 创建资源管理器
 		if(SimulationOnEditor)
 		{
-			var resourceCreateParam = new YooAssets.EditorPlayModeParameters();
+			var resourceCreateParam = new YooAssets.EditorSimulateModeParameters();
 			resourceCreateParam.LocationServices = new DefaultLocationServices("Assets/GameRes");
 			MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
 			var operation = ResourceManager.Instance.InitializeAsync();
@@ -126,7 +126,6 @@ public class GameLauncher : MonoBehaviour
 		{
 			var resourceCreateParam = new YooAssets.OfflinePlayModeParameters();
 			resourceCreateParam.LocationServices = new DefaultLocationServices("Assets/GameRes");
-			resourceCreateParam.AutoReleaseInterval = 5f;
 			MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
 			var operation = ResourceManager.Instance.InitializeAsync();
 			yield return operation;

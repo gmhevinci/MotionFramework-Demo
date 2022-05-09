@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185f6993d5150494d98da50e26cb1c25, type: 3}
   m_Name: AssetBundleGrouperSetting
   m_EditorClassIdentifier: 
+  EnableAddressable: 0
   AutoCollectShaders: 1
   ShadersBundleName: myshaders
   Groupers:
@@ -20,47 +21,56 @@ MonoBehaviour:
     AssetTags: 
     Collectors:
     - CollectPath: Assets/GameRes/Audio
+      CollectorType: 0
+      AddressRuleName: AddressByFileName
       PackRuleName: PackDirectory
       FilterRuleName: CollectAll
-      NotWriteToAssetList: 0
       AssetTags: 
     - CollectPath: Assets/GameRes/Entity
+      CollectorType: 0
+      AddressRuleName: AddressByFileName
       PackRuleName: PackSeparately
       FilterRuleName: CollectAll
-      NotWriteToAssetList: 0
       AssetTags: 
     - CollectPath: Assets/GameRes/Scene
+      CollectorType: 0
+      AddressRuleName: AddressByFileName
       PackRuleName: PackSeparately
       FilterRuleName: CollectScene
-      NotWriteToAssetList: 0
       AssetTags: 
     - CollectPath: Assets/GameRes/UIAtlas
+      CollectorType: 0
+      AddressRuleName: AddressByFileName
       PackRuleName: PackSeparately
       FilterRuleName: CollectAll
-      NotWriteToAssetList: 0
       AssetTags: 
     - CollectPath: Assets/GameRes/UIPanel
+      CollectorType: 0
+      AddressRuleName: AddressByFileName
       PackRuleName: PackSeparately
       FilterRuleName: CollectAll
-      NotWriteToAssetList: 0
       AssetTags: 
     - CollectPath: Assets/GameRes/UITexture
+      CollectorType: 0
+      AddressRuleName: AddressByFileName
       PackRuleName: PackDirectory
       FilterRuleName: CollectAll
-      NotWriteToAssetList: 0
       AssetTags: 
     - CollectPath: Assets/GameRes/Assembly
+      CollectorType: 0
+      AddressRuleName: AddressByFileName
       PackRuleName: PackDirectory
       FilterRuleName: CollectAll
-      NotWriteToAssetList: 0
       AssetTags: 
     - CollectPath: Assets/GameArt/ShaderVariants
+      CollectorType: 1
+      AddressRuleName: AddressByFileName
       PackRuleName: PackShaderVariants
       FilterRuleName: CollectShaderVariants
-      NotWriteToAssetList: 1
       AssetTags: 
     - CollectPath: Assets/GameArt/Panel/Sprite
-      PackRuleName: PackDirectory
+      CollectorType: 1
+      AddressRuleName: AddressByFileName
+      PackRuleName: PackTopDirectory
       FilterRuleName: CollectAll
-      NotWriteToAssetList: 1
       AssetTags: 
