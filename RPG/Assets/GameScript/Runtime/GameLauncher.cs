@@ -17,15 +17,14 @@ using YooAsset;
 
 public class GameLauncher : MonoBehaviour
 {
-	[Tooltip("在编辑器下模拟运行")]
-	public bool SimulationOnEditor = true;
+	public YooAssets.EPlayMode PlayMode = YooAssets.EPlayMode.EditorSimulateMode;
 
 	private bool _gameStart = false;
 
 	void Awake()
 	{
 #if !UNITY_EDITOR
-		SimulationOnEditor = false;
+		PlayMode = YooAssets.EPlayMode.OfflinePlayMode;
 #endif
 
 		// 初始化应用
@@ -114,7 +113,7 @@ public class GameLauncher : MonoBehaviour
 		MotionEngine.CreateModule<TweenManager>();
 
 		// 创建资源管理器
-		if(SimulationOnEditor)
+		if(PlayMode == YooAssets.EPlayMode.EditorSimulateMode)
 		{
 			var resourceCreateParam = new YooAssets.EditorSimulateModeParameters();
 			resourceCreateParam.LocationServices = new DefaultLocationServices("Assets/GameRes");
@@ -122,13 +121,17 @@ public class GameLauncher : MonoBehaviour
 			var operation = ResourceManager.Instance.InitializeAsync();
 			yield return operation;
 		}
-		else
+		else if(PlayMode == YooAssets.EPlayMode.OfflinePlayMode)
 		{
 			var resourceCreateParam = new YooAssets.OfflinePlayModeParameters();
 			resourceCreateParam.LocationServices = new DefaultLocationServices("Assets/GameRes");
 			MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
 			var operation = ResourceManager.Instance.InitializeAsync();
 			yield return operation;
+		}
+		else
+		{
+			throw new System.NotImplementedException();
 		}
 
 		// 创建对象池管理器
