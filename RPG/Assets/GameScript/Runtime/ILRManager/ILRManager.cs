@@ -39,6 +39,10 @@ public class ILRManager : ModuleSingleton<ILRManager>, IModule, IActivatorServic
 	{
 		_updateFun?.Invoke();
 	}
+	void IModule.OnDestroy()
+	{
+		DestroySingleton();
+	}
 	void IModule.OnGUI()
 	{
 	}
