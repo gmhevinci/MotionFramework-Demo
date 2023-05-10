@@ -12,53 +12,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185f6993d5150494d98da50e26cb1c25, type: 3}
   m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
+  ShowPackageView: 0
   EnableAddressable: 0
-  AutoCollectShaders: 1
-  ShadersBundleName: myshaders
-  Groups:
-  - GroupName: Default Grouper
-    GroupDesc: "\u8D44\u6E90\u5206\u7EC4"
-    AssetTags: 
-    Collectors:
-    - CollectPath: Assets/GameRes/Audio
-      CollectorType: 0
-      AddressRuleName: AddressByFileName
-      PackRuleName: PackDirectory
-      FilterRuleName: CollectAll
+  UniqueBundleName: 0
+  ShowEditorAlias: 0
+  Packages:
+  - PackageName: DefaultPackage
+    PackageDesc: 
+    Groups:
+    - GroupName: Default Grouper
+      GroupDesc: "\u8D44\u6E90\u5206\u7EC4"
       AssetTags: 
-    - CollectPath: Assets/GameRes/Entity
-      CollectorType: 0
-      AddressRuleName: AddressByFileName
-      PackRuleName: PackSeparately
-      FilterRuleName: CollectAll
-      AssetTags: 
-    - CollectPath: Assets/GameRes/Scene
-      CollectorType: 0
-      AddressRuleName: AddressByFileName
-      PackRuleName: PackSeparately
-      FilterRuleName: CollectScene
-      AssetTags: 
-    - CollectPath: Assets/GameRes/UIAtlas
-      CollectorType: 0
-      AddressRuleName: AddressByFileName
-      PackRuleName: PackSeparately
-      FilterRuleName: CollectAll
-      AssetTags: 
-    - CollectPath: Assets/GameRes/UIPanel
-      CollectorType: 0
-      AddressRuleName: AddressByFileName
-      PackRuleName: PackSeparately
-      FilterRuleName: CollectAll
-      AssetTags: 
-    - CollectPath: Assets/GameRes/UITexture
-      CollectorType: 0
-      AddressRuleName: AddressByFileName
-      PackRuleName: PackDirectory
-      FilterRuleName: CollectAll
-      AssetTags: 
-    - CollectPath: Assets/GameRes/Assembly
-      CollectorType: 0
-      AddressRuleName: AddressByFileName
-      PackRuleName: PackDirectory
-      FilterRuleName: CollectAll
-      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/GameRes/Audio
+        CollectorGUID: 
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Entity
+        CollectorGUID: 
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Scene
+        CollectorGUID: 
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectScene
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/UIAtlas
+        CollectorGUID: 
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/UIPanel
+        CollectorGUID: 
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/UITexture
+        CollectorGUID: 
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/Assembly
+        CollectorGUID: 
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

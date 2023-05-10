@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<root Version="1.0">
-  <Common AutoAddressable="False" AutoCollectShader="True" ShaderBundleName="myshaders" />
-  <Group GroupName="Default Grouper" GroupDesc="资源分组" AssetTags="">
-    <Collector CollectPath="Assets/GameRes/Audio" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" AssetTags="" />
-    <Collector CollectPath="Assets/GameRes/Entity" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectAll" AssetTags="" />
-    <Collector CollectPath="Assets/GameRes/Scene" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectScene" AssetTags="" />
-    <Collector CollectPath="Assets/GameRes/UIAtlas" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectAll" AssetTags="" />
-    <Collector CollectPath="Assets/GameRes/UIPanel" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectAll" AssetTags="" />
-    <Collector CollectPath="Assets/GameRes/UITexture" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" AssetTags="" />
-    <Collector CollectPath="Assets/GameRes/Assembly" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" AssetTags="" />
-  </Group>
+<root Version="2.4">
+  <Common AutoAddressable="False" UniqueBundleName="False" ShowPackageView="False" ShowEditorAlias="False" />
+  <Package PackageName="DefaultPackage" PackageDesc="">
+    <Group GroupActiveRule="EnableGroup" GroupName="Default Grouper" GroupDesc="资源分组" AssetTags="">
+      <Collector CollectPath="Assets/GameRes/Audio" CollectGUID="" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/GameRes/Entity" CollectGUID="" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectAll" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/GameRes/Scene" CollectGUID="" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectScene" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/GameRes/UIAtlas" CollectGUID="" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectAll" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/GameRes/UIPanel" CollectGUID="" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackSeparately" FilterRule="CollectAll" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/GameRes/UITexture" CollectGUID="" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/GameRes/Assembly" CollectGUID="" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" UserData="" AssetTags="" />
+    </Group>
+  </Package>
 </root>

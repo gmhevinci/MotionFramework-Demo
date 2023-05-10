@@ -17,14 +17,14 @@ using YooAsset;
 
 public class GameLauncher : MonoBehaviour
 {
-	public YooAssets.EPlayMode PlayMode = YooAssets.EPlayMode.EditorSimulateMode;
+	public EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
 
 	private bool _gameStart = false;
 
 	void Awake()
 	{
 #if !UNITY_EDITOR
-		PlayMode = YooAssets.EPlayMode.OfflinePlayMode;
+		PlayMode = EPlayMode.OfflinePlayMode;
 #endif
 
 		// 初始化应用
@@ -49,7 +49,7 @@ public class GameLauncher : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
-		if(_gameStart)
+		if (_gameStart)
 			ILRManager.Instance.FixedUpdate();
 	}
 	void OnGUI()
@@ -113,20 +113,20 @@ public class GameLauncher : MonoBehaviour
 		MotionEngine.CreateModule<TweenManager>();
 
 		// 创建资源管理器
-		if(PlayMode == YooAssets.EPlayMode.EditorSimulateMode)
+		string locationRoot = "Assets/GameRes/";
+		if (PlayMode == EPlayMode.EditorSimulateMode)
 		{
-			var resourceCreateParam = new YooAssets.EditorSimulateModeParameters();
-			resourceCreateParam.LocationServices = new DefaultLocationServices("Assets/GameRes");
+			var resourceCreateParam = new EditorSimulateModeParameters();
+			resourceCreateParam.SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild("DefaultPackage");
 			MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
-			var operation = ResourceManager.Instance.InitializeAsync();
+			var operation = ResourceManager.Instance.InitializeAsync(locationRoot);
 			yield return operation;
 		}
-		else if(PlayMode == YooAssets.EPlayMode.OfflinePlayMode)
+		else if (PlayMode == EPlayMode.OfflinePlayMode)
 		{
-			var resourceCreateParam = new YooAssets.OfflinePlayModeParameters();
-			resourceCreateParam.LocationServices = new DefaultLocationServices("Assets/GameRes");
+			var resourceCreateParam = new OfflinePlayModeParameters();
 			MotionEngine.CreateModule<ResourceManager>(resourceCreateParam);
-			var operation = ResourceManager.Instance.InitializeAsync();
+			var operation = ResourceManager.Instance.InitializeAsync(locationRoot);
 			yield return operation;
 		}
 		else

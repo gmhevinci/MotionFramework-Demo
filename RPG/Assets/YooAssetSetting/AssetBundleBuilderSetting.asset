@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09788b4733bab2d4792fdd5d28e7653c, type: 3}
   m_Name: AssetBundleBuilderSetting
   m_EditorClassIdentifier: 
-  BuildVersion: 101
+  BuildPipeline: 0
   BuildMode: 0
-  BuildTags: 
+  BuildPackage: DefaultPackage
   CompressOption: 2
-  EncyptionClassName: 
-  AppendExtension: 0
+  OutputNameStyle: 1
+  CopyBuildinFileOption: 1
+  CopyBuildinFileTags: 
+  EncyptionClassName: EncryptionNone
